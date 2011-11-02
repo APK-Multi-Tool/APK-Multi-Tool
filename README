@@ -1,0 +1,136 @@
+APK Multi-Tool
+
+I have updated all the files and modified Apk manager's Scripts to fix many user reported bugs from Daneshm90 apk manager which he had written a simple script to ease the process of editing apks. Got a lot of downloads so thought its in demand
+
+After some thought and after adding new features and decided that since it is no longer just a apk management tool that is is now a multifunctional tool now so I felt to change the name to APK Multi-Tool.
+
+Whether you're doing basic image editing or editing the smali or XML files, on average u have to use (Brut.all or JF's smali/baksmali) awesome tool to extract the apk, edit it, then sign the apk and then adb push/install it. This process is quite tiresome if you are testing a method that needs fine tweaking.
+
+This script should make the process a LOT smoother.
+There is an option of compiling/signing/installing all in one step
+
+Thanks:
+Goes to Daneshm90 the Original Writer of Apk Manager
+Goes to Brut.all for his awesome tool.
+Goes to JF for of course, smali/baksmali
+Goes to farmatito for porting this script to Linux
+
+Features:
+- Extract, Zip apk's.
+- Optimize pngs (ignores .9.pngs)
+- Zipalign apks
+- Sign apks
+- Push to specific location on phone
+- Incorporates brut.all's apktool
+- Pull apk from phone into modding environment.
+- Batch optimize apk (Zipalign,optipng,or both)
+- Quick sign an apk (Batch mode supported)
+- Batch Ogg optimization
+- Compression level selector (monitor status above menu)
+- Batch install apk from script (option 16)
+- Logging on/off has been removed. Instead a log.txt is created which logs the activities of the script organized using time/date headers
+- User can change the max java heap size (only use if certain large apks get stuck when decompiling/compiling apks) (Option 19)
+- Improved syntax of questions/answers
+- Error detection. Checks if error occurred anytime u perform a task, and reports it
+- Read log (Option 20)
+- U can now set this script as your default application for apks. When u do, if u double click any apk it will install it for u.
+- Supports batch installation, so if u drag multiple apks into the script (not while its running) it will install them all for u. U can of course drag a single apk as well
+- Added framework dependent decompiling (For non proprietary rom apks). (Option 10). Checks whether the depended apk u selected is correct.
+- Allows multiple projects to be modified, switch to and from.
+- Allows to modify system apk's using apktool but ensures maximum compatibility in terms of signature / manifest.xml
+- Stuff i forgot i guess
+
+Instructions:
+- Place apk in appropriate folder (Any file name will work, if running for first time folders will not be there, you must run and then the folders will be created)
+- Run script
+- Minimize the script
+- Edit files inside the project folder
+- Maximize the script
+
+
+
+
+Themers Convertion Tools:
+Before running the themers tool-set make sure when you run the scripts 15 16 17 in this exact order as it is setup as a tool-chain. 
+
+To transfer or convert a rom theme pack place the apk files of the theme pack you wish to convert over to your rom in the the Themedapk folder and place the rom files of the same name from the rom you have flashed on your phone in the transferred folder run the scripts
+take note that depending on your computer specs it can take over a hour to complete
+
+Requirements:
+Java 1.6
+
+
+FAQs:
+If you get the message Java is not installed try these instructions
+
+How do I set or change the PATH system variable?
+
+This article applies to:
+Platform(s): Solaris SPARC, Solaris x86, Red Hat Linux, SUSE Linux, Windows 7, Vista, Windows XP
+Browser(s): All Browsers
+Java version(s): All JRE Versions
+
+MORE TECHNICAL INFORMATION 
+
+The PATH is the system variable that your operating system uses to locate needed executable from the command line or Terminal window.
+The PATH system variable can be set using System Utility in control panel on Windows, or in your shell's start-up file on Linux and Solaris.
+
+SOLUTION
+
+Setting Path on Windows
+For Windows XP:
+1. Start -> Control Panel -> System -> Advanced
+2. Click on Environment Variables, under System Variables, find PATH, and click on it.
+3. In the Edit windows, modify PATH by adding the location of the class to the value for PATH. If you do not have the item PATH, you may select to add a new variable and add PATH as the name and the location of the class as the value.
+4. Close the window.
+5. Reopen Command prompt window, and run your java code.
+
+For Windows Vista:
+1. Right click “My Computer” icon
+2. Choose “Properties” from context menu
+3. Click “Advanced” tab (“Advanced system settings” link in Vista)
+4. In the Edit windows, modify PATH by adding the location of the class to the value for PATH. If you do not have the item PATH, you may select to add a new variable and add PATH as the name and the location of the class as the value.
+5. Reopen Command prompt window, and run your java code.
+
+Setting Path on Solaris and Linux
+To find out if the java executable is in your PATH, execute:
+% java -version
+
+This will print the version of the java executable, if it can find it. If you get error java: Command not found. Then path is not properly set.
+
+To find out which java executable the first one found in your PATH, execute:
+% which java
+
+Below are the steps to set the PATH permanently,
+Note: We are here giving instructions for two most popular Shells on Linux and Solaris.
+Please visit link below if you are using any other shells.
+Path Setting Tutorial
+
+For bash Shell: 
+1. Edit the start-up file (~/ .bashrc)
+2. Modify PATH variable: 
+PATH=/usr/local/jdk1.6.0/bin
+3. export PATH
+4. Save and close the file
+5. Open new Terminal window
+6. Verify the PATH is set properly
+% java -version
+
+For C Shell (csh):
+1. Edit startup file (~/ .cshrc)
+2. Set Path
+set path=(/usr/local/jdk1.6.0/bin )
+3. Save and Close the file
+4. Open new Terminal window
+5. Verify the PATH is set properly
+% java -version
+
+What is the Batch Theme Image Transfer TOOL?
+This tool makes the process of transferring images from one APK to another APK File of the same file making it easier to update themes or even transferring a theme update.zip of one ROM to another Rom allowing the porting of theme to be much faster.
+(Note: You will have to manually replace the progress_horizontal.xml from the framework-res since this file is needed with Theme Changes)
+
+What is the Batch Theme Zipalign APK TOOL?
+This tool makes it easier to Zipalign all the apk files in your newly ported/updated theme pack.
+
+What is the Batch Theme optipng TOOL?
+This tool optimizes all the images in all of the apk files for the tool-set to allow you to be able improve compression of the images. 
