@@ -8,7 +8,7 @@ echo ^|%date% -- %time%^| >> log.txt
 echo -------------------------------------------------------------------------- >> log.txt
 Script 0 2>> log.txt
 :skipme
-mode con:cols=150 lines=50
+mode con:cols=140 lines=50
 :skipme
 set usrc=9
 set capp=None
@@ -30,7 +30,7 @@ echo                         7@B@@@ 7B@B@8      ,B@@@B@.,,r@@B@B@U   B@B@B@kMB@B
 echo                       .B@B@B@7..@B@B@BS    ,@B@B@BMM@BOP5vi     @B@B@B@B@q@B@B@Mr                                                  
 echo                     ,@B@B@@X2ZOMS2M@@@B@F  :B@B@B@              @@B@B@Y    7B@B@B@BJ,                                              
 echo                     ivi...,        ...:iL,  :....:              :....:       .:.::7L:                                              
-echo  .
+echo                                                .
 echo                                               .:                                                                                   
 echo                                                ir,                                                                                 
 echo                                                 :r.   , ,            ,.,                                                           
@@ -84,7 +84,7 @@ echo  ----------------------------------         -------------------------------
 echo  Simple Tasks Such As Image Editing         Advanced Tasks Such As Code Editing         Themers Convertion Tools
 echo  ----------------------------------         -----------------------------------         -----------------------------------
 echo  0    Adb pull                              9    Decompile apk                          15   Batch Theme Image Transfer
-echo  1    Extract apk                           10   Decompile apk (with dependencies)      16   Batch Theme optipng
+echo  1    Extract apk                           10   Decompile apk (with dependencies)      16   Batch Theme roptipng
 echo  2    Optimize images inside                     (For propietary rom apks)              17   Batch Theme Zipalign APK TOOL
 echo  3    Zip apk                               11   Compile apk                                 (Make sure that you run these
 echo  4    Sign apk (Dont do this if its         12   Sign apk                                     tools in this exact order and
@@ -208,7 +208,7 @@ echo -----
 echo Apk Multi-Tool Alpha02
 echo ApkTool v1.4.2 snapshot
 echo 7za v9.20
-echo Optipng v0.6.5
+echo roptipng v0.6.5
 echo Sox v14.3.2
 echo Android Asset Packaging Tool v0.2
 echo.
@@ -339,12 +339,12 @@ del /q %1
 cls
 goto restart
 :bto
-echo Batch Theme optipng TOOL
+echo Batch Theme roptipng TOOL
 echo This tool optimizes all the images in all of the apk files for the toolset to allow you to be able improve compression of the images.
 PAUSE
-FOR %%F IN (transferred\%~dp0*.apk) DO (call :optipng "%%F")
+FOR %%F IN (transferred\%~dp0*.apk) DO (call :roptipng "%%F")
 
-:optipng
+:roptipng
 IF %1 == () goto end
 
 :: defines tools folder
@@ -353,23 +353,23 @@ set parent="other"
 :: makes working folders
 md "%~dp0optimized"
 md "%~dp0untouched"
-md "%~dp0optipng_otemp_%~n1"
+md "%~dp0roptipng_otemp_%~n1"
 
 :: defines tools location
 set szip="%parent%\7za.exe"
-set optipng="%parent%\optipng.exe"
+set roptipng="%parent%\roptipng.exe"
 
 :: uncompressing contents of apks
-%szip% x -o"%~dp0optipng_otemp_%~n1" %1
+%szip% x -o"%~dp0roptipng_otemp_%~n1" %1
 
 :: -o* (0-99) specifies how much the image is optimized
-%optipng% -o99 "%~dp0optipng_otemp_%~n1\**\*.png"
+%roptipng% -o99 "%~dp0roptipng_otemp_%~n1\**\*.png"
 copy /b %1 "%~dp0untouched"
 del /q %1
 
 :: -mx* (0-9) indicates the compression level used for all working apks
-%szip% a -tzip "%~dp0optimized\%~n1.apk" "%~dp0optipng_otemp_%~n1\*" -mx9 -mmt
-rd /s /q "%~dp0optipng_otemp_%~n1"
+%szip% a -tzip "%~dp0optimized\%~n1.apk" "%~dp0roptipng_otemp_%~n1\*" -mx9 -mmt
+rd /s /q "%~dp0roptipng_otemp_%~n1"
 cls
 goto restart
 :btzat
@@ -476,7 +476,7 @@ dir /b
 7za x -o"apkopt_temp_%~n1" "../place-apk-here-to-batch-optimize/%~n1%~x1"
 mkdir temp
 xcopy "apkopt_temp_%~n1\res\*.9.png" "temp" /S /Y
-optipng -o99 "apkopt_temp_%~n1\**\*.png"
+roptipng -o99 "apkopt_temp_%~n1\**\*.png"
 del /q "..\place-apk-here-to-batch-optimize\%~n1%~x1"
 xcopy "temp" "apkopt_temp_%~n1\res" /S /Y
 rmdir "temp" /S /Q
@@ -506,7 +506,7 @@ mkdir temp
 xcopy "%~dp0projects\%capp%\res\*.9.png" "%~dp0temp" /S /Y
 cd other
 echo Optimizing Png's
-optipng -o99 "../projects/%capp%/**/*.png"
+roptipng -o99 "../projects/%capp%/**/*.png"
 cd ..
 xcopy "%~dp0temp" "%~dp0projects\%capp%\res" /S /Y
 rmdir temp /S /Q
