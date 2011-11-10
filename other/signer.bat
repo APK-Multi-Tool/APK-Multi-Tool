@@ -25,21 +25,25 @@ set parent="other"
 :: defines tools location
 set dget="%parent%\wget.exe"
 del updates.txt
-echo Please Wait While Apk Multi-Tools Updates....
+echo Please Wait While Apk Multi-Tools Updates to the latest VERSION....
 Echo Downloading 7zip to install script.....
 Echo .........0
 Echo ........00
 Echo .......000
 Echo ......0000
 Echo .....00000
+COLOR 0C
 %dget% http://update.apkmultitool.com/7za.exe
+COLOR 0A
 Echo Downloadng updates.......
 Echo 0.........
 Echo 00........
 Echo 000.......
 Echo 0000......
 Echo 00000.....
+COLOR 0C
 %dget% http://update.apkmultitool.com/update.7z
+COLOR 0A
 7za x -y -o"./" "update.7z"
 Echo Cleaning up updater files
 Echo 0........0
@@ -50,7 +54,9 @@ Echo 0000000000
 del update.7z
 del 7za.exe
 echo Update is Complete.....
+COLOR 0C
 echo Please click enter to close script and relaunch APK Multi-Tools
+COLOR 0A
 PAUSE
 goto quit
 :quit

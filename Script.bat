@@ -8,8 +8,8 @@ echo ^|%date% -- %time%^| >> log.txt
 echo -------------------------------------------------------------------------- >> log.txt
 Script 0 2>> log.txt
 :skipme
-IF EXIST apkver.txt (del apkver.txt)
 Echo Please Wait while we CHECK FOR UPDATES
+IF EXIST apkver.txt (del apkver.txt)
 other\wget http://update.apkmultitool.com/apkver.txt
 cls
 IF NOT EXIST apkver.txt (goto :error)
