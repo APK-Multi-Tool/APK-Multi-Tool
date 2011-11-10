@@ -8,17 +8,63 @@ echo ^|%date% -- %time%^| >> log.txt
 echo -------------------------------------------------------------------------- >> log.txt
 Script 0 2>> log.txt
 :skipme
+IF EXIST apkver.txt (del apkver.txt)
+Echo Please Wait while we CHECK FOR UPDATES
+other\wget http://update.apkmultitool.com/apkver.txt
+cls
+IF NOT EXIST apkver.txt (goto :error)
+set /a bool = 0
+set info = ""
+for /f "tokens=*" %%a in (apkver.txt) do (
+if !bool!==0 set /a tmpv=%%a
+if !bool!==1 set info=!info!%%a
+set /a bool = 1
+)
+del apkver.txt
+rem Apk Multi-tool version code
+set /a ver = 1
+if /I %tmpv% GTR %ver% (
+wget http://update.apkmultitool.com/updates.txt
+
+cls
+IF EXIST updates.txt (
+echo New Update Was Found
+echo.
+goto changed
+:recall
+PAUSE
+
+Start cmd /c other\signer 3
+exit
+)
+)
+:error
+cd "%~dp0"
 mode con:cols=140 lines=50
-:skipme
+
+mkdir projects
+mkdir place-apk-here-for-modding
+mkdir place-ogg-here
+mkdir place-apk-here-to-batch-optimize
+mkdir place-apk-here-for-signing
+mkdir themedapk
+mkdir zipaligned
+mkdir untouched
+mkdir transferred
+mkdir optimized
+
+cls
 set usrc=9
+set dec=0
 set capp=None
 set heapy=64
+set jar=0
 java -version 
 if errorlevel 1 goto errjava
 other\adb version 
 if errorlevel 1 goto erradb
 set /A count=0
-FOR %%F IN (place-apk-here-for-modding/*.apk) DO (
+FOR %%F IN (place-apk-here-for-modding/*) DO (
 set /A count+=1
 set tmpstore=%%~nF%%~xF
 )
@@ -74,15 +120,18 @@ echo   q@B0  u@BM  i@B@   kM@B@5kBBB  rBBBv   5M@@@Z  @B@O            uBMBO     
 PAUSE
 cls
 :restart
+if %dec%==0 (set decs=Sources and Resources)
+if %dec%==1 (set decs=Sources)
+if %dec%==2 (set decs=Resources)
 cd "%~dp0"
 set menunr=GARBAGE
 cls
-echo                     ------------------------------------------------------------------------------
-echo                     ^| Compression-Level: %usrc% ^| Heap Size: %heapy%mb ^| Current-App: %capp% ^|
-echo                     ------------------------------------------------------------------------------
-echo  ----------------------------------         -----------------------------------         -----------------------------------
+echo  --------------------------------------------------------------------------------------------------------------------------
+echo ^| Compression-Level: %usrc% ^| Heap Size: %heapy%mb ^| Decompile : %decs% ^| Current-App: %capp% ^|
+echo  --------------------------------------------------------------------------------------------------------------------------
+echo  ----------------------------------         ------------------------------------        -----------------------------------
 echo  Simple Tasks Such As Image Editing         Advanced Tasks Such As Code Editing         Themers Convertion Tools
-echo  ----------------------------------         -----------------------------------         -----------------------------------
+echo  ----------------------------------         ------------------------------------        -----------------------------------
 echo  0    Adb pull                              9    Decompile apk                          15   Batch Theme Image Transfer
 echo  1    Extract apk                           10   Decompile apk (with dependencies)      16   Batch Theme roptipng
 echo  2    Optimize images inside                     (For propietary rom apks)              17   Batch Theme Zipalign APK TOOL
@@ -108,6 +157,7 @@ echo  23   Set Max Memory Size (Only use if getting stuck at decompiling/compili
 echo  24   Read Log
 echo  25   Set current project
 echo  26   About / Tips / Debug Section
+echo  27   Switch decompile mode
 echo  00   Quit
 echo  -------------------------------------------------------------------------------
 SET /P menunr=Please make your decision:
@@ -124,6 +174,7 @@ IF %menunr%==23 (goto heap)
 IF %menunr%==24 (goto logr)
 IF %menunr%==25 (goto filesel)
 IF %menunr%==26 (goto about)
+IF %menunr%==27 (goto switchc)
 IF %menunr%==00 (goto quit)
 
 if %capp%==None goto noproj
@@ -144,6 +195,10 @@ IF %menunr%==14 (goto all)
 :WHAT
 echo You went crazy and entered something that wasnt part of the menu options
 PAUSE
+goto restart
+:switchc
+set /a dec+=1 
+if (%dec%)==(3) (set /a dec=0)
 goto restart
 :cleanp
 echo 1. Clean This Project's Folder
@@ -204,14 +259,8 @@ goto restart
 :about
 cls
 echo About
-echo -----
-echo Apk Multi-Tool Alpha02
-echo ApkTool v1.4.2 snapshot
-echo 7za v9.20
-echo roptipng v0.6.5
-echo Sox v14.3.2
-echo Android Asset Packaging Tool v0.2
-echo.
+echo -------
+type other\version.txt
 echo Tips
 echo ----
 echo 1. If Modifying system apps, never resign them unless you want to resign all
@@ -248,7 +297,7 @@ echo Ok, lets try looking through for any shared uid, if i find any i will remov
 :filesel
 cls
 set /A count=0
-FOR %%F IN (place-apk-here-for-modding/*.apk) DO (
+FOR %%F IN (place-apk-here-for-modding/*) DO (
 set /A count+=1
 set a!count!=%%F
 if /I !count! LEQ 9 (echo ^- !count!  - %%F )
@@ -260,6 +309,9 @@ set /P INPUT=Enter It's Number: %=%
 if /I %INPUT% GTR !count! (goto chc)
 if /I %INPUT% LSS 1 (goto chc)
 set capp=!a%INPUT%!
+set jar=0
+set ext=jar
+IF "!capp:%ext%=!" NEQ "%capp%" set jar=1
 goto restart
 :chc
 set capp=None
@@ -526,6 +578,9 @@ echo "An Error Occured, Please Check The Log (option 24)"
 PAUSE
 goto restart
 )
+set jar=0
+set ext=jar
+IF "!INPUT:%ext%=!" NEQ "%INPUT%" set jar=1
 :renameagain
 echo What filename would you like this app to be stored as ?
 echo Eg (launcher.apk)
@@ -554,6 +609,7 @@ PAUSE
 )
 goto restart
 :zipa
+cd other
 echo Zipaligning Apk
 IF EXIST "%~dp0place-apk-here-for-modding\signed%capp%" zipalign -f 4 "%~dp0place-apk-here-for-modding\signed%capp%" "%~dp0place-apk-here-for-modding\signedaligned%capp%"
 
@@ -618,7 +674,7 @@ echo Drag the dependee apk in this window or type its path
 echo Example to decompile Rosie.apk, drag com.htc.resources.apk in this window
 set /P INPUT=Type input: %=%
 java -jar apktool.jar if %INPUT%
-if NOT EXIST "%userprofile%\apktool\framework\2.apk" (
+if NOT EXIST %userprofile%\apktool\framework\2.apk (
 echo.
 echo "Sorry thats not the dependee apk, try again"
 goto temr
@@ -636,8 +692,13 @@ cd other
 DEL /Q "../place-apk-here-for-modding/signed%capp%"
 DEL /Q "../place-apk-here-for-modding/unsigned%capp%"
 IF EXIST "../projects/%capp%" (rmdir /S /Q "../projects/%capp%")
-echo Decompiling Apk
-java -Xmx%heapy%m -jar apktool.jar d "../place-apk-here-for-modding/%capp%" "../projects/%capp%"
+if (%jar%)==(0) (echo Decompiling Apk)
+if (%jar%)==(1) (echo Decompiling Jar)
+if (%dec%)==(0) (set ta=)
+if (%dec%)==(1) (set ta=-r)
+if (%dec%)==(2) (set ta=-s)
+if (%jar%)==(1) (set ta=-r)
+java -Xmx%heapy%m -jar apktool.jar d %ta% "../place-apk-here-for-modding/%capp%" "../projects/%capp%"
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 24)"
 PAUSE
@@ -647,12 +708,20 @@ goto restart
 :co
 IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
 cd other
-echo Building Apk
+if (%jar%)==(0) (echo Building Apk)
+if (%jar%)==(1) (echo Building Jar)
 IF EXIST "%~dp0place-apk-here-for-modding\unsigned%capp%" (del /Q "%~dp0place-apk-here-for-modding\unsigned%capp%")
 java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\unsigned%capp%"
+if (%jar%)==(0) (goto :nojar)
+7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
+7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/temp/*" -mx%usrc% -r
+rmdir /S /Q "%~dp0projects/temp"
+goto restart
+:nojar
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 24)"
 PAUSE
+goto restart
 )
 echo Is this a system apk ^(y/n^)
 set /P INPU=Type input: %=%
@@ -684,7 +753,13 @@ goto restart
 7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
 7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0projects/temp"
+goto restart
 :q1
+echo Would you like to copy over any additional files 
+echo that you didn't modify from the original apk in order to ensure least 
+echo # of errors ^(y/n^)
+set /P INPU=Type input: %=%
+if %INPU%==y (goto nq2)
 cd ..
 goto restart
 :si
@@ -761,6 +836,18 @@ set /a count+=1
 goto :loop
 :endloop
 goto quit
+:changed
+echo The Following Was Updated : 
+echo.
+set /a cc = 1
+:recursive
+for /f "tokens=%cc% delims=\" %%b in ('echo %info%') do (
+echo %%b
+set /a cc = %cc% + 1
+goto recursive
+)
+echo.
+goto recall
 :logr
 cd other
 Start "Read The Log - Main script is still running, close this to return" signer 1
