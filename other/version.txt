@@ -1,4 +1,4 @@
-Apk Multi-Tool Alpha02
+Apk Multi-Tool Alpha03
 ApkTool        v1.4.2 snapshot
 7za            v9.20
 Roptipng       v0.6.3
