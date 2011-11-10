@@ -4,3 +4,4 @@ ApkTool        v1.4.2 snapshot
 Roptipng       v0.6.3
 Sox            v14.3.2
 Android Tools  SDK  Rev 13
+Wget           v1.13.4
