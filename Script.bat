@@ -333,7 +333,7 @@ set usrc=%INPUT%
 cls
 goto restart
 :btit
-echo Batch Theme Image Transfer TOOL
+( echo Batch Theme Image Transfer TOOL
 echo Expermental use with caution
 echo This tool makes the process of transferring images from one APK file to another 
 echo APK File of the same file making it easier to update themes or even transferring
@@ -341,55 +341,18 @@ echo a theme update.zip of one ROM to another Rom allowing the porting of theme 
 echo be much faster.
 echo (Note: You will have to manually replace the progress_horizontals.xml from the
 echo framework-res since this file is needed with Theme Changes)
-@echo off
-FOR %%F IN (themedapk\%~dp0*.apk) DO (call :transfer "%%F")
+PAUSE
 
-:transfer
-IF %1 == () goto end
+echo New Update Was Found
+echo.
+goto changed
+:recall
+PAUSE
 
-:: defines tools folder
-set parent="other"
-
-:: makes working folders
-md "%~dp0transferred"
-md "%~dp0Transfer_otemp_%~n1"
-md "%~dp0Transfer_ntemp_%~n1"
-
-:: defines tools location
-set szip="%parent%\7za.exe"
-
-:: check if the current apk exists
-IF EXIST "%~dp0transferred\%~n1.apk" (
-
-	:: uncompressing contents of apks
-	%szip% x -o"%~dp0Transfer_otemp_%~n1" %1 *.png -r > nul
-	%szip% x -o"%~dp0Transfer_ntemp_%~n1" %1 *.png -r > nul
-
-	:: check if the original apk exists
-	IF EXIST "%~n1.apk" (
-		
-		:: gets name of current image folder
-		FOR /F %%E IN ('dir "%~dp0Transfer_otemp_%~n1\res\*" /A:D /S /B') DO (
-			
-			:: gets name of current png image
-			FOR %%G IN ("%~dp0Transfer_otemp_%~n1\res\**\*.png") DO (
-			
-				:: check if the current image exists
-				IF NOT EXIST "%~dp0Transfer_ntemp_%~n1\res\**\*.png" (
-				del /q "%~dp0Transfer_otemp_%~n1\res\**\*.png"
-				)
-			)
-		)
-	)
+Start cmd /c other\trasfer
+exit
 )
 
-:: -mx* (0-9) indicates the compression level used for all working apks
-%szip% a -tzip "%~dp0transferred\%~n1.apk" "%~dp0Transfer_otemp_%~n1\*" -mx9 -mmt *.png > nul
-rd /s /q "%~dp0Transfer_otemp_%~n1"
-rd /s /q "%~dp0Transfer_ntemp_%~n1"
-del /q %1
-cls
-goto restart
 :bto
 echo Batch Theme roptipng TOOL
 echo This tool optimizes all the images in all of the apk files for the toolset to allow you to be able improve compression of the images.
