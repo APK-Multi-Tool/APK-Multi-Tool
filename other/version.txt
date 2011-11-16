@@ -1,7 +1,7 @@
-Apk Multi-Tool      Alpha03
-ApkTool             v1.4.2 snapshot
-7zip                v9.20
-Roptipng            v0.6.3
-Sox                 v14.3.2
-Android Tools  SDK  Rev 14
-Wget                v1.13.4
+Apk Multi-Tool  Alpha03
+ApkTool         v1.4.2 snapshot
+7zip            v9.20
+Roptipng        v0.6.3
+Sox             v14.3.2
+Android SDK     Rev 14
+Wget            v1.13.4
