@@ -3,7 +3,7 @@ cd ..
 FOR %%F IN (themedapk\%~dp0*.apk) DO (call :transfer "%%F")
 
 :transfer
-IF %1 == () goto end
+IF %1 == () goto restart
 
 :: defines tools folder
 set parent="other"
@@ -46,3 +46,10 @@ IF EXIST "%~dp0transferred\%~n1.apk" (
 rd /s /q "%~dp0Transfer_otemp_%~n1"
 rd /s /q "%~dp0Transfer_ntemp_%~n1"
 del /q %1
+:restart
+( echo restarting APK Multi-Tool
+Start cmd /c other\script 1
+exit
+)
+:end
+

@@ -1,4 +1,5 @@
 @echo off
+if (%1)==(1) goto restart
 setlocal enabledelayedexpansion
 COLOR 0A
 if (%1)==(0) goto skipme
@@ -343,11 +344,6 @@ echo (Note: You will have to manually replace the progress_horizontals.xml from 
 echo framework-res since this file is needed with Theme Changes)
 PAUSE
 
-echo New Update Was Found
-echo.
-goto changed
-:recall
-PAUSE
 
 Start cmd /c other\trasfer
 exit
