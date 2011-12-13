@@ -60,3 +60,4 @@ COLOR 0A
 PAUSE
 goto quit
 :quit
+exit
