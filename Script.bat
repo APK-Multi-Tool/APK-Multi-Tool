@@ -58,7 +58,7 @@ set heapy=64
 set jar=0
 java -version 
 if errorlevel 1 goto errjava
-other\adb version 
+platform-tools\adb version 
 if errorlevel 1 goto erradb
 set /A count=0
 FOR %%F IN (place-apk-here-for-modding/*) DO (
@@ -436,19 +436,19 @@ if (%INPUT%)==(zp) GOTO zipb
 if (%INPUT%)==(z) GOTO zipo
 :zipb
 @echo Optimizing %~1...
-cd other
+cd tools
 md "apkopt_temp_%~n1"
 md optimized
 dir /b
-7za x -o"apkopt_temp_%~n1" "../place-apk-here-to-batch-optimize/%~n1%~x1"
+../other/7za.exe x -o"apkopt_temp_%~n1" "../place-apk-here-to-batch-optimize/%~n1%~x1"
 mkdir temp
 xcopy "apkopt_temp_%~n1\res\*.9.png" "temp" /S /Y
-roptipng -o99 "apkopt_temp_%~n1\**\*.png"
+../other/roptipng -o99 "apkopt_temp_%~n1\**\*.png"
 del /q "..\place-apk-here-to-batch-optimize\%~n1%~x1"
 xcopy "temp" "apkopt_temp_%~n1\res" /S /Y
 rmdir "temp" /S /Q
 if (%INPUT%)==(p) GOTO ponly
-7za a -tzip "optimized\%~n1.unaligned.apk" "%~dp0other\apkopt_temp_%~n1\*" -mx%usrc% 
+../other/7za.exe a -tzip "optimized\%~n1.unaligned.apk" "%~dp0other\apkopt_temp_%~n1\*" -mx%usrc% 
 rd /s /q "apkopt_temp_%~n1"
 zipalign -v 4 "optimized\%~n1.unaligned.apk" "optimized\%~n1.apk"
 del /q "optimized\%~n1.unaligned.apk"
@@ -524,7 +524,7 @@ PAUSE
 )
 goto restart
 :zipa
-cd other
+cd tools
 echo Zipaligning Apk
 IF EXIST "%~dp0place-apk-here-for-modding\signed%capp%" zipalign -f 4 "%~dp0place-apk-here-for-modding\signed%capp%" "%~dp0place-apk-here-for-modding\signedaligned%capp%"
 
