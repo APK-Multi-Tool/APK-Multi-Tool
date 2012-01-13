@@ -21,7 +21,7 @@ adb logcat >> adblog.txt
 :updater
 COLOR 0A
 :: defines tools folder
-set parent="other"
+set parent="tools"
 :: defines tools location
 set dget="%parent%\wget.exe"
 del updates.txt
