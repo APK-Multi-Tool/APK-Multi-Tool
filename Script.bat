@@ -369,9 +369,10 @@ exit
 :ogg
 :: defines tools folder
 set parent="tools"
+set ssox="%parent%\sox.exe"
 mkdir temp
 echo Optimizing Ogg
-FOR %%F IN ("../place-ogg-here/*.ogg") DO %parent%/sox "../place-ogg-here/%%F" -C 0 "temp\%%F"
+FOR %%F IN ("place-ogg-here/*.ogg") DO %ssox% "place-ogg-here/%%F" -C 0 "temp\%%F"
 
 MOVE temp\*  place-ogg-here
 rmdir /S /Q temp
@@ -515,7 +516,7 @@ set parent="tools"
 :: defines tools location
 set srop="%parent%\roptipng.exe"
 echo Optimizing Png's
-%srop% -o99 "../projects/%capp%/**/*.png"
+%srop% -o99 "projects/%capp%/**/*.png"
 
 xcopy "%~dp0temp" "%~dp0projects\%capp%\res" /S /Y
 rmdir temp /S /Q
@@ -599,7 +600,7 @@ set parent="tools"
 set szip="%parent%\7za.exe"
 echo Extracting apk
 IF EXIST "projects/%capp%" (rmdir /S /Q "projects/%capp%")
-%szip% x -o"../projects/%capp%" "../place-apk-here-for-modding/%capp%"
+%szip% x -o"projects/%capp%" "place-apk-here-for-modding/%capp%"
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 24)"
 PAUSE
@@ -634,7 +635,7 @@ set parent="tools"
 :: defines tools location
 set szip="%parent%\7za.exe"
 echo Zipping Apk
-rmdir /S /Q "../out/META-INF"
+rmdir /S /Q "out/META-INF"
 %szip% a -tzip "place-apk-here-for-modding/unsigned%capp%" "projects/%capp%/*" -mx%usrc%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 24)"
