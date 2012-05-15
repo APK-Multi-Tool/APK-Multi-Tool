@@ -134,12 +134,12 @@ echo  ----------------------------------         -------------------------------
 echo  Simple Tasks Such As Image Editing         Advanced Tasks Such As Code Editing         Themers Convertion Tools
 echo  ----------------------------------         ------------------------------------        -----------------------------------
 echo  0    Adb pull                              9    Decompile apk                          15   Batch Theme Image Transfer
-echo  1    Extract apk                           10   Decompile apk (with dependencies)      16   Batch Theme roptipng
-echo  2    Optimize images inside                     (For propietary rom apks)              17   Batch Theme Zipalign APK TOOL
-echo  3    Zip apk                               11   Compile apk                                 (Make sure that you run these
-echo  4    Sign apk (Dont do this if its         12   Sign apk                                     tools in this exact order and
-echo       a system apk)                         13   Install apk                                  read the instruction manual
-echo  5    Zipalign apk (Do once apk is          14   Compile apk / Sign apk / Install apk         before using this toolset)
+echo  1    Extract apk                           10   Decompile apk (with dependencies)      	  (Read the Instructions before
+echo  2    Optimize images inside                     (For propietary rom apks)                    using this feature)
+echo  3    Zip apk                               11   Compile apk                                 
+echo  4    Sign apk (Dont do this if its         12   Sign apk                                     
+echo       a system apk)                         13   Install apk                                  
+echo  5    Zipalign apk (Do once apk is          14   Compile apk / Sign apk / Install apk         
 echo       created/signed)                            (Non System Apps Only)
 echo  6    Install apk (Dont do this if 
 echo       system apk, do adb push)
@@ -149,33 +149,31 @@ echo  8    Adb push (Only for system apk)
 echo  -----------
 echo  tools Stuff
 echo  -----------
-echo  18   Batch Optimize Apk (inside place-apk-here-to-batch-optimize only)
-echo  19   Sign an apk(Batch support)(inside place-apk-here-for-signing folder only)
-echo  20   Batch optimize ogg files (inside place-ogg-here only)
-echo  21   Clean Files/Folders
-echo  22   Select compression level for apk's
-echo  23   Set Max Memory Size (Only use if getting stuck at decompiling/compiling)
-echo  24   Read Log
-echo  25   Set current project
-echo  26   About / Tips / Debug Section
-echo  27   Switch decompile mode
+echo  16   Batch Optimize Apk (inside place-apk-here-to-batch-optimize only)
+echo  17   Sign an apk(Batch support)(inside place-apk-here-for-signing folder only)
+echo  18   Batch optimize ogg files (inside place-ogg-here only)
+echo  19   Clean Files/Folders
+echo  20   Select compression level for apk's
+echo  21   Set Max Memory Size (Only use if getting stuck at decompiling/compiling)
+echo  22   Read Log
+echo  23   Set current project
+echo  24   About / Tips / Debug Section
+echo  25   Switch decompile mode
 echo  00   Quit
 echo  -------------------------------------------------------------------------------
 SET /P menunr=Please make your decision:
 IF %menunr%==0 (goto ap)
 IF %menunr%==15 (goto btit)
-IF %menunr%==16 (goto bto)
-IF %menunr%==17 (goto btzat)
-IF %menunr%==18 (goto bopt)
-IF %menunr%==19 (goto asi)
-IF %menunr%==20 (goto ogg)
-IF %menunr%==21 (goto cleanp)
-IF %menunr%==22 (goto usrcomp)
-IF %menunr%==23 (goto heap)
-IF %menunr%==24 (goto logr)
-IF %menunr%==25 (goto filesel)
-IF %menunr%==26 (goto about)
-IF %menunr%==27 (goto switchc)
+IF %menunr%==16 (goto bopt)
+IF %menunr%==17 (goto asi)
+IF %menunr%==18 (goto ogg)
+IF %menunr%==19 (goto cleanp)
+IF %menunr%==20 (goto usrcomp)
+IF %menunr%==21 (goto heap)
+IF %menunr%==22 (goto logr)
+IF %menunr%==23 (goto filesel)
+IF %menunr%==24 (goto about)
+IF %menunr%==25 (goto switchc)
 IF %menunr%==00 (goto quit)
 
 if %capp%==None goto noproj
@@ -344,28 +342,11 @@ echo (Note: You will have to manually replace the progress_horizontals.xml from 
 echo framework-res since this file is needed with Theme Changes)
 PAUSE
 
-Start cmd /c themer\tporter 1
-exit
-)
-
-:bto
-( echo Batch Theme roptipng TOOL
-echo This tool optimizes all the images in all of the apk files for the toolset to allow you to be able improve compression of the images.
-PAUSE
-
-Start cmd /c themer\tporter 2
+Start cmd /c themer\tporter
 exit
 )
 
 
-:btzat
-( echo Batch Theme Zipalign APK TOOL
-echo This tool makes it easier to Zipalign all the apk files in your newly ported/updated theme pack.
-PAUSE
-
-Start cmd /c themer\tporter 3
-exit
-)
 :ogg
 :: defines tools folder
 set parent="tools"
