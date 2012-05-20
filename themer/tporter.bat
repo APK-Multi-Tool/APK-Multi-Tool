@@ -1,5 +1,5 @@
 @echo off
-mkdir transferred
+
 mkdir untouched
 FOR %%F IN (%~dp0*.apk) DO (call :transfer "%%F")
 

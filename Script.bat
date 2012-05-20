@@ -9,45 +9,11 @@ echo ^|%date% -- %time%^| >> log.txt
 echo -------------------------------------------------------------------------- >> log.txt
 Script 0 2>> log.txt
 :skipme
-Echo Please Wait while we CHECK FOR UPDATES
-IF EXIST apkver.txt (del apkver.txt)
-tools\wget http://update.apkmultitool.com/apkver.txt
-cls
-IF NOT EXIST apkver.txt (goto :error)
-set /a bool = 0
-set info = ""
-for /f "tokens=*" %%a in (apkver.txt) do (
-if !bool!==0 set /a tmpv=%%a
-if !bool!==1 set info=!info!%%a
-set /a bool = 1
-)
-del apkver.txt
-rem Apk Multi-tool version code
-set /a ver = 1
-if /I %tmpv% GTR %ver% (
-wget http://update.apkmultitool.com/updates.txt
 
-cls
-IF EXIST updates.txt (
-echo New Update Was Found
-echo.
-goto changed
-:recall
-PAUSE
-
-Start cmd /c tools\signer 3
-exit
-)
-)
 :error
 cd "%~dp0"
 mode con:cols=140 lines=50
 
-mkdir projects
-mkdir place-apk-here-for-modding
-mkdir place-ogg-here
-mkdir place-apk-here-to-batch-optimize
-mkdir place-apk-here-for-signing
 
 
 cls
@@ -844,10 +810,7 @@ set /a count+=1
 goto :loop
 :endloop
 goto quit
-:changed
-echo The Following Was Updated : 
-echo.
-set /a cc = 1
+
 :recursive
 for /f "tokens=%cc% delims=\" %%b in ('echo %info%') do (
 echo %%b
