@@ -9,7 +9,7 @@ ECHO ***************************************************************************
 Setup 0 2>> setuplog.txt
 
 :skipme
-mode 85
+mode con:cols=85 lines=50
 
 :skipme
 set usrc=9
@@ -124,21 +124,21 @@ ECHO *                                                                          
 ECHO *                         Creating project folder                               *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-WAIT 100
+ping 1.1.1.1 -n 1 -w 2000 > nul
 mkdir projects
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                    Creating place-apk-here-for-modding folder                 *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-WAIT 100
+ping 1.1.1.1 -n 1 -w 2000 > nul
 mkdir place-apk-here-for-modding
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                    Creating place-ogg-here folder                             *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-WAIT 100
+ping 1.1.1.1 -n 1 -w 2000 > nul
 mkdir place-ogg-here
 ECHO *********************************************************************************
 ECHO *                                                                               *
@@ -146,31 +146,37 @@ ECHO *                 Creating place-apk-here-to-batch-optimize folder         
 ECHO *                                                                               *
 ECHO *********************************************************************************
 
-WAIT 100
+ping 1.1.1.1 -n 1 -w 2000 > nul
 mkdir place-apk-here-to-batch-optimize
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                    Creating place-apk-here-for-signing folder                 *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-WAIT 100
+ping 1.1.1.1 -n 1 -w 2000 > nul
 mkdir place-apk-here-for-signing
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                Creating moving to THEME PORTER to Setup Folders               *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-WAIT 100
+ping 1.1.1.1 -n 1 -w 2000 > nul
 cd themer
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                         Creating transferred folder                           *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-WAIT 100
+ping 1.1.1.1 -n 1 -w 2000 > nul
 mkdir transferred
 
-cd ..
+cd "%~dp0"
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                        DIRECTORIES SCRIPT COMPLETED                           *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+PAUSE
 GOTO RESTART
 : framres
 ECHO *********************************************************************************
