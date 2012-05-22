@@ -9,9 +9,10 @@ ECHO ***************************************************************************
 Setup 0 2>> setuplog.txt
 
 :skipme
+:error
+cd "%~dp0"
 mode con:cols=85 lines=50
 
-:skipme
 set usrc=9
 set capp=None
 
@@ -87,9 +88,8 @@ goto RESTART
 
 :LOGR
 cd tools
-Start "Read The Log - Main script is still running, close this to return" signer 1
+Start "Read The Log - Main script is still running, close this to return" signer 4
 goto RESTART
-
 :CHECKUPDATE
 ECHO Please Wait while we CHECK FOR UPDATES
 IF EXIST apkver.txt (del apkver.txt)
@@ -106,8 +106,10 @@ set /a bool = 1
 del apkver.txt
 rem Apk Multi-tool version code
 set /a ver = 1
+if /I %tmpv% EQU %ver% (goto :NOUPDATE)
 if /I %tmpv% GTR %ver% (
 wget http://update.apkmultitool.com/updates.txt
+
 
 cls
 IF EXIST updates.txt (
@@ -118,6 +120,22 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 PAUSE
 goto changed
+:recall
+PAUSE
+
+Start cmd /c tools\signer 3
+exit
+)
+)
+:NOUPDATE
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                           NO UPDATES FOUND                                    *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+PAUSE
+goto RESTART
+
 :SETDIR
 ECHO *********************************************************************************
 ECHO *                                                                               *
@@ -188,7 +206,7 @@ PAUSE
 goto restart
 :NOFILE
 
-Goto RESTART
+GOTO RESTART
 
 :ABOUT
 
@@ -224,6 +242,20 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 PAUSE
 goto RESTART
+:CHANGED
+echo The Following Was Updated : 
+echo.
+set /a cc = 1
+:recursive
+for /f "tokens=%cc% delims=\" %%b in ('echo %info%') do (
+echo %%b
+set /a cc = %cc% + 1
+goto recursive
+)
+echo.
+goto recall
+:endloop
+goto quit
 :QUIT
 exit
 :END
