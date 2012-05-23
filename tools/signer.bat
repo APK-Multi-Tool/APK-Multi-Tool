@@ -2,7 +2,7 @@
 if (%1)==(1) goto next
 if (%1)==(2) goto log
 if (%1)==(3) goto updater
-if (%1)==(4) goto next
+if (%1)==(4) goto next2
 COLOR 0A
 echo Signing "%~n1"
 java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 "../place-apk-here-for-signing/%~n1%~x1" "../place-apk-here-for-signing/signed.apk"
