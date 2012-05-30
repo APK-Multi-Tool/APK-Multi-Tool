@@ -38,7 +38,9 @@ ECHO ***************************************************************************
 ECHO *                                                                                 *
 ECHO * 2. Installing Framework-Res                                                     *
 ECHO *    This Will install one of the Framwork-Res Files for 1.x/2.x/3.x/4.x          *
-ECHO *    This Feature has not been added in yet please stand by                       *
+ECHO *    This Feature also will install any of the other Dependencies needed          *
+ECHO *    In order to use this feature make sure to drop all of the needed files       *
+ECHO *    into the platform-tools Folder or else this script will not find them        *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
@@ -95,7 +97,7 @@ ECHO Please Wait while we CHECK FOR UPDATES
 IF EXIST apkver.txt (del apkver.txt)
 tools\wget http://update.apkmultitool.com/apkver.txt
 cls
-IF NOT EXIST apkver.txt (goto :NOFILE)
+IF NOT EXIST apkver.txt (goto :RESTART)
 set /a bool = 0
 set info = ""
 for /f "tokens=*" %%a in (apkver.txt) do (
@@ -199,14 +201,80 @@ GOTO RESTART
 : framres
 ECHO *********************************************************************************
 ECHO *                                                                               *
-ECHO *      Feature not incorperated yet please look forwards to next release        *
+ECHO *                    Detecting Dependencies and installing them                 *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+ping 1.1.1.1 -n 1 -w 2000 > nul
+cd platform-tools
+IF EXIST framework-res.apk (
+ping 1.1.1.1 -n 1 -w 2000 > nul
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                       framework-res.apk Found Installing                      *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+apktool if framework-res.apk
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                  Installation of framework-res.apk Complete                   *
+ECHO *                                                                               *
+ECHO *********************************************************************************)
+IF NOT EXIST framework-res.apk (
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                   framework-res.apk not Found Skipping File                   *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+ping 1.1.1.1 -n 1 -w 2000 > nul)
+IF EXIST twframework-res.apk (
+ping 1.1.1.1 -n 1 -w 2000 > nul
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                      twframework-res.apk Found Installing                     *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+apktool if twframework-res.apk
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                 Installation of twframework-res.apk Complete                  *
+ECHO *                                                                               *
+ECHO *********************************************************************************)
+IF NOT EXIST twframework-res.apk (
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                  twframework-res.apk not Found Skipping File                  *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+ping 1.1.1.1 -n 1 -w 2000 > nul)
+IF EXIST com.htc.resources.apk (
+ping 1.1.1.1 -n 1 -w 2000 > nul
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                     com.htc.resources.apk Found Installing                    *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+apktool if com.htc.resources.apk
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                Installation of com.htc.resources.apk Complete                 *
+ECHO *                                                                               *
+ECHO *********************************************************************************)
+IF NOT EXIST com.htc.resources.apk (
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                 com.htc.resources.apk not Found Skipping File                 *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+ping 1.1.1.1 -n 1 -w 2000 > nul)
+
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                     Installation of Dependencies Complete                     *
 ECHO *                                                                               *
 ECHO *********************************************************************************
 PAUSE
+cd "%~dp0"
 goto restart
-:NOFILE
-
-GOTO RESTART
 
 :ABOUT
 
