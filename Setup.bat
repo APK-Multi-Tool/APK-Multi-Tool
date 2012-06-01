@@ -219,7 +219,7 @@ ECHO * 3. Install com.htc.resources.apk                                         
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
-ECHO * 4. Install SustemUI.apk                                                         *
+ECHO * 4. Install SystemUI.apk                                                         *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
@@ -356,32 +356,32 @@ ping 1.1.1.1 -n 1 -w 2000 > nul
 cd platform-tools
 ECHO *********************************************************************************
 ECHO *                                                                               *
-ECHO *                            Searching for SustemUI.apk                         *
+ECHO *                            Searching for SystemUI.apk                         *
 ECHO *                                                                               *
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul
 cls
-IF NOT EXIST SustemUI.apk (
+IF NOT EXIST SystemUI.apk (
 ECHO *********************************************************************************
 ECHO *                                                                               *
-ECHO *        SustemUI.apk not Found please make sure the file is in the             *
+ECHO *        SystemUI.apk not Found please make sure the file is in the             *
 ECHO *        platform-tools Directory returning to Dependencies menu                *
 ECHO *                                                                               *
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul )
-IF EXIST SustemUI.apk (
+IF EXIST SystemUI.apk (
 cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
-ECHO *                         SustemUI.apk Found Installing                         *
+ECHO *                         SystemUI.apk Found Installing                         *
 ECHO *                                                                               *
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul
-apktool if SustemUI.apk
+apktool if SystemUI.apk
 cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
-ECHO *                     Installation of SustemUI.apk Complete                     *
+ECHO *                     Installation of SystemUI.apk Complete                     *
 ECHO *                       Returning to Dependencies menu                          *
 ECHO *                                                                               *
 ECHO *********************************************************************************
