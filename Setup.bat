@@ -115,11 +115,11 @@ wget http://update.apkmultitool.com/updates.txt
 
 cls
 IF EXIST updates.txt (
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                          NEW UPDATES FOUND                                    *
-ECHO *                                                                               *
-ECHO *********************************************************************************
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO *                           NEW UPDATES FOUND                                     *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
 PAUSE
 goto changed
 :recall
@@ -130,151 +130,265 @@ exit
 )
 )
 :NOUPDATE
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                           NO UPDATES FOUND                                    *
-ECHO *                                                                               *
-ECHO *********************************************************************************
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO *                            NO UPDATES FOUND                                     *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
 PAUSE
 goto RESTART
 
 :SETDIR
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                         Creating project folder                               *
-ECHO *                                                                               *
-ECHO *********************************************************************************
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO *                          Creating project folder                                *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul
 mkdir projects
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                    Creating place-apk-here-for-modding folder                 *
-ECHO *                                                                               *
-ECHO *********************************************************************************
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO *                     Creating place-apk-here-for-modding folder                  *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul
 mkdir place-apk-here-for-modding
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                    Creating place-ogg-here folder                             *
-ECHO *                                                                               *
-ECHO *********************************************************************************
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO *                     Creating place-ogg-here folder                              *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul
 mkdir place-ogg-here
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                 Creating place-apk-here-to-batch-optimize folder              *
-ECHO *                                                                               *
-ECHO *********************************************************************************
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO *                  Creating place-apk-here-to-batch-optimize folder               *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
 
 ping 1.1.1.1 -n 1 -w 2000 > nul
 mkdir place-apk-here-to-batch-optimize
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                    Creating place-apk-here-for-signing folder                 *
-ECHO *                                                                               *
-ECHO *********************************************************************************
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO *                     Creating place-apk-here-for-signing folder                  *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul
 mkdir place-apk-here-for-signing
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                Creating moving to THEME PORTER to Setup Folders               *
-ECHO *                                                                               *
-ECHO *********************************************************************************
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO *                 Creating moving to THEME PORTER to Setup Folders                *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul
 cd themer
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                         Creating transferred folder                           *
-ECHO *                                                                               *
-ECHO *********************************************************************************
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO *                          Creating transferred folder                            *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul
 mkdir transferred
 
 cd "%~dp0"
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                        DIRECTORIES SCRIPT COMPLETED                           *
-ECHO *                                                                               *
-ECHO *********************************************************************************
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO *                         DIRECTORIES SCRIPT COMPLETED                            *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
 PAUSE
 GOTO RESTART
-: framres
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                    Detecting Dependencies and installing them                 *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
+: FRAMRES
+set menunr=GARBAGE2
+cls
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO *                  APK MULTI-TOOL SETUP DEPENDENCY FILES                          *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO * 1. Install framework-res.apk                                                    *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO * 2. Install twframework-res.apk                                                  *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO * 3. Install com.htc.resources.apk                                                *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO * 4. Install SustemUI.apk                                                         *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO * 5. Return to Main Menu                                                          *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO *  00   Quit                                                                      *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
+SET /P menunr=Please make your decision:
+IF %menunr%==1 (goto FRAMRES1)
+IF %menunr%==2 (goto FRAMRES2)
+IF %menunr%==3 (goto FRAMRES3)
+IF %menunr%==4 (goto FRAMRES4)
+IF %menunr%==5 (goto RESTART)
+IF %menunr%==00 (goto QUIT)
+:WHAT
+echo You went crazy and entered something that wasnt part of the menu options
+PAUSE
+goto FRAMRES
+
+
+:FRAMRES1
+cls
 cd platform-tools
-IF EXIST framework-res.apk (
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                         Searching for framework-res.apk                       *
+ECHO *                                                                               *
+ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul
+cls
+IF NOT EXIST framework-res.apk (
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *        framework-res.apk not Found please make sure the file is in the        *
+ECHO *        platform-tools Directory returning to Dependencies menu                *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+ping 1.1.1.1 -n 1 -w 2000 > nul )
+IF EXIST framework-res.apk (
+cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                       framework-res.apk Found Installing                      *
 ECHO *                                                                               *
 ECHO *********************************************************************************
+ping 1.1.1.1 -n 1 -w 2000 > nul
 apktool if framework-res.apk
+cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                  Installation of framework-res.apk Complete                   *
-ECHO *                                                                               *
-ECHO *********************************************************************************)
-IF NOT EXIST framework-res.apk (
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                   framework-res.apk not Found Skipping File                   *
+ECHO *                       Returning to Dependencies menu                          *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul)
-IF EXIST twframework-res.apk (
+ping 1.1.1.1 -n 1 -w 2000 > nul )
+cd "%~dp0"
+goto FRAMRES
+:FRAMRES2
+cls
+cd platform-tools
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                        Searching for twframework-res.apk                      *
+ECHO *                                                                               *
+ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul
+IF NOT EXIST twframework-res.apk (
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *        twframework-res.apk not Found please make sure the file is in the      *
+ECHO *        platform-tools Directory returning to Dependencies menu                *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+ping 1.1.1.1 -n 1 -w 2000 > nul )
+IF EXIST twframework-res.apk (
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                      twframework-res.apk Found Installing                     *
 ECHO *                                                                               *
 ECHO *********************************************************************************
+ping 1.1.1.1 -n 1 -w 2000 > nul
+cls
 apktool if twframework-res.apk
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                 Installation of twframework-res.apk Complete                  *
-ECHO *                                                                               *
-ECHO *********************************************************************************)
-IF NOT EXIST twframework-res.apk (
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                  twframework-res.apk not Found Skipping File                  *
+ECHO *                       Returning to Dependencies menu                          *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul)
-IF EXIST com.htc.resources.apk (
+ping 1.1.1.1 -n 1 -w 2000 > nul )
+cd "%~dp0"
+goto FRAMRES
+:FRAMRES3
+cls
+cd platform-tools
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                       Searching for com.htc.resources.apk                     *
+ECHO *                                                                               *
+ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul
+IF NOT EXIST com.htc.resources.apk (
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *        com.htc.resources.apk not Found please make sure the file is in the    *
+ECHO *        platform-tools Directory returning to Dependencies menu                *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+ping 1.1.1.1 -n 1 -w 2000 > nul )
+IF EXIST com.htc.resources.apk (
+
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                     com.htc.resources.apk Found Installing                    *
 ECHO *                                                                               *
 ECHO *********************************************************************************
+ping 1.1.1.1 -n 1 -w 2000 > nul
 apktool if com.htc.resources.apk
+cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                Installation of com.htc.resources.apk Complete                 *
-ECHO *                                                                               *
-ECHO *********************************************************************************)
-IF NOT EXIST com.htc.resources.apk (
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                 com.htc.resources.apk not Found Skipping File                 *
+ECHO *                       Returning to Dependencies menu                          *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul)
-
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                     Installation of Dependencies Complete                     *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-PAUSE
+ping 1.1.1.1 -n 1 -w 2000 > nul )
 cd "%~dp0"
-goto restart
+goto FRAMRES
+:FRAMRES4
+ping 1.1.1.1 -n 1 -w 2000 > nul
+cd platform-tools
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                            Searching for SustemUI.apk                         *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+ping 1.1.1.1 -n 1 -w 2000 > nul
+cls
+IF NOT EXIST SustemUI.apk (
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *        SustemUI.apk not Found please make sure the file is in the             *
+ECHO *        platform-tools Directory returning to Dependencies menu                *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+ping 1.1.1.1 -n 1 -w 2000 > nul )
+IF EXIST SustemUI.apk (
+cls
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                         SustemUI.apk Found Installing                         *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+ping 1.1.1.1 -n 1 -w 2000 > nul
+apktool if SustemUI.apk
+cls
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                     Installation of SustemUI.apk Complete                     *
+ECHO *                       Returning to Dependencies menu                          *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+ping 1.1.1.1 -n 1 -w 2000 > nul )
+cd "%~dp0"
+goto FRAMRES
+
 
 :ABOUT
 
@@ -302,7 +416,7 @@ ECHO * (b) This tool was by no means created to hack or be used for piracy of ap
 ECHO *                                                                               *
 ECHO *********************************************************************************
 ECHO *                                                                               *
-ECHO * If you're stuck and the log doesnot give you any indication as to what you    *
+ECHO * If you're stuck and the log does not give you any indication as to what you   *
 ECHO * are doing wrong, then post in the thread                                      *
 ECHO * http://forum.xda-developers.com/showthread.php?t=1460400                      *
 ECHO * Make sure u include ur setuplog.txt if avaible.                               *
