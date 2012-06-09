@@ -4,10 +4,10 @@ setlocal enabledelayedexpansion
 COLOR 0A
 if (%1)==(0) goto skipme
 if (%1) neq () goto adbi
-echo -------------------------------------------------------------------------- >> log.txt
-echo ^|%date% -- %time%^| >> log.txt
-echo -------------------------------------------------------------------------- >> log.txt
-Script 0 2>> log.txt
+echo -------------------------------------------------------------------------- >> APKMULTITOOL.LOG
+echo ^|%date% -- %time%^| >> APKMULTITOOL.LOG
+echo -------------------------------------------------------------------------- >> APKMULTITOOL.LOG
+Script 0 2>> APKMULTITOOL.LOG
 :skipme
 
 :error
@@ -24,14 +24,10 @@ set heapy=64
 set jar=0
 java -version 
 if errorlevel 1 goto errjava
-:: defines tools folder
-set parent="platform-tools"
-:: defines tools location
-set sadb="%parent%\adb.exe"
-%sadb% version 
+platform-tools\adb version 
 if errorlevel 1 goto erradb
 set /A count=0
-FOR %%F IN (place-apk-here-for-modding/*) DO (
+FOR %%F IN (place-apk-here-for-modding/*.apk) DO (
 set /A count+=1
 set tmpstore=%%~nF%%~xF
 )
@@ -100,7 +96,7 @@ echo  ----------------------------------         -------------------------------
 echo  Simple Tasks Such As Image Editing         Advanced Tasks Such As Code Editing         Themers Convertion Tools
 echo  ----------------------------------         ------------------------------------        -----------------------------------
 echo  0    Adb pull                              9    Decompile apk                          15   Batch Theme Image Transfer
-echo  1    Extract apk                           10   Decompile apk (with dependencies)      	  (Read the Instructions before
+echo  1    Extract apk                           10   Decompile apk (with dependencies)          (Read the Instructions before
 echo  2    Optimize images inside                     (For propietary rom apks)                    using this feature)
 echo  3    Zip apk                               11   Compile apk                                 
 echo  4    Sign apk (Dont do this if its         12   Sign apk                                     
@@ -239,7 +235,7 @@ echo adb push something.apk /wherever/something.apk
 echo adb shell start
 echo 3. If you're stuck and the log doesnot give you any indication as to what you 
 echo are doing wrong, then post in the thread http://www.tiny.cc/apkmanager
-echo Make sure u include ur log.txt, and if its not a editing problem i.e 
+echo Make sure u include ur APKMULTITOOL.LOG, and if its not a editing problem i.e 
 echo its something regarding when u push it to your phone, then post ur adb log 
 echo as well. To do so 
 echo follow these steps :
@@ -247,7 +243,7 @@ echo 1. Connect ur phone to ur pc
 echo 2. Push/install the app on your phone
 echo 3. Select "Create Log" option on this menu
 echo 4. Let the new window run for 10 seconds, then close it
-echo Once done, you will find a adblog.txt in the root folder
+echo Once done, you will find a adbAPKMULTITOOL.LOG in the root folder
 echo Upload that as well.
 echo.
 echo 1. Create log
@@ -262,7 +258,7 @@ echo Ok, lets try looking through for any shared uid, if i find any i will remov
 :filesel
 cls
 set /A count=0
-FOR %%F IN (place-apk-here-for-modding/*) DO (
+FOR %%F IN (place-apk-here-for-modding/*.apk) DO (
 set /A count+=1
 set a!count!=%%F
 if /I !count! LEQ 9 (echo ^- !count!  - %%F )
@@ -314,15 +310,13 @@ exit
 
 
 :ogg
-:: defines tools folder
-set parent="tools"
-set ssox="%parent%\sox.exe"
+cd tools
 mkdir temp
 echo Optimizing Ogg
-FOR %%F IN ("place-ogg-here/*.ogg") DO %ssox% "place-ogg-here/%%F" -C 0 "temp\%%F"
-
-MOVE temp\*  place-ogg-here
-rmdir /S /Q temp
+FOR %%F IN ("../place-ogg-here/*.ogg") DO sox "../place-ogg-here/%%F" -C 0 "temp\%%F"
+cd ..
+MOVE tools\temp\*  place-ogg-here
+rmdir /S /Q tools\temp
 goto restart
 :alli
 IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
@@ -334,119 +328,95 @@ IF %menunr%==1 (goto sys1)
 IF %menunr%==2 (goto oa1)
 :sys1
 echo Zipping Apk
-:: defines tools folder
-set parent="tools"
-:: defines tools location
-set szip="%parent%\7za.exe"
-%szip% a -tzip "place-apk-here-for-modding/unsigned%capp%" "projects/%capp%/*" -mx%usrc%
+cd tools
+
+7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/%capp%/*" -mx%usrc%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 21)"
 PAUSE
 )
+cd ..
 goto si1
 :oa1
-:: defines tools folder
-set parent="tools"
-:: defines tools location
-set szip="%parent%\7za.exe"
+cd tools
+
 echo Zipping Apk
-rmdir /S /Q "out/META-INF"
-%szip% a -tzip "place-apk-here-for-modding/unsigned%capp%" "projects/%capp%/*" -mx%usrc%
+rmdir /S /Q "../out/META-INF"
+7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/%capp%/*" -mx%usrc%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 21)"
 PAUSE
 )
+cd ..
 
 :si1
-:: defines tools folder
-set parent="tools"
-:: defines tools location
-set sigapk="%parent%\signapk.jar"
-set skey="%parent%\testkey.x509.pem"
-set skey2="%parent%\testkey.pk8"
-
+cd  tools
 echo Signing Apk
-java -Xmx%heapy%m -jar %sigapk% -w %skey% %skey2% place-apk-here-for-modding/unsigned%capp% place-apk-here-for-modding/signed%capp%
+java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 ../place-apk-here-for-modding/unsigned%capp% ../place-apk-here-for-modding/signed%capp%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 21)"
 PAUSE
 )
-DEL /Q "place-apk-here-for-modding/unsigned%capp%"
+DEL /Q "../place-apk-here-for-modding/unsigned%capp%"
+cd ..
 
 :ins1
-:: defines tools folder
-set parent="platform-tools"
-:: defines tools location
-set sadb="%parent%\adb.exe"
 echo Waiting for device
-%sadb% wait-for-device
+platform-tools\adb wait-for-device
 echo Installing Apk
-%sadb% install -r place-apk-here-for-modding/signed%capp%
+platform-tools\adb install -r place-apk-here-for-modding/signed%capp%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 21)"
 PAUSE
 )
 goto restart
-:asi
-:: defines tools folder
-set parent="tools"
-:: defines tools location
-set sigbat="%parent%\signer.bat"
-DEL /Q "place-apk-here-for-signing/signed.apk"
-FOR %%F in (place-apk-here-for-signing/*) DO call %sigbat% "%%F"
 
+:asi
+cd tools
+DEL /Q "../place-apk-here-for-signing/signed.apk"
+FOR %%F in (../place-apk-here-for-signing/*) DO call signer "%%F"
+cd ..
 goto restart
+
 :bopt
 set /P INPUT=Do you want to zipalign(z), optimize png(p) or both(zp)? : %=%
 FOR %%F IN (place-apk-here-to-batch-optimize\*.apk) DO (call :dan "%%F")
-MOVE "optimized\*.apk" "place-apk-here-to-batch-optimize"
-rmdir /S /Q "optimized"
+MOVE "tools\optimized\*.apk" "place-apk-here-to-batch-optimize"
+rmdir /S /Q "tools\optimized"
 goto restart
 :dan
 if (%INPUT%)==(zp) GOTO zipb
 if (%INPUT%)==(z) GOTO zipo
 :zipb
 @echo Optimizing %~1...
-:: defines tools folder
-set parent="tools"
-:: defines tools location
-set szip="%parent%\7za.exe"
-:: defines tools location
-set szipa="%parent%\zipalign.exe"
-:: defines tools location
-set srop="%parent%\roptipng.exe"
+cd tools
+
 md "apkopt_temp_%~n1"
 md optimized
 dir /b
-%szip% x -o"apkopt_temp_%~n1" "place-apk-here-to-batch-optimize/%~n1%~x1"
+7za x -o"apkopt_temp_%~n1" "../place-apk-here-to-batch-optimize/%~n1%~x1"
 mkdir temp
 xcopy "apkopt_temp_%~n1\res\*.9.png" "temp" /S /Y
 
-%srop% -o99 "apkopt_temp_%~n1\**\*.png"
-del /q "place-apk-here-to-batch-optimize\%~n1%~x1"
+roptipng -o99 "apkopt_temp_%~n1\**\*.png"
+del /q "..\place-apk-here-to-batch-optimize\%~n1%~x1"
 xcopy "temp" "apkopt_temp_%~n1\res" /S /Y
 rmdir "temp" /S /Q
 if (%INPUT%)==(p) GOTO ponly
-%szip% a -tzip "optimized\%~n1.unaligned.apk" "%~dp0tools\apkopt_temp_%~n1\*" -mx%usrc% 
+7za a -tzip "optimized\%~n1.unaligned.apk" "%~dp0other\apkopt_temp_%~n1\*" -mx%usrc% 
 rd /s /q "apkopt_temp_%~n1"
-%szipa% -v 4 "optimized\%~n1.unaligned.apk" "optimized\%~n1.apk"
+zipalign -v 4 "optimized\%~n1.unaligned.apk" "optimized\%~n1.apk"
 del /q "optimized\%~n1.unaligned.apk"
 goto endab
 :ponly
-:: defines tools folder
-set parent="tools"
-:: defines tools location
-set szip="%parent%\7za.exe"
-%szip% a -tzip "optimized\%~n1.apk" "%~dp0tools\apkopt_temp_%~n1\*" -mx%usrc%
+
+7za a -tzip "optimized\%~n1.apk" "%~dp0tools\apkopt_temp_%~n1\*" -mx%usrc%
 rd /s /q "apkopt_temp_%~n1"
 goto endab
 :zipo
-:: defines tools folder
-set parent="tools"
-:: defines tools location
-set szipa="%parent%\zipalign.exe"
+
 @echo Optimizing %~1...
-%szipa% -v 4 "%~dp0place-apk-here-to-batch-optimize\%~n1%~x1" "%~dp0place-apk-here-to-batch-optimize\u%~n1%~x1"
+zipalign -v 4 "%~dp0place-apk-here-to-batch-optimize\%~n1%~x1" "%~dp0place-apk-here-to-batch-optimize\u%~n1%~x1"
 del /q "%~dp0place-apk-here-to-batch-optimize\%~n1%~x1"
 rename "%~dp0place-apk-here-to-batch-optimize\u%~n1%~x1" "%~n1%~x1"
 goto endab
@@ -458,12 +428,10 @@ goto restart
 IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
 mkdir temp
 xcopy "%~dp0projects\%capp%\res\*.9.png" "%~dp0temp" /S /Y
-:: defines tools folder
-set parent="tools"
-:: defines tools location
-set srop="%parent%\roptipng.exe"
+cd tools
 echo Optimizing Png's
-%srop% -o99 "projects/%capp%/**/*.png"
+roptipng -o99 "../projects/%capp%/**/*.png"
+cd ..
 
 xcopy "%~dp0temp" "%~dp0projects\%capp%\res" /S /Y
 rmdir temp /S /Q
@@ -473,15 +441,12 @@ echo Please Select A Project To Work On (Option #25)
 PAUSE
 goto restart
 :ap
-:: defines tools folder
-set parent="platform-tools"
-:: defines tools location
-set sadb="%parent%\adb.exe"
+
 echo Where do you want adb to pull the apk from? 
 echo Example of input : /system/app/launcher.apk
 set /P INPUT=Type input: %=%
 echo Pulling apk
-%sadb% pull %INPUT% "%~dp0place-apk-here-for-modding\something.apk"
+platform-tools\adb pull %INPUT% "%~dp0place-apk-here-for-modding\something.apk"
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 24)"
 PAUSE
@@ -495,7 +460,7 @@ echo What filename would you like this app to be stored as ?
 echo Eg (launcher.apk)
 set /P INPUT=Type input: %=%
 IF EXIST "%~dp0place-apk-here-for-modding\%INPUT%" (
-echo File Already Exists, Try Antools Name
+echo File Already Exists, Try Another Name
 PAUSE
 goto renameagain)
 rename "%~dp0place-apk-here-for-modding\something.apk" %INPUT%
@@ -504,32 +469,29 @@ set /P inab=Type input: %=%
 if %inab%==y (set capp=%INPUT%)
 goto restart
 :apu
-:: defines tools folder
-set parent="platform-tools"
-:: defines tools location
-set sadb="%parent%\adb.exe"
+
+
+
+
 echo Where do you want adb to push to and as what name 
 echo Example of input : /system/app/launcher.apk
 set /P INPUT=Type input: %=%
 echo Waiting for device
-%sadb% wait-for-device
-%sadb% remount
+platform-tools\adb wait-for-device
+platform-tools\adb remount
 echo Pushing apk
-%sadb% push "place-apk-here-for-modding\unsigned%capp%" %INPUT%
+platform-tools\adb push "place-apk-here-for-modding\unsigned%capp%" %INPUT%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 24)"
 PAUSE
 )
 goto restart
 :zipa
-:: defines tools folder
-set parent="tools"
-:: defines tools location
-set szipa="%parent%\zipalign.exe"
-echo Zipaligning Apk
-IF EXIST "%~dp0place-apk-here-for-modding\signed%capp%" %szipa% -f 4 "%~dp0place-apk-here-for-modding\signed%capp%" "%~dp0place-apk-here-for-modding\signedaligned%capp%"
 
-IF EXIST "%~dp0place-apk-here-for-modding\unsigned%capp%" %szipa% -f 4 "%~dp0place-apk-here-for-modding\unsigned%capp%" "%~dp0place-apk-here-for-modding\unsignedaligned%capp%"
+echo Zipaligning Apk
+IF EXIST "%~dp0place-apk-here-for-modding\signed%capp%" zipalign -f 4 "%~dp0place-apk-here-for-modding\signed%capp%" "%~dp0place-apk-here-for-modding\signedaligned%capp%"
+
+IF EXIST "%~dp0place-apk-here-for-modding\unsigned%capp%" zipalign -f 4 "%~dp0place-apk-here-for-modding\unsigned%capp%" "%~dp0place-apk-here-for-modding\unsignedaligned%capp%"
 
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 24)"
@@ -541,17 +503,15 @@ rename "%~dp0place-apk-here-for-modding\signedaligned%capp%" signed%capp%
 rename "%~dp0place-apk-here-for-modding\unsignedaligned%capp%" unsigned%capp%
 goto restart
 :ex
-:: defines tools folder
-set parent="tools"
-:: defines tools location
-set szip="%parent%\7za.exe"
+cd tools
 echo Extracting apk
-IF EXIST "projects/%capp%" (rmdir /S /Q "projects/%capp%")
-%szip% x -o"projects/%capp%" "place-apk-here-for-modding/%capp%"
+IF EXIST "../projects/%capp%" (rmdir /S /Q "../projects/%capp%")
+7za x -o"../projects/%capp%" "../place-apk-here-for-modding/%capp%"
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 24)"
 PAUSE
 )
+cd ..
 
 goto restart
 :zip
@@ -564,26 +524,25 @@ IF %menunr%==1 (goto sys)
 IF %menunr%==2 (goto oa)
 :sys
 echo Zipping Apk
-:: defines tools folder
-set parent="tools"
-:: defines tools location
-set szip="%parent%\7za.exe"
-%szip% a -tzip "place-apk-here-for-modding/unsigned%capp%" "projects/%capp%/*" -mx%usrc%
+cd tools
+7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/%capp%/*" -mx%usrc%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 24)"
 PAUSE
 )
 
+cd ..
 
 goto restart
 :oa
-:: defines tools folder
-set parent="tools"
-:: defines tools location
-set szip="%parent%\7za.exe"
+cd tools
+
+
+
+
 echo Zipping Apk
-rmdir /S /Q "out/META-INF"
-%szip% a -tzip "place-apk-here-for-modding/unsigned%capp%" "projects/%capp%/*" -mx%usrc%
+rmdir /S /Q "../out/META-INF"
+7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/%capp%/*" -mx%usrc%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 24)"
 PAUSE
@@ -601,14 +560,14 @@ IF EXIST "%~dp0place-apk-here-for-modding\unsigned%capp%" (del /Q "%~dp0place-ap
 echo Drag the dependee apk in this window or type its path
 echo Example to decompile Rosie.apk, drag com.htc.resources.apk in this window
 set /P INPUT=Type input: %=%
-java -jar %sapkt% if %INPUT%
+java -jar apktool.jar if %INPUT%
 if NOT EXIST %userprofile%\apktool\framework\2.apk (
 echo.
 echo "Sorry thats not the dependee apk, try again"
 goto temr
 )
 echo Decompiling Apk
-java -Xmx%heapy%m -jar %sapkt% d place-apk-here-for-modding/%capp% projects/%capp%
+java -java -Xmx%heapy%m -jar apktool.jar d ../place-apk-here-for-modding/%capp% ../projects/%capp%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 24)"
 PAUSE
@@ -616,20 +575,21 @@ PAUSE
 
 goto restart
 :de
-:: defines tools folder
-set parent="platform-tools"
-:: defines tools location
-set sapkt="%parent%\apktool.jar"
-DEL /Q "place-apk-here-for-modding/signed%capp%"
-DEL /Q "place-apk-here-for-modding/unsigned%capp%"
-IF EXIST "projects/%capp%" (rmdir /S /Q "projects/%capp%")
+cd platform-tools
+
+
+
+
+DEL /Q "../place-apk-here-for-modding/signed%capp%"
+DEL /Q "../place-apk-here-for-modding/unsigned%capp%"
+IF EXIST "../projects/%capp%" (rmdir /S /Q "../projects/%capp%")
 if (%jar%)==(0) (echo Decompiling Apk)
 if (%jar%)==(1) (echo Decompiling Jar)
 if (%dec%)==(0) (set ta=)
 if (%dec%)==(1) (set ta=-r)
 if (%dec%)==(2) (set ta=-s)
 if (%jar%)==(1) (set ta=-r)
-java -Xmx%heapy%m -jar %sapkt% d %ta% "place-apk-here-for-modding/%capp%" "projects/%capp%"
+java -Xmx%heapy%m -jar apktool.jar d "../place-apk-here-for-modding/%capp%" "../projects/%capp%"
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 24)"
 PAUSE
@@ -638,23 +598,17 @@ PAUSE
 goto restart
 :co
 IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
-:: defines tools folder
-set parent="platform-tools"
-:: defines tools location
-set sapkt="%parent%\apktool.jar"
-:: defines tools folder
-set parent2="tools"
-:: defines tools location
-set szip="%parent2%\7za.exe"
+cd platform-tools
+
 
 if (%jar%)==(0) (echo Building Apk)
 if (%jar%)==(1) (echo Building Jar)
 IF EXIST "%~dp0place-apk-here-for-modding\unsigned%capp%" (del /Q "%~dp0place-apk-here-for-modding\unsigned%capp%")
-java -Xmx%heapy%m -jar %sapkt% b "projects/%capp%" "%~dp0place-apk-here-for-modding\unsigned%capp%"
+java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\unsigned%capp%"
 if (%jar%)==(0) (goto :nojar)
-%szip% x -o"projects/temp" "place-apk-here-for-modding/%capp%" META-INF -r
-%szip% a -tzip "place-apk-here-for-modding/unsigned%capp%" "projects/temp/*" -mx%usrc% -r
-rmdir /S /Q "%~dp0projects/temp"
+%szip% x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
+%szip% a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/temp/*" -mx%usrc% -r
+rmdir /S /Q "../%~dp0projects/temp"
 goto restart
 :nojar
 if errorlevel 1 (
@@ -666,10 +620,7 @@ echo Is this a system apk ^(y/n^)
 set /P INPU=Type input: %=%
 if %INPU%==n (goto q1)
 :nq1
-:: defines tools folder
-set parent2="tools"
-:: defines tools location
-set szip="%parent2%\7za.exe"
+
 echo Aside from the signatures, would you like to copy
 echo over any additional files that you didn't modify
 echo from the original apk in order to ensure least 
@@ -679,7 +630,7 @@ if %INPUT1%==y (call :nq2)
 if %INPUT1%==n (call :nq3)
 :nq2
 rmdir /S /Q "%~dp0keep"
-%szip% x -o"keep" "place-apk-here-for-modding/%capp%"
+7za x -o"../keep" "../place-apk-here-for-modding/%capp%"
 echo In the apk manager folder u'll find
 echo a keep folder. Within it, delete 
 echo everything you have modified and leave
@@ -688,20 +639,21 @@ echo any xml, then delete resources.arsc from that
 echo folder as well. Once done then press enter 
 echo on this script.
 PAUSE
-%szip% a -tzip "place-apk-here-for-modding/unsigned%capp%" "keep/*" -mx%usrc% -r
+7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
 
 goto restart
 :nq3
-:: defines tools folder
-set parent2="tools"
-:: defines tools location
-set szip="%parent2%\7za.exe"
-%szip% x -o"projects/temp" "place-apk-here-for-modding/%capp%" META-INF -r
-%szip% a -tzip "place-apk-here-for-modding/unsigned%capp%" "projects/temp/*" -mx%usrc% -r
+
+
+
+
+7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
+7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0projects/temp"
 goto restart
 :q1
+cd ..
 echo Would you like to copy over any additional files 
 echo that you didn't modify from the original apk in order to ensure least 
 echo # of errors ^(y/n^)
@@ -710,32 +662,34 @@ if %INPU%==y (goto nq2)
 
 goto restart
 :si
+cd tools
 
-:: defines tools folder
-set parent="tools"
-:: defines tools location
-set sigapk="%parent%\signapk.jar"
-set skey="%parent%\testkey.x509.pem"
-set skey2="%parent%\testkey.pk8"
+
+
+
+
+
+
 echo Signing Apk
-java -Xmx%heapy%m -jar %sigapk% -w %skey% %skey2% place-apk-here-for-modding/unsigned%capp% place-apk-here-for-modding/signed%capp%
+java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 ../place-apk-here-for-modding/unsigned%capp% ../place-apk-here-for-modding/signed%capp%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 24)"
 PAUSE
 )
 
-DEL /Q "place-apk-here-for-modding/unsigned%capp%"
+DEL /Q "../place-apk-here-for-modding/unsigned%capp%"
+cd ..
 
 goto restart
 :ins
-:: defines tools folder
-set parent="platform-tools"
-:: defines tools location
-set sadb="%parent%\adb.exe"
+
+
+
+
 echo Waiting for device
-%sadb% wait-for-device
+platform-tools\adb wait-for-device
 echo Installing Apk
-%sadb% install -r place-apk-here-for-modding/signed%capp%
+platform-tools\adb install -r place-apk-here-for-modding/signed%capp%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 24)"
 PAUSE
@@ -744,34 +698,36 @@ goto restart
 :all
 
 IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
-:: defines tools folder
-set parent="platform-tools"
-:: defines tools location
-set sadb="%parent%\adb.exe"
-set sapkt="%parent%\apktool.jar"
-set sigapk="%parent%\signapk.jar"
-set skey="%parent%\testkey.x509.pem"
-set skey2="%parent%\testkey.pk8"
+cd platform-tools
+
+
+
+
+
+
+
+
 echo Building Apk
 IF EXIST "%~dp0place-apk-here-for-modding\unsigned%capp%" (del /Q "%~dp0place-apk-here-for-modding\unsigned%capp%")
-java -Xmx%heapy%m -jar %sapkt% b "projects/%capp%" "%~dp0place-apk-here-for-modding\unsigned%capp%"
+java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\unsigned%capp%"
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 24)"
 PAUSE
 goto restart
 )
 echo Signing Apk
-java -Xmx%heapy%m -jar %sigapk% -w %skey% %skey2% place-apk-here-for-modding/unsigned%capp% place-apk-here-for-modding/signed%capp%
+java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 ../place-apk-here-for-modding/unsigned%capp% ../place-apk-here-for-modding/signed%capp%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 24)"
 PAUSE
 )
-DEL /Q "place-apk-here-for-modding/unsigned%capp%"
+DEL /Q "../place-apk-here-for-modding/unsigned%capp%"
+cd ..
 
 echo Waiting for device
-%sadb% wait-for-device
+platform-tools\adb wait-for-device
 echo Installing Apk
-%sadb% install -r place-apk-here-for-modding/signed%capp%
+platform-tools\adb install -r place-apk-here-for-modding/signed%capp%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 24)"
 PAUSE
@@ -788,23 +744,23 @@ echo Adb was not found, you will not be able to manipulate the files on your pho
 PAUSE
 goto restart
 :adbi
-:: defines tools folder
-set parent="platform-tools"
-:: defines tools location
-set sadb="%parent%\adb.exe"
+
+
+
+
 
 mode con:cols=48 lines=8
 echo Waiting for device
-%sadb% wait-for-device
+platform-tools\adb wait-for-device
 set count=0
 :loop
-:: defines tools folder
-set parent="platform-tools"
-:: defines tools location
-set sadb="%parent%\adb.exe"
+
+
+
+
 if "%~n1"=="" goto :endloop
 echo Installing %~n1
-%sadb% install -r %1
+platform-tools\adb install -r %1
 shift
 set /a count+=1
 goto :loop
