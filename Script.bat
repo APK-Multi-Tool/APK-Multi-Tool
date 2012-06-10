@@ -1,5 +1,5 @@
 @echo off
-if (%1)==(1) goto restart
+if (%1)==(1) goto skipme
 setlocal enabledelayedexpansion
 COLOR 0A
 if (%1)==(0) goto skipme
@@ -8,9 +8,10 @@ echo -------------------------------------------------------------------------- 
 echo ^|%date% -- %time%^| >> APKMULTITOOL.LOG
 echo -------------------------------------------------------------------------- >> APKMULTITOOL.LOG
 Script 0 2>> APKMULTITOOL.LOG
-:skipme
+
 
 :error
+:skipme
 cd "%~dp0"
 mode con:cols=140 lines=50
 
@@ -32,6 +33,7 @@ set /A count+=1
 set tmpstore=%%~nF%%~xF
 )
 if %count%==1 (set capp=%tmpstore%)
+:skipme2
 cls
 echo                                                    ,                            ,.::,                                              
 echo                           OB@@@B@B@:       .@B@@@@@@@@@B@B@E.   @B@B@B.  .uB@B@B@BSi,                                              
@@ -742,7 +744,7 @@ goto restart
 cls
 echo Adb was not found, you will not be able to manipulate the files on your phone
 PAUSE
-goto restart
+goto skipme2
 :adbi
 
 
