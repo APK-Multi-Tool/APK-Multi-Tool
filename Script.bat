@@ -4,10 +4,10 @@ setlocal enabledelayedexpansion
 COLOR 0A
 if (%1)==(0) goto skipme
 if (%1) neq () goto adbi
-echo -------------------------------------------------------------------------- >> APKMULTITOOL.LOG
-echo ^|%date% -- %time%^| >> APKMULTITOOL.LOG
-echo -------------------------------------------------------------------------- >> APKMULTITOOL.LOG
-Script 0 2>> APKMULTITOOL.LOG
+echo -------------------------------------------------------------------------- >> APK-Multi-Tool.log
+echo ^|%date% -- %time%^| >> APK-Multi-Tool.log
+echo -------------------------------------------------------------------------- >> APK-Multi-Tool.log
+Script 0 2>> APK-Multi-Tool.log
 
 :error
 
@@ -243,7 +243,7 @@ echo adb push something.apk /wherever/something.apk
 echo adb shell start
 echo 3. If you're stuck and the log doesnot give you any indication as to what you 
 echo are doing wrong, then post in the thread http://www.tiny.cc/apkmanager
-echo Make sure u include ur APKMULTITOOL.LOG, and if its not a editing problem i.e 
+echo Make sure u include ur APK-Multi-Tool.log, and if its not a editing problem i.e 
 echo its something regarding when u push it to your phone, then post ur adb log 
 echo as well. To do so 
 echo follow these steps :
@@ -251,7 +251,7 @@ echo 1. Connect ur phone to ur pc
 echo 2. Push/install the app on your phone
 echo 3. Select "Create Log" option on this menu
 echo 4. Let the new window run for 10 seconds, then close it
-echo Once done, you will find a adbAPKMULTITOOL.LOG in the root folder
+echo Once done, you will find a APK-Multi-Tool.log in the root folder
 echo Upload that as well.
 echo.
 echo 1. Create log
@@ -463,7 +463,7 @@ set /P INPUT=Type input: %=%
 echo Pulling apk
 platform-tools\adb pull %INPUT% "%~dp0place-apk-here-for-modding\something.apk"
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 24)"
+echo "An Error Occured, Please Check The Log (option 22)"
 PAUSE
 goto restart
 )
@@ -495,7 +495,7 @@ platform-tools\adb remount
 echo Pushing apk
 platform-tools\adb push "place-apk-here-for-modding\unsigned%capp%" %INPUT%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 24)"
+echo "An Error Occured, Please Check The Log (option 22)"
 PAUSE
 )
 goto restart
@@ -507,7 +507,7 @@ IF EXIST "%~dp0place-apk-here-for-modding\signed%capp%" zipalign -f 4 "%~dp0plac
 IF EXIST "%~dp0place-apk-here-for-modding\unsigned%capp%" zipalign -f 4 "%~dp0place-apk-here-for-modding\unsigned%capp%" "%~dp0place-apk-here-for-modding\unsignedaligned%capp%"
 
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 24)"
+echo "An Error Occured, Please Check The Log (option 22)"
 PAUSE
 )
 DEL /Q "%~dp0place-apk-here-for-modding\signed%capp%"
@@ -522,7 +522,7 @@ echo Extracting apk
 IF EXIST "../projects/%capp%" (rmdir /S /Q "../projects/%capp%")
 7za x -o"../projects/%capp%" "../place-apk-here-for-modding/%capp%"
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 24)"
+echo "An Error Occured, Please Check The Log (option 22)"
 PAUSE
 )
 cd ..
@@ -542,7 +542,7 @@ echo Zipping Apk
 cd tools
 7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/%capp%/*" -mx%usrc%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 24)"
+echo "An Error Occured, Please Check The Log (option 22)"
 PAUSE
 )
 cd ..
@@ -554,7 +554,7 @@ echo Zipping Apk
 rmdir /S /Q "../out/META-INF"
 7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/%capp%/*" -mx%usrc%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 24)"
+echo "An Error Occured, Please Check The Log (option 22)"
 PAUSE
 )
 goto restart
@@ -579,7 +579,7 @@ goto temr
 echo Decompiling Apk
 java -java -Xmx%heapy%m -jar apktool.jar d ../place-apk-here-for-modding/%capp% ../projects/%capp%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 24)"
+echo "An Error Occured, Please Check The Log (option 22)"
 PAUSE
 )
 goto restart
@@ -597,7 +597,7 @@ if (%dec%)==(2) (set ta=-s)
 if (%jar%)==(1) (set ta=-r)
 java -Xmx%heapy%m -jar apktool.jar d "../place-apk-here-for-modding/%capp%" "../projects/%capp%"
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 24)"
+echo "An Error Occured, Please Check The Log (option 22)"
 PAUSE
 )
 goto restart
@@ -617,7 +617,7 @@ goto restart
 
 :nojar
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 24)"
+echo "An Error Occured, Please Check The Log (option 22)"
 PAUSE
 goto restart
 )
@@ -669,7 +669,7 @@ cd tools
 echo Signing Apk
 java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 ../place-apk-here-for-modding/unsigned%capp% ../place-apk-here-for-modding/signed%capp%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 24)"
+echo "An Error Occured, Please Check The Log (option 22)"
 PAUSE
 )
 DEL /Q "../place-apk-here-for-modding/unsigned%capp%"
@@ -682,7 +682,7 @@ platform-tools\adb wait-for-device
 echo Installing Apk
 platform-tools\adb install -r place-apk-here-for-modding/signed%capp%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 24)"
+echo "An Error Occured, Please Check The Log (option 22)"
 PAUSE
 )
 goto restart
@@ -694,14 +694,14 @@ echo Building Apk
 IF EXIST "%~dp0place-apk-here-for-modding\unsigned%capp%" (del /Q "%~dp0place-apk-here-for-modding\unsigned%capp%")
 java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\unsigned%capp%"
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 24)"
+echo "An Error Occured, Please Check The Log (option 22)"
 PAUSE
 goto restart
 )
 echo Signing Apk
 java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 ../place-apk-here-for-modding/unsigned%capp% ../place-apk-here-for-modding/signed%capp%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 24)"
+echo "An Error Occured, Please Check The Log (option 22)"
 PAUSE
 )
 DEL /Q "../place-apk-here-for-modding/unsigned%capp%"
@@ -711,7 +711,7 @@ platform-tools\adb wait-for-device
 echo Installing Apk
 platform-tools\adb install -r place-apk-here-for-modding/signed%capp%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 24)"
+echo "An Error Occured, Please Check The Log (option 22)"
 PAUSE
 )
 goto restart
