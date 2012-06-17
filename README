@@ -128,9 +128,3 @@ set path=(/usr/local/jdk1.6.0/bin )
 What is the Batch Theme Image Transfer TOOL?
 This tool makes the process of transferring images from one APK to another APK File of the same file making it easier to update themes or even transferring a theme update.zip of one ROM to another Rom allowing the porting of theme to be much faster.
 (Note: You will have to manually replace the progress_horizontal.xml from the framework-res since this file is needed with Theme Changes)
-
-What is the Batch Theme Zipalign APK TOOL?
-This tool makes it easier to Zipalign all the apk files in your newly ported/updated theme pack.
-
-What is the Batch Theme optipng TOOL?
-This tool optimizes all the images in all of the apk files for the tool-set to allow you to be able improve compression of the images. 
