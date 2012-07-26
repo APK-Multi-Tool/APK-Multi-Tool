@@ -3,15 +3,17 @@ setlocal enabledelayedexpansion
 COLOR 0A
 if (%1)==(0) goto skipme
 if (%1) neq () goto skipme
-ECHO *********************************************************************************** >> setuplog.txt
-ECHO ^*                          %date% -- %time%^                          * >> setuplog.txt
-ECHO *********************************************************************************** >> setuplog.txt
-Setup 0 2>> setuplog.txt
+ECHO *********************************************************************************** >> setuplog.log
+ECHO ^*                          %date% -- %time%^ >> setuplog.log                         * >> setuplog.log
+ECHO *********************************************************************************** >> setuplog.log
+Setup 0 2>> setuplog.log
+
+
+:error
 
 :skipme
-:error
 cd "%~dp0"
-mode con:cols=85 lines=50
+mode con:cols=140 lines=50
 
 set usrc=9
 set capp=None
