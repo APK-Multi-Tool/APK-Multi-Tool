@@ -13,7 +13,7 @@ Setup 0 2>> setuplog.log
 
 :skipme
 cd "%~dp0"
-mode con:cols=140 lines=50
+mode con:cols=85 lines=50
 
 set usrc=9
 set capp=None
@@ -259,12 +259,13 @@ IF NOT EXIST framework-res.apk (
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *        framework-res.apk not Found please make sure the file is in the        *
-ECHO *        other Directory returning to Dependencies menu                *
+ECHO *        other Directory returning to Dependencies menu                         *
 ECHO *                                                                               *
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-goto FRAMRES )
+goto FRAMRES
+)
 IF EXIST framework-res.apk (
 cls
 ECHO *********************************************************************************
@@ -283,7 +284,8 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-goto FRAMRES )
+goto FRAMRES
+)
 :FRAMRES2
 cls
 cd other
@@ -294,6 +296,7 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul
 IF NOT EXIST twframework-res.apk (
+cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *        twframework-res.apk not Found please make sure the file is in the      *
@@ -302,8 +305,10 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-goto FRAMRES )
+goto FRAMRES
+)
 IF EXIST twframework-res.apk (
+cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                      twframework-res.apk Found Installing                     *
@@ -320,7 +325,8 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-goto FRAMRES )
+goto FRAMRES
+)
 :FRAMRES3
 cls
 cd other
@@ -339,9 +345,10 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-goto FRAMRES )
+goto FRAMRES
+)
 IF EXIST com.htc.resources.apk (
-
+cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                     com.htc.resources.apk Found Installing                    *
@@ -358,10 +365,12 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-goto FRAMRES )
+goto FRAMRES
+)
 :FRAMRES4
 ping 1.1.1.1 -n 1 -w 2000 > nul
 cd other
+cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                            Searching for SystemUI.apk                         *
@@ -378,7 +387,8 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-goto FRAMRES )
+goto FRAMRES
+)
 IF EXIST SystemUI.apk (
 cls
 ECHO *********************************************************************************
@@ -397,7 +407,8 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul
 cd "%~dp0"
-goto FRAMRES )
+goto FRAMRES
+)
 
 
 
