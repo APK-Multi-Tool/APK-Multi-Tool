@@ -611,7 +611,7 @@ if %INPUT1%==n (call :nq3)
 :nq2
 rmdir /S /Q "%~dp0keep"
 7za x -o"../keep" "../place-apk-here-for-modding/%capp%"
-echo In the apk manager folder u'll find
+echo In the APK Multi-Tools folder u'll find
 echo a keep folder. Within it, delete 
 echo everything you have modified and leave
 echo files that you haven't. If you have modified
