@@ -120,3 +120,16 @@ Rewriten how ADB is detected and used in the script
 Minor Changes to the SETUP.BAT Fixing MISC Issues
 Fixed ADB PUSH for SYSTEM Files as it was pointed at the wrong files
 Minor Tweaks to zipalign
+Updated apktool.jar to v1.5.0 (Released September 2 - 2012 ) Codename : Pikmin
+•Fix for colours being decompiled with improper hex colours
+•Fix for <string-array> being treated as array on occasion
+•Support for Mac OS X user:home, instead of dumping frames into /home
+•Updated internal framework.jar to API16
+•Added <user-sdk> reading to insert into apktool.yml to help with aapt building
+•Supported -d mode
+•Added --verbose mode to output contents of AAPT (note this is a HUGE output). Only used for debugging.
+•Ignore bootclasspath on debug mode. (Causes some classes in smali to be fail decompile)
+
+ 
+ 
+
