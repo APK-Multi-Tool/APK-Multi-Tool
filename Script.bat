@@ -547,7 +547,7 @@ echo Drag the dependee apk in this window or type its path
 echo Example to decompile Rosie.apk, drag com.htc.resources.apk in this window
 set /P INPUT=Type input: %=%
 java -jar apktool.jar if %INPUT%
-if NOT EXIST "%userprofile%\apktool\framework\2.apk" (
+if NOT EXIST %userprofile%\apktool\framework\2.apk (
 echo.
 echo "Sorry thats not the dependee apk, try again"
 goto temr
@@ -589,13 +589,12 @@ if (%jar%)==(0) (goto :nojar)
 %szip% x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
 %szip% a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "../%~dp0projects/temp"
-goto restart
+
 
 :nojar
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 22)"
 PAUSE
-goto restart
 )
 echo Is this a system apk ^(y/n^)
 set /P INPU=Type input: %=%
@@ -627,7 +626,6 @@ goto restart
 7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
 7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0projects/temp"
-goto restart
 :q1
 cd ..
 echo Would you like to copy over any additional files 
