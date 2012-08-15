@@ -627,6 +627,14 @@ goto restart
 7za a -tzip "../place-apk-here-for-modding/unsigned_%capp%" "../projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0projects/temp"
 :nq4
+echo  ----------------------------------------------
+echo  1. Create an unsigned apk
+echo  2. Create an apk using the original Signature
+echo  ----------------------------------------------
+set /P INPU=Type input 1 or 2: %=%
+if %INPU%==1 (goto nq5)
+if %INPUT1%==2 (call :nq6)
+:nq5
 rmdir /S /Q "%~dp0keep"
 7za x -o"../keep" "../place-apk-here-for-modding/%capp%"
 rmdir /S /Q "%~dp0keep/META-INF/"
@@ -639,6 +647,21 @@ echo folder as well. Once done then press enter
 echo on this script.
 PAUSE
 7za a -tzip "../place-apk-here-for-modding/unsigned_%capp%" "../keep/*" -mx%usrc% -r
+rmdir /S /Q "%~dp0keep"
+cd ..
+goto restart
+:nq6
+rmdir /S /Q "%~dp0keep"
+7za x -o"../keep" "../place-apk-here-for-modding/%capp%"
+echo In the APK Multi-Tools folder u'll find
+echo a keep folder. Within it, delete 
+echo everything you have modified and leave
+echo files that you haven't. If you have modified
+echo any xml, then delete resources.arsc from that 
+echo folder as well. Once done then press enter 
+echo on this script.
+PAUSE
+7za a -tzip "../place-apk-here-for-modding/signed_%capp%" "../keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
 cd ..
 goto restart
