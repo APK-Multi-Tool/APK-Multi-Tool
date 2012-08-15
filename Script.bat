@@ -618,13 +618,13 @@ echo any xml, then delete resources.arsc from that
 echo folder as well. Once done then press enter 
 echo on this script.
 PAUSE
-7za a -tzip "../place-apk-here-for-modding/unsigned_%capp%" "../keep/*" -mx%usrc% -r
+7za a -tzip "../place-apk-here-for-modding/signed_System_%capp%" "../keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
 cd ..
 goto restart
 :nq3
 7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
-7za a -tzip "../place-apk-here-for-modding/unsigned_%capp%" "../projects/temp/*" -mx%usrc% -r
+7za a -tzip "../place-apk-here-for-modding/signed_System_%capp%" "../projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0projects/temp"
 :nq4
 echo  ----------------------------------------------
