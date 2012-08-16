@@ -1,0 +1,105 @@
+Version 1.0.0
+Added Switch decompile mode
+Added ability to decompile jar files
+Fixed Random Startup bug (hopefully)
+Updated the Android SDK TOOL SET to Latest Versions
+Added Required Files for application /other folder content
+Other changes I may of forgotten
+AUTO UPDATE script on launch of apk multi-tool ( may move it to a manual script )
+Updated Apktool to 1.4.3 
+Added support for API14 (Android 4.0) resources
+Updated smali to v1.3.0
+Added --quiet option
+Fixed decoding error when string ends with '%' ( Issue 169 )
+Fixed decoding error when <plurals> contains a reference ( Issue 234 )
+Fixed a broken res when decoding <array> with positional substitutions ( Issue 222 )
+updated builtin framework to SDK API14
+fixed some "Multiple substitutions (...)" errors ( Issue 254 )
+
+Version 1.0.1
+FIXED BUG WITH Theme porter scripts - There was a typo in the file names
+FIXED BUG WITH ogg Optimizing
+FIXED BUG WITH Signer.bat
+FIXED BUG WITH ADB installer (HOPEFULLY)
+FIXED BUG WITH APK Signing batch (HOPEFULLY)
+FIXED BUG WITH ZipAlign scripts (HOPEFULLY)
+FIXED BUG WITH roptipng Scripts (HOPEFULLY)
+FIXED BUG WITH Keep Folder Not being created (HOPEFULLY)
+FIXED BUG WITH ADB Pull/Push
+FIXED BUG WITH ADB Detection
+FIXED BUG WITH Signing APK Files (HOPEFULLY)
+FIXED BUG WITH testkey.x509.pem Detection (HOPEFULLY)
+FIXED BUG WITH testkey.x509.pem Detection (HOPEFULLY)
+
+Version 1.0.2
+FIXED BUG WITH Theme porter scripts - There was a typo in the file names
+FIXED BUG WITH ogg Optimizing
+FIXED BUG WITH Signer.bat
+FIXED BUG WITH ADB installer (HOPEFULLY)
+FIXED BUG WITH APK Signing batch (HOPEFULLY)
+FIXED BUG WITH ZipAlign scripts (HOPEFULLY)
+FIXED BUG WITH roptipng Scripts (HOPEFULLY)
+FIXED BUG WITH Keep Folder Not being created (HOPEFULLY)
+FIXED BUG WITH ADB Pull/Push
+FIXED BUG WITH ADB Detection
+FIXED BUG WITH Signing APK Files (HOPEFULLY)
+FIXED BUG WITH testkey.x509.pem Detection (HOPEFULLY)
+FIXED BUG WITH testkey.x509.pem Detection (HOPEFULLY)
+FIXED BUG WITH Sox not compiling correctly when working with audio files (HOPEFULLY)
+FIXED BUG WITH minor bugs and code optiomizations
+FIXED BUG WITH Optimizing PNG and 9.png files (HOPEFULLY)
+
+Version 1.0.3
+Updated to APKTOOL.JAR 1.4.5
+Fixed Issue with the Theme porter and removed two batch features that was redundant
+Updated the Documentation Files
+Updated Version information
+Added limited ICE (Andriod 4.0) Support experimental right now
+
+Version 1.0.4
+Fixed Signing Tool
+Fixed Batch File Zipalign bug
+Fixed Batch optimize bug
+Complete rewrite of the update System
+Rewrote how the scripts run moving many features to a setup script
+Added New Feature that allows you to install framework-res for differentAndroid OS to allow building and decompiling Multiple APK BUILDS
+Added New Feature that allows you to install twframework-res for different Android OS to allow building and decompiling Multiple APK BUILDS
+Added New Feature that allows you to install com.htc.resources for different Android OS to allow building and decompiling Multiple APK BUILDS
+Added New Feature that allows you to install SystemUI for different Android OS to allow building and decompiling Multiple APK BUILDS
+Fixed Batch Theme converter
+Minor Tweaks to the scripts to optimize usage
+
+Version 1.0.5
+FIXED Error Messages to output the correct Option to use to read the Error Logs
+UPDATE APKTOOL.JAR to 1.4.7 THIS FIXES MANY ISSUES with COMPILING and DECOMPILING ICE 4.0.X
+FIXED (DE)/Compiler Scripts
+FIXED MISC and other issues I may of forgotten
+
+Version 1.0.6
+Removed the need to have the Android SDK Installed
+Fixed Issue with the KEEP FOLDER Being Broken
+Set Default Heap to 512MB
+Update Version to APK Multi-Tools 1.0.6
+Fixed Error Message for LOG Number to the Correct Number
+Fixed Error Message for APK Project number
+
+Version 1.0.7
+Updated to next minor build number
+Updated Setup.bat Fixing Installing Framework-Res
+Fixed Issue With 'apktool' is not recognized as an internal or external command,operable program or batch file."
+Fixed Issue with Installing Framework-Res pointing to a incorrect folder that no longer exist
+Fixed Issue when Running Installing Framework-Res scripts that the scripts will close after installing instead of going back to the menu.
+Updated APKTOOL.JAR to 1.4.9
+Added Custom AAPT that was built to work with JELLY BEAN
+Fixed issues with setup
+Made a few changes to the setup bat to fix alignment size and other misc issues
+Fixed Spelling
+Did some changes to see if I can fix the issue with The keep option to work with none system applications.
+Trying to get batch optionmize to work
+Replacing odt with a actual manual in html
+Fixed Bug with KEEP Folder not exstracting for None System Applicaitons
+Tweaked how the Signed and Unsigned files are compiled adding a small underscore between the recompiled file and the added prefix added by the scripts
+Tweaked the option 11 for non system apks
+I added the option to allow you to transfer the old key file over to the apk in case you did minor changes so be careful to test the APK files as some will need you to pick the unsigned option depending on how drastic the changes you made and forcing you to have to resign them
+Renamed recompiled system files
+Renamed the unsigned_ to signed_System_ since the system file changes the signature files are transfered since they are actually signed already instead of the misconception that has been going on for a while
