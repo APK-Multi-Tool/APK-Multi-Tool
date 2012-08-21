@@ -103,3 +103,7 @@ Tweaked the option 11 for non system apks
 I added the option to allow you to transfer the old key file over to the apk in case you did minor changes so be careful to test the APK files as some will need you to pick the unsigned option depending on how drastic the changes you made and forcing you to have to resign them
 Renamed recompiled system files
 Renamed the unsigned_ to signed_System_ since the system file changes the signature files are transfered since they are actually signed already instead of the misconception that has been going on for a while
+
+Version 1.0.8
+Seperated the compiler into two options
+Updated APKTOOL.JAR to apktool version 1.4.10
