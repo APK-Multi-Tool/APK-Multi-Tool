@@ -103,13 +103,13 @@ echo  ----------------------------------         -------------------------------
 echo  0    Adb pull                              9    Decompile apk                          15   Batch Theme Image Transfer
 echo  1    Extract apk                           10   Decompile apk (with dependencies)          (Read the Instructions before
 echo  2    Optimize images inside                     (For propietary rom apks)                    using this feature)
-echo  3    Zip apk                               11   Compile apk                                 
-echo  4    Sign apk (Dont do this if its         12   Sign apk                                     
-echo       a system apk)                         13   Install apk                                  
-echo  5    Zipalign apk (Do once apk is          14   Compile apk / Sign apk / Install apk         
-echo       created/signed)                            (Non System Apps Only)
-echo  6    Install apk (Dont do this if 
-echo       system apk, do adb push)
+echo  3    Zip apk                               11   Compile System APK files                                 
+echo  4    Sign apk (Dont do this if its         12   Compile None System APK Files                                     
+echo       a system apk)                         13   Sign apk
+echo  5    Zipalign apk (Do once apk is          14   Install apk  
+echo       created/signed)                       15   Compile apk / Sign apk / Install apk    
+echo  6    Install apk (Dont do this if              (Non System Apps Only)
+echo       system apk, do adb push)             
 echo  7    Zip / Sign / Install apk 
 echo       (All in one step)
 echo  8    Adb push (Only for system apk)
@@ -130,17 +130,17 @@ echo  00   Quit
 echo  -------------------------------------------------------------------------------
 SET /P menunr=Please make your decision:
 IF %menunr%==0 (goto ap)
-IF %menunr%==15 (goto btit)
-IF %menunr%==16 (goto bopt)
-IF %menunr%==17 (goto asi)
-IF %menunr%==18 (goto ogg)
-IF %menunr%==19 (goto cleanp)
-IF %menunr%==20 (goto usrcomp)
-IF %menunr%==21 (goto heap)
-IF %menunr%==22 (goto logr)
-IF %menunr%==23 (goto filesel)
-IF %menunr%==24 (goto about)
-IF %menunr%==25 (goto switchc)
+IF %menunr%==16 (goto btit)
+IF %menunr%==17 (goto bopt)
+IF %menunr%==18 (goto asi)
+IF %menunr%==19 (goto ogg)
+IF %menunr%==20 (goto cleanp)
+IF %menunr%==21 (goto usrcomp)
+IF %menunr%==22 (goto heap)
+IF %menunr%==23 (goto logr)
+IF %menunr%==24 (goto filesel)
+IF %menunr%==25 (goto about)
+IF %menunr%==26 (goto switchc)
 IF %menunr%==00 (goto quit)
 
 if %capp%==None goto noproj
@@ -155,9 +155,10 @@ IF %menunr%==8 (goto apu)
 IF %menunr%==9 (goto de)
 IF %menunr%==10 (goto ded)
 IF %menunr%==11 (goto co)
-IF %menunr%==12 (goto si)
-IF %menunr%==13 (goto ins)
-IF %menunr%==14 (goto all)
+IF %menunr%==12 (goto co2)
+IF %menunr%==13 (goto si)
+IF %menunr%==14 (goto ins)
+IF %menunr%==15 (goto all)
 :WHAT
 echo You went crazy and entered something that wasnt part of the menu options
 PAUSE
@@ -343,7 +344,7 @@ echo Zipping Apk
 cd other
 7za a -tzip "../place-apk-here-for-modding/unsigned_%capp%" "../projects/%capp%/*" -mx%usrc%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 )
 cd ..
@@ -354,7 +355,7 @@ echo Zipping Apk
 rmdir /S /Q "../out/META-INF"
 7za a -tzip "../place-apk-here-for-modding/unsigned_%capp%" "../projects/%capp%/*" -mx%usrc%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 )
 cd ..
@@ -363,7 +364,7 @@ cd other
 echo Signing Apk
 java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 ../place-apk-here-for-modding/unsigned_%capp% ../place-apk-here-for-modding/signed_%capp%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 )
 DEL /Q "../place-apk-here-for-modding/unsigned_%capp%"
@@ -374,7 +375,7 @@ adb wait-for-device
 echo Installing Apk
 adb install -r place-apk-here-for-modding/signed_%capp%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 )
 goto restart
@@ -448,7 +449,7 @@ set /P INPUT=Type input: %=%
 echo Pulling apk
 adb pull %INPUT% "%~dp0place-apk-here-for-modding\something.apk"
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 goto restart
 )
@@ -478,7 +479,7 @@ adb remount
 echo Pushing apk
 adb push "place-apk-here-for-modding\unsigned_%capp%" %INPUT%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 )
 goto restart
@@ -489,7 +490,7 @@ IF EXIST "%~dp0place-apk-here-for-modding\signed_%capp%" zipalign -f 4 "%~dp0pla
 IF EXIST "%~dp0place-apk-here-for-modding\unsigned_%capp%" zipalign -f 4 "%~dp0place-apk-here-for-modding\unsigned_%capp%" "%~dp0place-apk-here-for-modding\unsignedaligned%capp%"
 
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 )
 DEL /Q "%~dp0place-apk-here-for-modding\signed_%capp%"
@@ -503,7 +504,7 @@ echo Extracting apk
 IF EXIST "../projects/%capp%" (rmdir /S /Q "../projects/%capp%")
 7za x -o"../projects/%capp%" "../place-apk-here-for-modding/%capp%"
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 )
 cd ..
@@ -521,7 +522,7 @@ echo Zipping Apk
 cd other
 7za a -tzip "../place-apk-here-for-modding/unsigned_%capp%" "../projects/%capp%/*" -mx%usrc%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 )
 
@@ -533,7 +534,7 @@ echo Zipping Apk
 rmdir /S /Q "../out/META-INF"
 7za a -tzip "../place-apk-here-for-modding/unsigned_%capp%" "../projects/%capp%/*" -mx%usrc%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 )
 
@@ -555,7 +556,7 @@ goto temr
 echo Decompiling Apk
 java -Xmx%heapy%m -jar apktool.jar d ../place-apk-here-for-modding/%capp% ../projects/%capp%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 )
 cd ..
@@ -573,12 +574,25 @@ if (%dec%)==(2) (set ta=-s)
 if (%jar%)==(1) (set ta=-r)
 java -Xmx%heapy%m -jar apktool.jar d "../place-apk-here-for-modding/%capp%" "../projects/%capp%"
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 )
 cd ..
 goto restart
 :co
+IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
+cd other
+if (%jar%)==(0) (echo Building Apk)
+if (%jar%)==(1) (echo Building Jar)
+IF EXIST "%~dp0place-apk-here-for-modding\signed_System_%capp%" (del /Q "%~dp0place-apk-here-for-modding\signed_System_%capp%")
+java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\signed_System_%capp%"
+if (%jar%)==(0) (goto :nojar)
+%szip% x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
+%szip% a -tzip "../place-apk-here-for-modding/signed_System_%capp%" "../projects/temp/*" -mx%usrc% -r
+rmdir /S /Q "../%~dp0projects/temp"
+goto nq1
+
+:co2
 IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
 cd other
 if (%jar%)==(0) (echo Building Apk)
@@ -589,16 +603,15 @@ if (%jar%)==(0) (goto :nojar)
 %szip% x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
 %szip% a -tzip "../place-apk-here-for-modding/unsigned_%capp%" "../projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "../%~dp0projects/temp"
-
+goto q1
 
 :nojar
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 )
-echo Is this a system apk ^(y/n^)
-set /P INPU=Type input: %=%
-if %INPU%==n (goto q1)
+goto RESTART
+
 :nq1
 echo Aside from the signatures, would you like to copy
 echo over any additional files that you didn't modify
@@ -677,7 +690,7 @@ cd other
 echo Signing Apk
 java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 ../place-apk-here-for-modding/unsigned_%capp% ../place-apk-here-for-modding/signed_%capp%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 )
 
@@ -690,7 +703,7 @@ adb wait-for-device
 echo Installing Apk
 adb install -r place-apk-here-for-modding/signed_%capp%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 )
 goto restart
@@ -701,14 +714,14 @@ echo Building Apk
 IF EXIST "%~dp0place-apk-here-for-modding\unsigned_%capp%" (del /Q "%~dp0place-apk-here-for-modding\unsigned_%capp%")
 java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\unsigned_%capp%"
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 goto restart
 )
 echo Signing Apk
 java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 ../place-apk-here-for-modding/unsigned_%capp% ../place-apk-here-for-modding/signed_%capp%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 )
 DEL /Q "../place-apk-here-for-modding/unsigned_%capp%"
@@ -718,7 +731,7 @@ adb wait-for-device
 echo Installing Apk
 adb install -r place-apk-here-for-modding/signed_%capp%
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 22)"
+echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 )
 goto restart
