@@ -107,3 +107,10 @@ Renamed the unsigned_ to signed_System_ since the system file changes the signat
 Version 1.0.8
 Seperated the compiler into two options
 Updated APKTOOL.JAR to apktool version 1.4.10
+
+Version 1.0.9
+Fixed the broken Option menu list
+Fixed the broken Complier scripts for system Files
+Fixed the broken Complier scripts for non system Files
+Added the ability to create Signed None System APK files with both the keep folder option and to bypass the keep folder
+Added the Option to create unsigned APK Files with out using the keep folder

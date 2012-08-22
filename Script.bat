@@ -584,34 +584,20 @@ IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
 cd other
 if (%jar%)==(0) (echo Building Apk)
 if (%jar%)==(1) (echo Building Jar)
-IF EXIST "%~dp0place-apk-here-for-modding\signed_System_%capp%" (del /Q "%~dp0place-apk-here-for-modding\signed_System_%capp%")
-java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\signed_System_%capp%"
+IF EXIST "%~dp0place-apk-here-for-modding\System_%capp%" (del /Q "%~dp0place-apk-here-for-modding\System_%capp%")
+java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\System_%capp%"
 if (%jar%)==(0) (goto :nojar)
 %szip% x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
-%szip% a -tzip "../place-apk-here-for-modding/signed_System_%capp%" "../projects/temp/*" -mx%usrc% -r
+%szip% a -tzip "../place-apk-here-for-modding/System_%capp%" "../projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "../%~dp0projects/temp"
-goto nq1
-
-:co2
-IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
-cd other
-if (%jar%)==(0) (echo Building Apk)
-if (%jar%)==(1) (echo Building Jar)
-IF EXIST "%~dp0place-apk-here-for-modding\unsigned_%capp%" (del /Q "%~dp0place-apk-here-for-modding\unsigned_%capp%")
-java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\unsigned_%capp%"
-if (%jar%)==(0) (goto :nojar)
-%szip% x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
-%szip% a -tzip "../place-apk-here-for-modding/unsigned_%capp%" "../projects/temp/*" -mx%usrc% -r
-rmdir /S /Q "../%~dp0projects/temp"
-goto q1
+goto restart
 
 :nojar
 if errorlevel 1 (
-echo "An Error Occured, Please Check The Log (option 23)"
+echo "An Error Occured, Please Check The Log (option 21)"
 PAUSE
+goto restart
 )
-goto RESTART
-
 :nq1
 echo Aside from the signatures, would you like to copy
 echo over any additional files that you didn't modify
@@ -631,22 +617,51 @@ echo any xml, then delete resources.arsc from that
 echo folder as well. Once done then press enter 
 echo on this script.
 PAUSE
-7za a -tzip "../place-apk-here-for-modding/signed_System_%capp%" "../keep/*" -mx%usrc% -r
+7za a -tzip "../place-apk-here-for-modding/System_%capp%" "../keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
+
 cd ..
 goto restart
 :nq3
 7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
-7za a -tzip "../place-apk-here-for-modding/signed_System_%capp%" "../projects/temp/*" -mx%usrc% -r
+7za a -tzip "../place-apk-here-for-modding/System_%capp%" "../projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0projects/temp"
+goto restart
+
+:co2
+IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
+cd other
+if (%jar%)==(0) (echo Building Apk)
+if (%jar%)==(1) (echo Building Jar)
+IF EXIST "%~dp0place-apk-here-for-modding\unsigned_%capp%" (del /Q "%~dp0place-apk-here-for-modding\unsigned_%capp%")
+java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\unsigned_%capp%"
+if (%jar%)==(0) (goto :nojar2)
+%szip% x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
+%szip% a -tzip "../place-apk-here-for-modding/unsigned_%capp%" "../projects/temp/*" -mx%usrc% -r
+rmdir /S /Q "../%~dp0projects/temp"
+goto restart
+
+:nojar2
+if errorlevel 1 (
+echo "An Error Occured, Please Check The Log (option 21)"
+PAUSE
+goto restart
+)
 :nq4
-echo  ----------------------------------------------
-echo  1. Create an unsigned apk
-echo  2. Create an apk using the original Signature
-echo  ----------------------------------------------
-set /P INPU=Type input 1 or 2: %=%
-if %INPU%==1 (goto nq5)
-if %INPUT1%==2 (call :nq6)
+cls
+echo  ---------------------------------------------------------------------------
+echo  1. Create an unsigned apk using the keep folder option
+echo  2. Create an unsigned apk
+echo     *Notice*   Options 3 and 4 are expermental use with care *Notice*
+echo  3. Create an apk using the original Signature using the keep folder option
+echo  4. Create an apk using the original Signature
+echo     *Notice*   Options 3 and 4 are expermental use with care *Notice*
+echo  ---------------------------------------------------------------------------
+set /P INPUT=Type input 1 - 4: %=%
+if %INPUT%==1 (call :nq5)
+if %INPUT%==2 (call :nq6)
+if %INPUT%==3 (call :nq7)
+if %INPUT%==4 (call :nq8)
 :nq5
 rmdir /S /Q "%~dp0keep"
 7za x -o"../keep" "../place-apk-here-for-modding/%capp%"
@@ -664,6 +679,9 @@ rmdir /S /Q "%~dp0keep"
 cd ..
 goto restart
 :nq6
+goto restart
+
+:nq7
 rmdir /S /Q "%~dp0keep"
 7za x -o"../keep" "../place-apk-here-for-modding/%capp%"
 echo In the APK Multi-Tools folder u'll find
@@ -674,9 +692,18 @@ echo any xml, then delete resources.arsc from that
 echo folder as well. Once done then press enter 
 echo on this script.
 PAUSE
+xcopy "unsigned_%capp%" "signed_%capp%" /A /Y /V
+DEL "../place-apk-here-for-modding/unsigned_%capp%"
 7za a -tzip "../place-apk-here-for-modding/signed_%capp%" "../keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
 cd ..
+goto restart
+:nq8
+xcopy "unsigned_%capp%" "signed_%capp%" /A /Y /V
+DEL "../place-apk-here-for-modding/unsigned_%capp%"
+7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
+7za a -tzip "../place-apk-here-for-modding/signed_%capp%" "../projects/temp/*" -mx%usrc% -r
+rmdir /S /Q "%~dp0projects/temp"
 goto restart
 :q1
 echo Would you like to copy over additional files 
