@@ -100,7 +100,7 @@ echo  --------------------------------------------------------------------------
 echo  ----------------------------------         ------------------------------------        -----------------------------------
 echo  Simple Tasks Such As Image Editing         Advanced Tasks Such As Code Editing         Themers Convertion Tools
 echo  ----------------------------------         ------------------------------------        -----------------------------------
-echo  0    Adb pull                              9    Decompile apk                          15   Batch Theme Image Transfer
+echo  0    Adb pull                              9    Decompile apk                          16   Batch Theme Image Transfer
 echo  1    Extract apk                           10   Decompile apk (with dependencies)          (Read the Instructions before
 echo  2    Optimize images inside                     (For propietary rom apks)                    using this feature)
 echo  3    Zip apk                               11   Compile System APK files                                 
@@ -116,16 +116,16 @@ echo  8    Adb push (Only for system apk)
 echo  -----------
 echo  tools Stuff
 echo  -----------
-echo  16   Batch Optimize Apk (inside place-apk-here-to-batch-optimize only)
-echo  17   Sign an apk(Batch support)(inside place-apk-here-for-signing folder only)
-echo  18   Batch optimize ogg files (inside place-ogg-here only)
-echo  19   Clean Files/Folders
-echo  20   Select compression level for apk's
-echo  21   Set Max Memory Size (Only use if getting stuck at decompiling/compiling)
-echo  22   Read Log
-echo  23   Set current project
-echo  24   About / Tips / Debug Section
-echo  25   Switch decompile mode
+echo  17   Batch Optimize Apk (inside place-apk-here-to-batch-optimize only)
+echo  18   Sign an apk(Batch support)(inside place-apk-here-for-signing folder only)
+echo  19   Batch optimize ogg files (inside place-ogg-here only)
+echo  20   Clean Files/Folders
+echo  21   Select compression level for apk's
+echo  22   Set Max Memory Size (Only use if getting stuck at decompiling/compiling)
+echo  23   Read Log
+echo  24   Set current project
+echo  25   About / Tips / Debug Section
+echo  26   Switch decompile mode
 echo  00   Quit
 echo  -------------------------------------------------------------------------------
 SET /P menunr=Please make your decision:
