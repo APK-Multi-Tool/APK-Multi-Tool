@@ -1,4 +1,4 @@
-Apk Multi-Tool  1.0.9
+Apk Multi-Tool  1.0.10
 ApkTool         v1.4.5
 7zip            v9.20
 Roptipng        v0.6.3
