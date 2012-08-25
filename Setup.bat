@@ -264,7 +264,7 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-goto FRAMRES
+call FRAMRES
 )
 IF EXIST framework-res.apk (
 cls
@@ -284,7 +284,7 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-goto FRAMRES
+call FRAMRES
 )
 :FRAMRES2
 cls
@@ -305,7 +305,7 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-goto FRAMRES
+call FRAMRES
 )
 IF EXIST twframework-res.apk (
 cls
@@ -325,7 +325,7 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-goto FRAMRES
+call FRAMRES
 )
 :FRAMRES3
 cls
@@ -345,7 +345,7 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-goto FRAMRES
+call FRAMRES
 )
 IF EXIST com.htc.resources.apk (
 cls
@@ -365,7 +365,7 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-goto FRAMRES
+call FRAMRES
 )
 :FRAMRES4
 ping 1.1.1.1 -n 1 -w 2000 > nul
@@ -387,7 +387,7 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-goto FRAMRES
+call FRAMRES
 )
 IF EXIST SystemUI.apk (
 cls
@@ -407,7 +407,7 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul
 cd "%~dp0"
-goto FRAMRES
+call FRAMRES
 )
 
 
