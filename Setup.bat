@@ -382,7 +382,7 @@ IF NOT EXIST SystemUI.apk (
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *        SystemUI.apk not Found please make sure the file is in the             *
-ECHO *        other Directory returning to Dependencies menu                *
+ECHO *        other Directory returning to Dependencies menu                         *
 ECHO *                                                                               *
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
