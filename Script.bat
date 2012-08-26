@@ -26,7 +26,7 @@ set heapy=512
 set jar=0
 java -version 
 if errorlevel 1 goto errjava
-other\adb version 
+"%~dp0other\adb.exe" version 
 if errorlevel 1 goto erradb
 set /A count=0
 FOR %%F IN (place-apk-here-for-modding/*.apk) DO (
@@ -264,7 +264,7 @@ echo.
 echo 1. Create log
 echo 2. Go back to main menu
 SET /P menunr=Please make your decision:
-IF %menunr%==1 (Start "Adb Log" other\signer 2)
+IF %menunr%==1 (Start ""%~dp0other\adb.exe" Log" other\signer 2)
 goto restart
 :portapk
 echo Im going to try resigning the apk and see if that works
@@ -294,9 +294,9 @@ set capp=None
 goto restart
 rem :bins
 rem echo Waiting for device
-rem adb wait-for-device
+rem "%~dp0other\adb.exe" wait-for-device
 rem echo Installing Apks
-rem FOR %%F IN ("%~dp0place-apk-here-for-signing\*.apk") DO adb install -r "%%F"
+rem FOR %%F IN ("%~dp0place-apk-here-for-signing\*.apk") DO "%~dp0other\adb.exe" install -r "%%F"
 rem goto restart
 :heap
 set /P INPUT=Enter max size for java heap space in megabytes (eg 512) : %=%
@@ -371,9 +371,9 @@ DEL /Q "../place-apk-here-for-modding/unsigned_%capp%"
 cd ..
 :ins1
 echo Waiting for device
-adb wait-for-device
+"%~dp0other\adb.exe" wait-for-device
 echo Installing Apk
-adb install -r place-apk-here-for-modding/signed_%capp%
+"%~dp0other\adb.exe" install -r %~dp0place-apk-here-for-modding/signed_%capp%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
@@ -447,7 +447,7 @@ echo Where do you want adb to pull the apk from?
 echo Example of input : /system/app/launcher.apk
 set /P INPUT=Type input: %=%
 echo Pulling apk
-adb pull %INPUT% "%~dp0place-apk-here-for-modding\something.apk"
+"%~dp0other\adb.exe" pull %INPUT% "%~dp0place-apk-here-for-modding\something.apk"
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
@@ -474,10 +474,10 @@ echo Where do you want adb to push to and as what name
 echo Example of input : /system/app/launcher.apk
 set /P INPUT=Type input: %=%
 echo Waiting for device
-adb wait-for-device
-adb remount
+"%~dp0other\adb.exe" wait-for-device
+"%~dp0other\adb.exe" remount
 echo Pushing apk
-adb push "place-apk-here-for-modding\unsigned_%capp%" %INPUT%
+"%~dp0other\adb.exe" push "place-apk-here-for-modding\unsigned_%capp%" %INPUT%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
@@ -726,9 +726,9 @@ cd ..
 goto restart
 :ins
 echo Waiting for device
-adb wait-for-device
+"%~dp0other\adb.exe" wait-for-device
 echo Installing Apk
-adb install -r place-apk-here-for-modding/signed_%capp%
+"%~dp0other\adb.exe" install -r place-apk-here-for-modding/signed_%capp%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
@@ -754,9 +754,9 @@ PAUSE
 DEL /Q "../place-apk-here-for-modding/unsigned_%capp%"
 cd ..
 echo Waiting for device
-adb wait-for-device
+"%~dp0other\adb.exe" wait-for-device
 echo Installing Apk
-adb install -r place-apk-here-for-modding/signed_%capp%
+"%~dp0other\adb.exe" install -r place-apk-here-for-modding/signed_%capp%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
@@ -776,12 +776,12 @@ goto skipme2
 :adbi
 mode con:cols=48 lines=8
 echo Waiting for device
-adb wait-for-device
+"%~dp0other\adb.exe" wait-for-device
 set count=0
 :loop
 if "%~n1"=="" goto :endloop
 echo Installing %~n1
-adb install -r %1
+"%~dp0other\adb.exe" install -r %1
 shift
 set /a count+=1
 goto :loop
