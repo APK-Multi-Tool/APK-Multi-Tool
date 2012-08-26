@@ -244,7 +244,6 @@ echo You went crazy and entered something that wasnt part of the menu options
 PAUSE
 goto FRAMRES
 
-
 :FRAMRES1
 cls
 cd other
