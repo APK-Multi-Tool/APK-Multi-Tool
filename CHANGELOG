@@ -116,5 +116,6 @@ Added the ability to create Signed None System APK files with both the keep fold
 Added the Option to create unsigned APK Files with out using the keep folder
 
 Version 1.0.10
-Rewriten now ADB is detected and used in the script
+Rewriten how ADB is detected and used in the script
 Minor Changes to the SETUP.BAT Fixing MISC Issues
+Fixed ADB PUSH for SYSTEM Files as it was pointed at the wrong files
