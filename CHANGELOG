@@ -119,3 +119,4 @@ Version 1.0.10
 Rewriten how ADB is detected and used in the script
 Minor Changes to the SETUP.BAT Fixing MISC Issues
 Fixed ADB PUSH for SYSTEM Files as it was pointed at the wrong files
+Minor Tweaks to zipalign

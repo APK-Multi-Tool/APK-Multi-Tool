@@ -485,9 +485,9 @@ PAUSE
 goto restart
 :zipa
 echo Zipaligning Apk
-IF EXIST "%~dp0place-apk-here-for-modding\signed_%capp%" zipalign -f 4 "%~dp0place-apk-here-for-modding\signed_%capp%" "%~dp0place-apk-here-for-modding\signedaligned%capp%"
+IF EXIST "%~dp0place-apk-here-for-modding\signed_%capp%" zipalign -f 4 "%~dp0place-apk-here-for-modding\signed_%capp%" "%~dp0place-apk-here-for-modding\signed_aligned_%capp%"
 
-IF EXIST "%~dp0place-apk-here-for-modding\unsigned_%capp%" zipalign -f 4 "%~dp0place-apk-here-for-modding\unsigned_%capp%" "%~dp0place-apk-here-for-modding\unsignedaligned%capp%"
+IF EXIST "%~dp0place-apk-here-for-modding\unsigned_%capp%" zipalign -f 4 "%~dp0place-apk-here-for-modding\unsigned_%capp%" "%~dp0place-apk-here-for-modding\unsigned_aligned_%capp%"
 
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 23)"
@@ -495,8 +495,8 @@ PAUSE
 )
 DEL /Q "%~dp0place-apk-here-for-modding\signed_%capp%"
 DEL /Q "%~dp0place-apk-here-for-modding\unsigned_%capp%"
-rename "%~dp0place-apk-here-for-modding\signedaligned%capp%" signed_%capp%
-rename "%~dp0place-apk-here-for-modding\unsignedaligned%capp%" unsigned_%capp%
+rename "%~dp0place-apk-here-for-modding\signed_aligned_%capp%" signed_%capp%
+rename "%~dp0place-apk-here-for-modding\unsigned_aligned_%capp%" unsigned_%capp%
 goto restart
 :ex
 cd other
