@@ -477,7 +477,7 @@ echo Waiting for device
 "%~dp0other\adb.exe" wait-for-device
 "%~dp0other\adb.exe" remount
 echo Pushing apk
-"%~dp0other\adb.exe" push "place-apk-here-for-modding\unsigned_%capp%" %INPUT%
+"%~dp0other\adb.exe" push "place-apk-here-for-modding\System_%capp%" %INPUT%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE

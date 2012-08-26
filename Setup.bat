@@ -124,7 +124,7 @@ ECHO *                                                                          
 ECHO ***********************************************************************************
 PAUSE
 goto changed
-:recall
+:regoto
 PAUSE
 
 Start cmd /c tools\signer 3
@@ -200,7 +200,7 @@ ECHO *                                                                          
 ECHO ***********************************************************************************
 PAUSE
 GOTO RESTART
-: FRAMRES
+:FRAMRES
 set menunr=GARBAGE2
 cls
 ECHO ***********************************************************************************
@@ -264,7 +264,7 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-call FRAMRES
+goto FRAMRESRET
 )
 IF EXIST framework-res.apk (
 cls
@@ -284,7 +284,7 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-call FRAMRES
+goto FRAMRESRET
 )
 :FRAMRES2
 cls
@@ -305,7 +305,7 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-call FRAMRES
+goto FRAMRESRET
 )
 IF EXIST twframework-res.apk (
 cls
@@ -325,7 +325,7 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-call FRAMRES
+goto FRAMRESRET
 )
 :FRAMRES3
 cls
@@ -345,7 +345,7 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-call FRAMRES
+goto FRAMRESRET
 )
 IF EXIST com.htc.resources.apk (
 cls
@@ -365,7 +365,7 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-call FRAMRES
+goto FRAMRESRET
 )
 :FRAMRES4
 ping 1.1.1.1 -n 1 -w 2000 > nul
@@ -387,7 +387,7 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
 cd "%~dp0"
-call FRAMRES
+goto FRAMRESRET
 )
 IF EXIST SystemUI.apk (
 cls
@@ -407,10 +407,10 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul
 cd "%~dp0"
-call FRAMRES
+goto FRAMRESRET
 )
-
-
+:FRAMRESRET
+goto FRAMRES
 
 :ABOUT
 
@@ -457,7 +457,7 @@ set /a cc = %cc% + 1
 goto recursive
 )
 echo.
-goto recall
+goto regoto
 :endloop
 goto quit
 :QUIT

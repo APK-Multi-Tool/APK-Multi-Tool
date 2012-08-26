@@ -114,3 +114,7 @@ Fixed the broken Complier scripts for system Files
 Fixed the broken Complier scripts for non system Files
 Added the ability to create Signed None System APK files with both the keep folder option and to bypass the keep folder
 Added the Option to create unsigned APK Files with out using the keep folder
+
+Version 1.0.10
+Rewriten now ADB is detected and used in the script
+Minor Changes to the SETUP.BAT Fixing MISC Issues
