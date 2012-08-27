@@ -97,7 +97,7 @@ goto RESTART
 :CHECKUPDATE
 ECHO Please Wait while we CHECK FOR UPDATES
 IF EXIST apkver.txt (del apkver.txt)
-tools\wget http://update.apkmultitool.com/apkver.txt
+other\wget http://update.apkmultitool.com/apkver.txt
 cls
 IF NOT EXIST apkver.txt (goto :RESTART)
 set /a bool = 0
@@ -127,7 +127,7 @@ goto changed
 :regoto
 PAUSE
 
-Start cmd /c tools\signer 3
+Start cmd /c other\signer 3
 exit
 )
 )
@@ -420,7 +420,7 @@ ECHO *                                   About                                  
 ECHO *                                                                               *
 ECHO *********************************************************************************
 ECHO *                                                                               *
-type tools\version.txt
+type other\version.txt
 ECHO *                                                                               *
 ECHO *********************************************************************************
 ECHO *                                                                               *
