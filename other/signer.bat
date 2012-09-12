@@ -12,13 +12,13 @@ goto quit
 :next
 COLOR 0C
 cd ..
-type log.txt
+type APK-Multi-Tool.log
 PAUSE
 goto quit
 :next2
 COLOR 0C
 cd ..
-type setuplog.txt
+type setuplog.log
 PAUSE
 goto quit
 :log
@@ -27,9 +27,9 @@ echo Leave this open for 10s
 adb logcat >> adblog.txt
 :updater
 COLOR 0A
-:: defines tools folder
-set parent="tools"
-:: defines tools location
+:: defines other folder
+set parent="other"
+:: defines other location
 set dget="%parent%\wget.exe"
 del updates.txt
 echo Please Wait While Apk Multi-Tools Updates to the latest VERSION....
