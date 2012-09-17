@@ -126,7 +126,8 @@ Updated apktool.jar to v1.5.0 (Released September 2 - 2012 ) Codename : Pikmin
 * Support for Mac OS X user:home, instead of dumping frames into /home
 * Updated internal framework.jar to API16
 * Added <user-sdk> reading to insert into apktool.yml to help with aapt building
-* Supported -d mode
 * Added --verbose mode to output contents of AAPT (note this is a HUGE output). Only used for debugging.
 * Ignore bootclasspath on debug mode. (Causes some classes in smali to be fail decompile)
 Updated AAPT to the latest Custom Build
+Fixed Decompiler Switch to Actually work
+Fixed Compiler script Errors
