@@ -553,8 +553,12 @@ echo.
 echo "Sorry thats not the dependee apk, try again"
 goto temr
 )
-echo Decompiling Apk
-java -Xmx%heapy%m -jar apktool.jar d ../place-apk-here-for-modding/%capp% ../projects/%capp%
+if (%jar%)==(0) (echo Decompiling Apk)
+if (%jar%)==(1) (echo Decompiling Jar)
+if (%dec%)==(0) (set apkdec=d)
+if (%dec%)==(1) (set apkdec=d -r)
+if (%dec%)==(2) (set apkdec=d -s)
+java -Xmx%heapy%m -jar apktool.jar %apkdec% ../place-apk-here-for-modding/%capp% ../projects/%capp%
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
@@ -569,11 +573,11 @@ IF EXIST "../place-apk-here-for-modding/signed_%capp%" (del /Q "../place-apk-her
 IF EXIST "../projects/%capp%" (rmdir /S /Q "../projects/%capp%")
 if (%jar%)==(0) (echo Decompiling Apk)
 if (%jar%)==(1) (echo Decompiling Jar)
-if (%dec%)==(0) (set ta=)
-if (%dec%)==(1) (set ta=-r)
-if (%dec%)==(2) (set ta=-s)
-if (%jar%)==(1) (set ta=-r)
-java -Xmx%heapy%m -jar apktool.jar d "../place-apk-here-for-modding/%capp%" "../projects/%capp%"
+if (%dec%)==(0) (set apkdec=d)
+if (%dec%)==(1) (set apkdec=d -r)
+if (%dec%)==(2) (set apkdec=d -s)
+
+java -Xmx%heapy%m -jar apktool.jar %apkdec% "../place-apk-here-for-modding/%capp%" "../projects/%capp%"
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
