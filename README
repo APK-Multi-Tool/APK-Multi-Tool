@@ -47,8 +47,8 @@ Instructions:
 - Edit files inside the project folder
 - Maximize the script
 
-
-
+Decompile Mode
+Switch decompile mode (Allows you to pick to fully decompile the APK's or JAR's or to just decompile Sources or just the Resources or do a raw dump allowing you to just edit the normal images 
 
 Themers Convertion Tools:
 Before running the themers tool-set make sure when you run the scripts 15 16 17 in this exact order as it is setup as a tool-chain. 

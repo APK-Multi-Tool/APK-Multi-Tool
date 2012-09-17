@@ -88,9 +88,11 @@ PAUSE
 cls
 
 :restart
-if %dec%==0 (set decs=Sources and Resources)
-if %dec%==1 (set decs=Sources)
-if %dec%==2 (set decs=Resources)
+if %dec%==0 (set decs=Sources and Resources Files)
+if %dec%==1 (set decs=Source Files only)
+if %dec%==2 (set decs=Resource Files only)
+if %dec%==3 (set decs=Raw Files Only)
+
 cd "%~dp0"
 set menunr=GARBAGE
 cls
@@ -108,7 +110,7 @@ echo  4    Sign apk (Dont do this if its         12   Compile None System APK Fi
 echo       a system apk)                         13   Sign apk
 echo  5    Zipalign apk (Do once apk is          14   Install apk  
 echo       created/signed)                       15   Compile apk / Sign apk / Install apk    
-echo  6    Install apk (Dont do this if              (Non System Apps Only)
+echo       Install apk (Dont do this if               (Non-System Apps Only)
 echo       system apk, do adb push)             
 echo  7    Zip / Sign / Install apk 
 echo       (All in one step)
@@ -125,7 +127,9 @@ echo  22   Set Max Memory Size (Only use if getting stuck at decompiling/compili
 echo  23   Read Log
 echo  24   Set current project
 echo  25   About / Tips / Debug Section
-echo  26   Switch decompile mode
+echo  26   Switch decompile mode (Allows you to pick to fully decompile the APK's or JAR's
+echo       or to just decompile Sources or just the Resources or do a raw dump allowing you
+echo       to just edit the normal images)
 echo  00   Quit
 echo  -------------------------------------------------------------------------------
 SET /P menunr=Please make your decision:
@@ -165,7 +169,7 @@ PAUSE
 goto restart
 :switchc
 set /a dec+=1 
-if (%dec%)==(3) (set /a dec=0)
+if (%dec%)==(4) (set /a dec=0)
 goto restart
 :cleanp
 echo 1. Clean This Project's Folder
@@ -555,10 +559,11 @@ goto temr
 )
 if (%jar%)==(0) (echo Decompiling Apk %decs%)
 if (%jar%)==(1) (echo Decompiling Jar %decs%)
-if (%dec%)==(0) (set apkdec=d)
-if (%dec%)==(1) (set apkdec=d -r)
-if (%dec%)==(2) (set apkdec=d -s)
-java -Xmx%heapy%m -jar apktool.jar %apkdec% ../place-apk-here-for-modding/%capp% ../projects/%capp%
+if (%dec%)==(0) (java -Xmx%heapy%m -jar apktool.jar d ../place-apk-here-for-modding/%capp% ../projects/%capp%)
+if (%dec%)==(1) (java -Xmx%heapy%m -jar apktool.jar d -r ../place-apk-here-for-modding/%capp% ../projects/%capp%)
+if (%dec%)==(2) (java -Xmx%heapy%m -jar apktool.jar d -s ../place-apk-here-for-modding/%capp% ../projects/%capp%)
+if (%dec%)==(3) (java -Xmx%heapy%m -jar apktool.jar d -r -s ../place-apk-here-for-modding/%capp% ../projects/%capp%)
+
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
@@ -573,11 +578,11 @@ IF EXIST "../place-apk-here-for-modding/signed_%capp%" (del /Q "../place-apk-her
 IF EXIST "../projects/%capp%" (rmdir /S /Q "../projects/%capp%")
 if (%jar%)==(0) (echo Decompiling Apk %decs%)
 if (%jar%)==(1) (echo Decompiling Jar %decs%)
-if (%dec%)==(0) (set apkdec=d)
-if (%dec%)==(1) (set apkdec=d -r)
-if (%dec%)==(2) (set apkdec=d -s)
+if (%dec%)==(0) (java -Xmx%heapy%m -jar apktool.jar d ../place-apk-here-for-modding/%capp% ../projects/%capp%)
+if (%dec%)==(1) (java -Xmx%heapy%m -jar apktool.jar d -r ../place-apk-here-for-modding/%capp% ../projects/%capp%)
+if (%dec%)==(2) (java -Xmx%heapy%m -jar apktool.jar d -s ../place-apk-here-for-modding/%capp% ../projects/%capp%)
+if (%dec%)==(3) (java -Xmx%heapy%m -jar apktool.jar d -r -s ../place-apk-here-for-modding/%capp% ../projects/%capp%)
 
-java -Xmx%heapy%m -jar apktool.jar %apkdec% "../place-apk-here-for-modding/%capp%" "../projects/%capp%"
 if errorlevel 1 (
 echo "An Error Occured, Please Check The Log (option 23)"
 PAUSE
@@ -592,7 +597,7 @@ if (%jar%)==(1) (echo Building Jar)
 IF EXIST "%~dp0place-apk-here-for-modding\System_%capp%" (del /Q "%~dp0place-apk-here-for-modding\System_%capp%")
 java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\System_%capp%"
 if (%jar%)==(0) (goto :nojar)
-7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
+7za x -o "../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
 7za a -tzip "../place-apk-here-for-modding/System_%capp%" "../projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "../%~dp0projects/temp"
 goto restart
@@ -628,8 +633,9 @@ rmdir /S /Q "%~dp0keep"
 cd ..
 goto restart
 :nq3
-7za x -o "../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
+7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
 7za a -tzip "../place-apk-here-for-modding/System_%capp%" "../projects/temp/*" -mx%usrc% -r
+
 rmdir /S /Q "%~dp0projects/temp"
 goto restart
 
@@ -641,7 +647,7 @@ if (%jar%)==(1) (echo Building Jar)
 IF EXIST "%~dp0place-apk-here-for-modding\unsigned_%capp%" (del /Q "%~dp0place-apk-here-for-modding\unsigned_%capp%")
 java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\unsigned_%capp%"
 if (%jar%)==(0) (goto :nojar2)
-7za x -o "../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
+7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
 7za a -tzip "../place-apk-here-for-modding/unsigned_%capp%" "../projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "../%~dp0projects/temp"
 goto restart

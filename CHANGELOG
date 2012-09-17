@@ -131,3 +131,6 @@ Updated apktool.jar to v1.5.0 (Released September 2 - 2012 ) Codename : Pikmin
 Updated AAPT to the latest Custom Build
 Fixed Decompiler Switch to Actually work
 Fixed Compiler script Errors
+Updated The MANUAL
+Updated the README
+Added Raw Mode to the Decompiler Switch
