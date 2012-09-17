@@ -553,8 +553,8 @@ echo.
 echo "Sorry thats not the dependee apk, try again"
 goto temr
 )
-if (%jar%)==(0) (echo Decompiling Apk)
-if (%jar%)==(1) (echo Decompiling Jar)
+if (%jar%)==(0) (echo Decompiling Apk %decs%)
+if (%jar%)==(1) (echo Decompiling Jar %decs%)
 if (%dec%)==(0) (set apkdec=d)
 if (%dec%)==(1) (set apkdec=d -r)
 if (%dec%)==(2) (set apkdec=d -s)
@@ -571,8 +571,8 @@ IF EXIST "../place-apk-here-for-modding/unsigned_%capp%" (del /Q "../place-apk-h
 IF EXIST "../place-apk-here-for-modding/signed_%capp%" (del /Q "../place-apk-here-for-modding\signed_%capp%")
 
 IF EXIST "../projects/%capp%" (rmdir /S /Q "../projects/%capp%")
-if (%jar%)==(0) (echo Decompiling Apk)
-if (%jar%)==(1) (echo Decompiling Jar)
+if (%jar%)==(0) (echo Decompiling Apk %decs%)
+if (%jar%)==(1) (echo Decompiling Jar %decs%)
 if (%dec%)==(0) (set apkdec=d)
 if (%dec%)==(1) (set apkdec=d -r)
 if (%dec%)==(2) (set apkdec=d -s)
