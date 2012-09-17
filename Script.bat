@@ -404,7 +404,7 @@ cd other
 md "apkopt_temp_%~n1"
 md optimized
 dir /b
-7za x -o "apkopt_temp_%~n1" "../place-apk-here-to-batch-optimize/%~n1%~x1"
+7za x -o"apkopt_temp_%~n1" "../place-apk-here-to-batch-optimize/%~n1%~x1"
 mkdir temp
 xcopy "apkopt_temp_%~n1\res\*.9.png" "temp" /S /Y
 roptipng -o99 "apkopt_temp_%~n1\**\*.png"
@@ -597,7 +597,7 @@ if (%jar%)==(1) (echo Building Jar)
 IF EXIST "%~dp0place-apk-here-for-modding\System_%capp%" (del /Q "%~dp0place-apk-here-for-modding\System_%capp%")
 java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\System_%capp%"
 if (%jar%)==(0) (goto :nojar)
-7za x -o "../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
+7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
 7za a -tzip "../place-apk-here-for-modding/System_%capp%" "../projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "../%~dp0projects/temp"
 goto restart
@@ -675,7 +675,7 @@ if %INPUT%==3 (call :nq7)
 if %INPUT%==4 (call :nq8)
 :nq5
 rmdir /S /Q "%~dp0keep"
-7za x -o "../keep" "../place-apk-here-for-modding/%capp%"
+7za x -o"../keep" "../place-apk-here-for-modding/%capp%"
 rmdir /S /Q "%~dp0keep/META-INF/"
 echo In the APK Multi-Tools folder u'll find
 echo a keep folder. Within it, delete 
@@ -694,7 +694,7 @@ goto restart
 
 :nq7
 rmdir /S /Q "%~dp0keep"
-7za x -o "../keep" "../place-apk-here-for-modding/%capp%"
+7za x -o"../keep" "../place-apk-here-for-modding/%capp%"
 echo In the APK Multi-Tools folder u'll find
 echo a keep folder. Within it, delete 
 echo everything you have modified and leave
