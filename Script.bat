@@ -91,7 +91,7 @@ cls
 if %dec%==0 (set decs=Sources and Resources Files)
 if %dec%==1 (set decs=Source Files only)
 if %dec%==2 (set decs=Resource Files only)
-if %dec%==3 (set decs=Raw Files Only)
+if %dec%==3 (set decs=Raw Format Only)
 
 cd "%~dp0"
 set menunr=GARBAGE
