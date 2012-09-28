@@ -104,9 +104,9 @@ echo  Simple Tasks Such As Image Editing         Advanced Tasks Such As Code Edi
 echo  ----------------------------------         ------------------------------------        -----------------------------------
 echo  0    Adb pull                              9    Decompile apk                          16   Batch Theme Image Transfer
 echo  1    Extract apk                           10   Decompile apk (with dependencies)          (Read the Instructions before
-echo  2    Optimize images inside                     (For propietary rom apks)                    using this feature)
+echo  2    Optimize images inside                     (For proprietary rom apks)                    using this feature)
 echo  3    Zip apk                               11   Compile System APK files                                 
-echo  4    Sign apk (Dont do this if its         12   Compile None System APK Files                                     
+echo  4    Sign apk (Dont do this if its         12   Compile Non-System APK Files                                     
 echo       a system apk)                         13   Sign apk
 echo  5    Zipalign apk (Do once apk is          14   Install apk  
 echo       created/signed)                       15   Compile apk / Sign apk / Install apk    
@@ -663,10 +663,10 @@ cls
 echo  ---------------------------------------------------------------------------
 echo  1. Create an unsigned apk using the keep folder option
 echo  2. Create an unsigned apk
-echo     *Notice*   Options 3 and 4 are expermental use with care *Notice*
+echo     *Notice* Options 3 and 4 are experimental use with care *Notice*
 echo  3. Create an apk using the original Signature using the keep folder option
 echo  4. Create an apk using the original Signature
-echo     *Notice*   Options 3 and 4 are expermental use with care *Notice*
+echo     *Notice* Options 3 and 4 are experimental use with care *Notice*
 echo  ---------------------------------------------------------------------------
 set /P INPUT=Type input 1 - 4: %=%
 if %INPUT%==1 (call :nq5)
