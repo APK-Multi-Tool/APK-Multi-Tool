@@ -79,6 +79,7 @@ echo                                                            .ri....:j2Y,
 echo                                                              ,..:.::.                                                              
 echo                                                Written by
 echo                                    Gerald Wayne Baggett Jr AKA Raziel23x
+echo                                           http://apkmultitool.com
 echo   rL7vvL    iLv77J               .LvL:     :.    ULJv        0NPFjr77LFPqG,                          u7L7                          
 echo   @B@@@BB  r@B@B@B, .:.:   .:.:  1@@@X :5B@B@ir  BMMO        M@OZB@B@BZOBB   ,iLLr.       ,iYvr,    ,B@B@                          
 echo   B@@P.@BU,@@1:@B@  B@B@.  @B@B, LB@Bj P@@B@BNN  @B@B ,rii;7     JB@B@    :@@@BuJ@B@@J iB@B@uuB@B@Y  @B@@                          
@@ -231,14 +232,11 @@ goto restart
 cls
 echo About
 echo -----
-
-
-
-
-
-
-
 type other\version.txt
+echo Updates and Support Site
+echo Please Visit the Official Website for updated information and to check out the latest official releases
+echo The Website Address is http://apkmultitool.com
+echo ----
 echo Tips
 echo ----
 echo 1. If Modifying system apps, never resign them unless you want to resign all
