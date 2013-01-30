@@ -93,7 +93,7 @@ goto RESTART
 
 
 :LOGR
-cd tools
+cd other
 Start "Read The Log - Main script is still running, close this to return" signer 4
 goto RESTART
 :CHECKUPDATE
@@ -148,21 +148,21 @@ ECHO *                                                                          
 ECHO *                          Creating project folder                                *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
+
 mkdir projects
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                     Creating place-apk-here-for-modding folder                  *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
+
 mkdir place-apk-here-for-modding
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                     Creating place-ogg-here folder                              *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
+
 mkdir place-ogg-here
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
@@ -170,28 +170,28 @@ ECHO *                  Creating place-apk-here-to-batch-optimize folder        
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 
-ping 1.1.1.1 -n 1 -w 2000 > nul
+
 mkdir place-apk-here-to-batch-optimize
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                     Creating place-apk-here-for-signing folder                  *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
+
 mkdir place-apk-here-for-signing
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                 Creating moving to THEME PORTER to Setup Folders                *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
+
 cd themer
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                          Creating transferred folder                            *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
+
 mkdir transferred
 
 cd "%~dp0"
