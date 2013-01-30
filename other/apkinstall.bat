@@ -60,7 +60,7 @@ cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *        twframework-res.apk not Found please make sure the file is in the      *
-ECHO *        other Directory returning to Dependencies menu                *
+ECHO *        other Directory returning to Dependencies menu                         *
 ECHO *                                                                               *
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
@@ -100,7 +100,7 @@ IF NOT EXIST com.htc.resources.apk (
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *        com.htc.resources.apk not Found please make sure the file is in the    *
-ECHO *        other Directory returning to Dependencies menu                *
+ECHO *        other Directory returning to Dependencies menu                         *
 ECHO *                                                                               *
 ECHO *********************************************************************************
 ping 1.1.1.1 -n 1 -w 2000 > nul 
@@ -170,4 +170,5 @@ cd "%~dp0"
 goto quit
 )
 :quit
-goto FRAMRES
+exit
+
