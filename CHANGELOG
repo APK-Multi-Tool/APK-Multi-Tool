@@ -134,3 +134,12 @@ Fixed Compiler script Errors
 Replaced The OLD MANUEL HTML File with a Actual Help Doctument 
 Updated the README
 Added Raw Mode to the Decompiler Switch
+
+Version 1.0.11
+Moved DEPENDENCY FILES to its own bat file which fixed issue with installing a DEPENDENCY would close the setup.bat
+Updated to ApkTool v1.5.2-SNAPSHOT Give Support to Android api 17
+Fixed Compiler Issues Hopefully when recompiling
+Hopefully fixed a bug introduced into the application which would cause keep folder items not being copied over after removing changed files causing corrupted apk files
+Updated Custom Build of AAPT for MIUI SUPPORT
+UPDATE ANDROID SDK TOOLS to API 17
+Fixed Issue #10 Decompilation fails when resource processing begins
