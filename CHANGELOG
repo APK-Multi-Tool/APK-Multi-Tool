@@ -143,3 +143,5 @@ Hopefully fixed a bug introduced into the application which would cause keep fol
 Updated Custom Build of AAPT for MIUI SUPPORT
 UPDATE ANDROID SDK TOOLS to API 17
 Fixed Issue #10 Decompilation fails when resource processing begins
+Removed unneeded ping request
+Fixed Bug with Viewing the LOGS for the SETUP.BAT
