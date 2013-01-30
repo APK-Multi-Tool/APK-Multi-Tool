@@ -35,6 +35,8 @@ ECHO ***************************************************************************
 ECHO *                                                                                 *
 ECHO * 1. Check for update                                                             *
 ECHO *    This Will Check if there is a update to the main program                     *
+ECHO *    For  this option is not functional please visit                              *
+ECHO *    http://apkmultitool.com for updates                                          *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
