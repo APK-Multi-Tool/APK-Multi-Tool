@@ -156,3 +156,4 @@ UPDATE ANDROID SDK TOOLS to API 17
 Fixed Issue #10 Decompilation fails when resource processing begins
 Removed unneeded ping request
 Fixed Bug with Viewing the LOGS for the SETUP.BAT
+Added the ability to pull Dependencies directly from your phone to use to install using the setup scripts

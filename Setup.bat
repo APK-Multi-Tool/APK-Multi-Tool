@@ -227,7 +227,11 @@ ECHO * 4. Install SystemUI.apk                                                  
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
-ECHO * 5. Return to Main Menu                                                          *
+ECHO * 5. Pull Dependencies from Phone                                                 *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO * 6. Return to Main Menu                                                          *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
@@ -239,7 +243,8 @@ IF %menunr%==1 (goto FRAMRES1)
 IF %menunr%==2 (goto FRAMRES2)
 IF %menunr%==3 (goto FRAMRES3)
 IF %menunr%==4 (goto FRAMRES4)
-IF %menunr%==5 (goto RESTART)
+IF %menunr%==5 (goto SYSTEMPULL)
+IF %menunr%==6 (goto RESTART)
 IF %menunr%==00 (goto QUIT)
 :WHAT
 echo You went crazy and entered something that wasnt part of the menu options
@@ -264,6 +269,11 @@ goto FRAMRES
 :FRAMRES4
 cd other
 Start "Installation of SystemUI.apk Starting" apkinstall 4
+goto FRAMRES
+
+:SYSTEMPULL
+cd other
+Start "Pulling of the Android Dependencies Starting" system
 goto FRAMRES
 
 :ABOUT
