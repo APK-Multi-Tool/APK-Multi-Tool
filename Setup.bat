@@ -321,7 +321,7 @@ set /a cc = %cc% + 1
 goto recursive
 )
 echo.
-goto regoto
+goto recall
 :endloop
 goto quit
 :QUIT
