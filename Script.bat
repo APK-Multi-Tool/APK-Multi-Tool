@@ -304,7 +304,7 @@ CLS
 goto restart
 
 :btit
-( ECHO Batch Theme Image Transfer TOOL
+ECHO Batch Theme Image Transfer TOOL
 ECHO Expermental use with caution
 ECHO This tool makes the process of transferring images from one APK file to another 
 ECHO APK File of the same file making it easier to update themes or even transferring
@@ -313,9 +313,9 @@ ECHO be much faster.
 ECHO (Note: You will have to manually replace the progress_horizontals.xml from the
 ECHO framework-res since this file is needed with Theme Changes)
 PAUSE
-Start cmd /c themer\tporter
-exit
-)
+cd themer
+Start "Begining porting of themes" tporter
+goto restart
 :ogg
 cd other
 mkdir temp
