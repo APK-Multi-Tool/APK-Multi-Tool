@@ -433,7 +433,7 @@ xcopy "%~dp0temp" "%~dp0projects\%capp%\res" /S /Y
 rmdir temp /S /Q
 goto restart
 :noproj
-ECHO Please Select A Project To Work On (Option #23)
+ECHO Please Select A Project To Work On (Option #24)
 PAUSE
 goto restart
 :ap
