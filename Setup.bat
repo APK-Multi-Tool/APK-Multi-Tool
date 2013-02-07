@@ -35,6 +35,8 @@ ECHO ***************************************************************************
 ECHO *                                                                                 *
 ECHO * 1. Check for update                                                             *
 ECHO *    This Will Check if there is a update to the main program                     *
+ECHO *    For  this option is not functional please visit                              *
+ECHO *    http://apkmultitool.com for updates                                          *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
@@ -91,7 +93,7 @@ goto RESTART
 
 
 :LOGR
-cd tools
+cd other
 Start "Read The Log - Main script is still running, close this to return" signer 4
 goto RESTART
 :CHECKUPDATE
@@ -146,21 +148,21 @@ ECHO *                                                                          
 ECHO *                          Creating project folder                                *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
+
 mkdir projects
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                     Creating place-apk-here-for-modding folder                  *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
+
 mkdir place-apk-here-for-modding
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                     Creating place-ogg-here folder                              *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
+
 mkdir place-ogg-here
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
@@ -168,28 +170,28 @@ ECHO *                  Creating place-apk-here-to-batch-optimize folder        
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 
-ping 1.1.1.1 -n 1 -w 2000 > nul
+
 mkdir place-apk-here-to-batch-optimize
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                     Creating place-apk-here-for-signing folder                  *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
+
 mkdir place-apk-here-for-signing
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                 Creating moving to THEME PORTER to Setup Folders                *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
+
 cd themer
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                          Creating transferred folder                            *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
+
 mkdir transferred
 
 cd "%~dp0"
@@ -225,7 +227,11 @@ ECHO * 4. Install SystemUI.apk                                                  
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
-ECHO * 5. Return to Main Menu                                                          *
+ECHO * 5. Pull Dependencies from Phone                                                 *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO * 6. Return to Main Menu                                                          *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
@@ -237,7 +243,8 @@ IF %menunr%==1 (goto FRAMRES1)
 IF %menunr%==2 (goto FRAMRES2)
 IF %menunr%==3 (goto FRAMRES3)
 IF %menunr%==4 (goto FRAMRES4)
-IF %menunr%==5 (goto RESTART)
+IF %menunr%==5 (goto SYSTEMPULL)
+IF %menunr%==6 (goto RESTART)
 IF %menunr%==00 (goto QUIT)
 :WHAT
 echo You went crazy and entered something that wasnt part of the menu options
@@ -247,168 +254,26 @@ goto FRAMRES
 :FRAMRES1
 cls
 cd other
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                         Searching for framework-res.apk                       *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
-cls
-IF NOT EXIST framework-res.apk (
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *        framework-res.apk not Found please make sure the file is in the        *
-ECHO *        other Directory returning to Dependencies menu                         *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul 
-cd "%~dp0"
-goto FRAMRESRET
-)
-IF EXIST framework-res.apk (
-cls
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                       framework-res.apk Found Installing                      *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
-apktool if framework-res.apk
-cls
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                  Installation of framework-res.apk Complete                   *
-ECHO *                       Returning to Dependencies menu                          *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul 
-cd "%~dp0"
-goto FRAMRESRET
-)
+Start "Installation of framework-res.apk Starting" apkinstall 1
+goto FRAMRES
 :FRAMRES2
 cls
 cd other
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                        Searching for twframework-res.apk                      *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
-IF NOT EXIST twframework-res.apk (
-cls
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *        twframework-res.apk not Found please make sure the file is in the      *
-ECHO *        other Directory returning to Dependencies menu                *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul 
-cd "%~dp0"
-goto FRAMRESRET
-)
-IF EXIST twframework-res.apk (
-cls
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                      twframework-res.apk Found Installing                     *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
-cls
-apktool if twframework-res.apk
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                 Installation of twframework-res.apk Complete                  *
-ECHO *                       Returning to Dependencies menu                          *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul 
-cd "%~dp0"
-goto FRAMRESRET
-)
+Start "Installation of twframework-res.apk Starting" apkinstall 2
+goto FRAMRES
 :FRAMRES3
 cls
 cd other
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                       Searching for com.htc.resources.apk                     *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
-IF NOT EXIST com.htc.resources.apk (
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *        com.htc.resources.apk not Found please make sure the file is in the    *
-ECHO *        other Directory returning to Dependencies menu                *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul 
-cd "%~dp0"
-goto FRAMRESRET
-)
-IF EXIST com.htc.resources.apk (
-cls
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                     com.htc.resources.apk Found Installing                    *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
-apktool if com.htc.resources.apk
-cls
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                Installation of com.htc.resources.apk Complete                 *
-ECHO *                       Returning to Dependencies menu                          *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul 
-cd "%~dp0"
-goto FRAMRESRET
-)
+Start "Installation of com.htc.resources.apk Starting" apkinstall 3
+goto FRAMRES
 :FRAMRES4
-ping 1.1.1.1 -n 1 -w 2000 > nul
 cd other
-cls
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                            Searching for SystemUI.apk                         *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
-cls
-IF NOT EXIST SystemUI.apk (
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *        SystemUI.apk not Found please make sure the file is in the             *
-ECHO *        other Directory returning to Dependencies menu                         *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul 
-cd "%~dp0"
-goto FRAMRESRET
-)
-IF EXIST SystemUI.apk (
-cls
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                         SystemUI.apk Found Installing                         *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
-apktool if SystemUI.apk
-cls
-ECHO *********************************************************************************
-ECHO *                                                                               *
-ECHO *                     Installation of SystemUI.apk Complete                     *
-ECHO *                       Returning to Dependencies menu                          *
-ECHO *                                                                               *
-ECHO *********************************************************************************
-ping 1.1.1.1 -n 1 -w 2000 > nul
-cd "%~dp0"
-goto FRAMRESRET
-)
-:FRAMRESRET
+Start "Installation of SystemUI.apk Starting" apkinstall 4
+goto FRAMRES
+
+:SYSTEMPULL
+cd other
+Start "Pulling of the Android Dependencies Starting" system
 goto FRAMRES
 
 :ABOUT
@@ -456,7 +321,7 @@ set /a cc = %cc% + 1
 goto recursive
 )
 echo.
-goto regoto
+goto recall
 :endloop
 goto quit
 :QUIT
