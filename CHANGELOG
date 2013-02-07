@@ -137,7 +137,7 @@ Added Raw Mode to the Decompiler Switch
 
 Version 1.0.11
 Moved DEPENDENCY FILES to its own bat file which fixed issue with installing a DEPENDENCY would close the setup.bat
-Updated to ApkTool v1.5.2-SNAPSHOT
+Updated to ApkTool v1.5.2
 -Fixed (issue #299) - output smali filename errors to screen during rebuild instead of filestream
 -Only show the --aapt / -a info in verbose mode.
 -Fixed (issue #392) - Don't crash out if .git folder isn't present. Use SNAPSHOT-DEV instead.
