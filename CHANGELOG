@@ -159,3 +159,7 @@ Fixed Bug with Viewing the LOGS for the SETUP.BAT
 Added the ability to pull Dependencies directly from your phone to use to install using the setup scripts
 Fixed bug with Theme porter not functioning  
 Cosmetic changes to the source.
+
+Version 1.0.12
+Fixed Compiler bug with option 3 and 4 for none system files.
+Fixed option 24 not working properly
