@@ -361,7 +361,7 @@ IF errorlevel 1 (
 ECHO "An Error Occured, Please Check The Log (option 23)"
 PAUSE
 )
-DEL /Q "../place-apk-here-for-modding/unsigned_%capp%"
+DEL /Q "../place-apk-here-for-modding/unsigned%capp%"
 cd ..
 :ins1
 ECHO Waiting for device
@@ -634,7 +634,7 @@ IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
 cd other
 IF (%jar%)==(0) (ECHO Building Apk)
 IF (%jar%)==(1) (ECHO Building Jar)
-IF EXIST "%~dp0place-apk-here-for-modding\unsigned_%capp%" (del /Q "%~dp0place-apk-here-for-modding\unsigned%capp%")
+IF EXIST "%~dp0place-apk-here-for-modding\unsigned%capp%" (del /Q "%~dp0place-apk-here-for-modding\unsigned%capp%")
 java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\unsigned%capp%"
 IF (%jar%)==(0) (goto :nojar2)
 7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
@@ -693,18 +693,16 @@ ECHO any xml, then delete resources.arsc from that
 ECHO folder as well. Once done then press enter 
 ECHO on this script.
 PAUSE
-xcopy "unsigned_%capp%" "signed_%capp%" /A /Y /V
-DEL "../place-apk-here-for-modding/unsigned_%capp%"
-7za a -tzip "../place-apk-here-for-modding/signed%capp%" "../keep/*" -mx%usrc% -r
+
+7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
 cd ..
 goto restart
 :nq8
-xcopy "unsigned_%capp%" "signed_%capp%" /A /Y /V
-DEL "../place-apk-here-for-modding/unsigned%capp%"
 7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
-7za a -tzip "../place-apk-here-for-modding/signed%capp%" "../projects/temp/*" -mx%usrc% -r
+7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0projects/temp"
+cd ..
 goto restart
 :q1
 ECHO Would you like to copy over additional files 
