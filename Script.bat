@@ -125,7 +125,7 @@ ECHO       to just edit the normal images)
 ECHO  00   Quit
 ECHO  -------------------------------------------------------------------------------
 SET /P menunr=Please make your decision:
-IF %capp%==None goto noproj
+
 IF %menunr%==0 (goto ap)
 IF %menunr%==1 (goto ex)
 IF %menunr%==2 (goto opt)
@@ -154,7 +154,7 @@ IF %menunr%==24 (goto filesel)
 IF %menunr%==25 (goto about)
 IF %menunr%==26 (goto switchc)
 IF %menunr%==00 (goto quit)
-
+IF %capp%==None goto noproj
 
 :WHAT
 ECHO You went crazy and entered something that wasnt part of the menu options
