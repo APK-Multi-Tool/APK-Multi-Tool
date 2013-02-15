@@ -162,4 +162,6 @@ Cosmetic changes to the source.
 
 Version 1.0.12
 Fixed Compiler bug with option 3 and 4 for none system files.
-Fixed option 24 not working properly
+Fixed Set current project option not working properly
+Added the ability to set compression level of the Resources.arsc
+Changed the name of recompiled System Applications from unsigned to system to keep the two from being confused
