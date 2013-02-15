@@ -141,8 +141,8 @@ IF %menunr%==7 (goto alli)
 IF %menunr%==8 (goto apu)
 IF %menunr%==9 (goto de)
 IF %menunr%==10 (goto ded)
-IF %menunr%==11 (goto co)
-IF %menunr%==12 (goto co2)
+IF %menunr%==11 (goto syscom)
+IF %menunr%==12 (goto nonsyscom)
 IF %menunr%==13 (goto si)
 IF %menunr%==14 (goto ins)
 IF %menunr%==15 (goto all)
@@ -588,7 +588,7 @@ PAUSE
 )
 cd ..
 goto restart
-:co
+:syscom
 IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
 cd other
 IF (%jar%)==(0) (ECHO Building Apk)
@@ -631,18 +631,15 @@ rmdir /S /Q "%~dp0keep"
 7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" resources.arsc -r
 7za a -tzip "../place-apk-here-for-modding/system%capp%" "../projects/temp/resources.arsc" -mx%resusrc% -r
 rmdir /S /Q "%~dp0projects/temp"
-
-
 cd ..
 goto restart
 :nq3
 7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
 7za a -tzip "../place-apk-here-for-modding/system%capp%" "../projects/temp/*" -mx%usrc% -r
-
 rmdir /S /Q "%~dp0projects/temp"
 goto restart
 
-:co2
+:nonsyscom
 IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
 cd other
 IF (%jar%)==(0) (ECHO Building Apk)
