@@ -571,6 +571,7 @@ cd ..
 goto restart
 :de
 cd other
+IF EXIST "../place-apk-here-for-modding/system%capp%" (del /Q "../place-apk-here-for-modding\system%capp%")
 IF EXIST "../place-apk-here-for-modding/unsigned%capp%" (del /Q "../place-apk-here-for-modding\unsigned%capp%")
 IF EXIST "../place-apk-here-for-modding/signed%capp%" (del /Q "../place-apk-here-for-modding\signed%capp%")
 
@@ -593,7 +594,7 @@ IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
 cd other
 IF (%jar%)==(0) (ECHO Building Apk)
 IF (%jar%)==(1) (ECHO Building Jar)
-IF EXIST "%~dp0place-apk-here-for-modding\unsigned%capp%" (del /Q "%~dp0place-apk-here-for-modding\system%capp%")
+IF EXIST "%~dp0place-apk-here-for-modding\system%capp%" (del /Q "%~dp0place-apk-here-for-modding\system%capp%")
 java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\system%capp%"
 IF (%jar%)==(0) (goto :nojar)
 7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
@@ -688,7 +689,7 @@ PAUSE
 7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
 7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" resources.arsc -r
-7za a -tzip "../place-apk-here-for-modding/system%capp%" "../projects/temp/resources.arsc" -mx%resusrc% -r
+7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/temp/resources.arsc" -mx%resusrc% -r
 rmdir /S /Q "%~dp0projects/temp"
 cd ..
 goto restart
@@ -710,7 +711,7 @@ PAUSE
 7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
 7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" resources.arsc -r
-7za a -tzip "../place-apk-here-for-modding/system%capp%" "../projects/temp/resources.arsc" -mx%resusrc% -r
+7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/temp/resources.arsc" -mx%resusrc% -r
 rmdir /S /Q "%~dp0projects/temp"
 cd ..
 goto restart
@@ -720,13 +721,7 @@ goto restart
 rmdir /S /Q "%~dp0projects/temp"
 cd ..
 goto restart
-:q1
-ECHO Would you like to copy over additional files 
-ECHO that you didn't modify from the original apk in order to ensure least 
-ECHO # of errors ^(y/n^)
-set /P INPU=Type input: %=%
-IF %INPU%==y (goto nq4)
-IF %INPUT1%==n (call :restart)
+
 :si
 cd other
 ECHO Signing Apk
