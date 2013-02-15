@@ -13,6 +13,7 @@ cd "%~dp0"
 mode con:cols=140 lines=50
 CLS
 set usrc=9
+set resusrc=0
 set dec=0
 set capp=None
 set heapy=512
@@ -117,7 +118,7 @@ ECHO  18   Sign an apk(Batch support)(inside place-apk-here-for-signing folder o
 ECHO  19   Batch optimize ogg files (inside place-ogg-here only)
 ECHO  20   Clean Files/Folders
 ECHO  21   Select compression level for apk's
-ECHO  22   Select compression level for Resources.arsc (Not implamented yet)
+ECHO  22   Select compression level for Resources.arsc
 ECHO  23   Set Max Memory Size (Only use IF getting stuck at decompiling/compiling)
 ECHO  24   Read Log
 ECHO  25   Set current project
@@ -308,7 +309,7 @@ CLS
 goto restart
 :resusrcomp
 set /P INPUT=Enter Compression Level (0-9) : %=%
-set usrc=%INPUT%
+set resusrc=%INPUT%
 CLS
 goto restart
 :btit
@@ -592,11 +593,11 @@ IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
 cd other
 IF (%jar%)==(0) (ECHO Building Apk)
 IF (%jar%)==(1) (ECHO Building Jar)
-IF EXIST "%~dp0place-apk-here-for-modding\unsigned%capp%" (del /Q "%~dp0place-apk-here-for-modding\unsigned%capp%")
-java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\unsigned%capp%"
+IF EXIST "%~dp0place-apk-here-for-modding\unsigned%capp%" (del /Q "%~dp0place-apk-here-for-modding\system%capp%")
+java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\system%capp%"
 IF (%jar%)==(0) (goto :nojar)
 7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
-7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/temp/*" -mx%usrc% -r
+7za a -tzip "../place-apk-here-for-modding/system%capp%" "../projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "../%~dp0projects/temp"
 goto restart
 
@@ -625,14 +626,18 @@ ECHO any xml, then delete resources.arsc from that
 ECHO folder as well. Once done then press enter 
 ECHO on this script.
 PAUSE
-7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../keep/*" -mx%usrc% -r
+7za a -tzip "../place-apk-here-for-modding/system%capp%" "../keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
+7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" resources.arsc -r
+7za a -tzip "../place-apk-here-for-modding/system%capp%" "../projects/temp/resources.arsc" -mx%resusrc% -r
+rmdir /S /Q "%~dp0projects/temp"
+
 
 cd ..
 goto restart
 :nq3
 7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
-7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/temp/*" -mx%usrc% -r
+7za a -tzip "../place-apk-here-for-modding/system%capp%" "../projects/temp/*" -mx%usrc% -r
 
 rmdir /S /Q "%~dp0projects/temp"
 goto restart
@@ -685,6 +690,9 @@ ECHO on this script.
 PAUSE
 7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
+7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" resources.arsc -r
+7za a -tzip "../place-apk-here-for-modding/system%capp%" "../projects/temp/resources.arsc" -mx%resusrc% -r
+rmdir /S /Q "%~dp0projects/temp"
 cd ..
 goto restart
 :nq6
@@ -704,6 +712,9 @@ PAUSE
 
 7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
+7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" resources.arsc -r
+7za a -tzip "../place-apk-here-for-modding/system%capp%" "../projects/temp/resources.arsc" -mx%resusrc% -r
+rmdir /S /Q "%~dp0projects/temp"
 cd ..
 goto restart
 :nq8
