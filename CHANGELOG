@@ -165,3 +165,4 @@ Fixed Compiler bug with option 3 and 4 for none system files.
 Fixed Set current project option not working properly
 Added the ability to set compression level of the Resources.arsc
 Changed the name of recompiled System Applications from unsigned to system to keep the two from being confused
+Code Clean up clearing out unused code 
