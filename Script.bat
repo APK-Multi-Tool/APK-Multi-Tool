@@ -291,12 +291,7 @@ goto restart
 :chc
 set capp=None
 goto restart
-rem :bins
-rem ECHO Waiting for device
-rem "%~dp0other\adb.exe" wait-for-device
-rem ECHO Installing Apks
-rem FOR %%F IN ("%~dp0place-apk-here-for-signing\*.apk") DO "%~dp0other\adb.exe" install -r "%%F"
-rem goto restart
+
 :heap
 set /P INPUT=Enter max size for java heap space in megabytes (eg 512) : %=%
 set heapy=%INPUT%
@@ -604,7 +599,7 @@ goto restart
 
 :nojar
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 21)"
+ECHO "An Error Occured, Please Check The Log (option 24)"
 PAUSE
 goto restart
 )
@@ -655,7 +650,7 @@ goto restart
 
 :nojar2
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 21)"
+ECHO "An Error Occured, Please Check The Log (option 24)"
 PAUSE
 goto restart
 )
