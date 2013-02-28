@@ -641,6 +641,7 @@ cd other
 IF (%jar%)==(0) (ECHO Building Apk)
 IF (%jar%)==(1) (ECHO Building Jar)
 IF EXIST "%~dp0place-apk-here-for-modding\unsigned%capp%" (del /Q "%~dp0place-apk-here-for-modding\unsigned%capp%")
+IF EXIST "%~dp0place-apk-here-for-modding\OriginalSignedKey%capp%" (del /Q "%~dp0place-apk-here-for-modding\OriginalSignedKey%capp%")
 java -Xmx%heapy%m -jar apktool.jar b "../projects/%capp%" "%~dp0place-apk-here-for-modding\unsigned%capp%"
 IF (%jar%)==(0) (goto :nojar2)
 7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
