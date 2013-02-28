@@ -166,3 +166,12 @@ Fixed Set current project option not working properly
 Added the ability to set compression level of the Resources.arsc
 Changed the name of recompiled System Applications from unsigned to system to keep the two from being confused
 Code Clean up clearing out unused code 
+UPDATED to apktool-cli-1.5.3-SNAPSHOT
+-Updated to smali/baksmali to v1.4.2
+-Fixed (issue #396) - Correctly handle android:debuggable while in debug mode.
+-Updated to Gradle 1.4
+-Fix for Null Reference while extracting Resources.
+-update known bytes to 38
+-Fix null mConfig in addMissingResSpecs()
+Added smali/baksmali for adding new up coming  Deodex features
+Added now when compiling with option 12 when you choose option 3 and 4 it names the apk files to show they have the origianl signature keys
