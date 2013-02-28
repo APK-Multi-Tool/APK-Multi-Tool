@@ -170,4 +170,7 @@ UPDATED to apktool-cli-1.5.3-SNAPSHOT
 -Updated to smali/baksmali to v1.4.2
 -Fixed (issue #396) - Correctly handle android:debuggable while in debug mode.
 -Updated to Gradle 1.4
+-Fix for Null Reference while extracting Resources.
+-update known bytes to 38
+-Fix null mConfig in addMissingResSpecs()
 Added smali/baksmali for adding new up coming  Deodex features
