@@ -174,3 +174,4 @@ UPDATED to apktool-cli-1.5.3-SNAPSHOT
 -update known bytes to 38
 -Fix null mConfig in addMissingResSpecs()
 Added smali/baksmali for adding new up coming  Deodex features
+Added now when compiling with option 12 when you choose option 3 and 4 it names the apk files to show they have the origianl signature keys
