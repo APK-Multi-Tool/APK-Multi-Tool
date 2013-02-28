@@ -408,7 +408,7 @@ rmdir "temp" /S /Q
 IF (%INPUT%)==(p) GOTO ponly
 7za a -tzip "optimized\%~n1.unaligned.apk" "%~dp0other\apkopt_temp_%~n1\*" -mx%usrc% 
 rd /s /q "apkopt_temp_%~n1"
-zipalign -v 4 "optimized\%~n1.unaligned.apk" "optimized\%~n1.apk"
+"%~dp0other\zipalign.exe" -v 4 "optimized\%~n1.unaligned.apk" "optimized\%~n1.apk"
 del /q "optimized\%~n1.unaligned.apk"
 goto endab
 :ponly
@@ -417,7 +417,7 @@ rd /s /q "apkopt_temp_%~n1"
 goto endab
 :zipo
 @ECHO Optimizing %~1...
-zipalign -v 4 "%~dp0place-apk-here-to-batch-optimize\%~n1%~x1" "%~dp0place-apk-here-to-batch-optimize\u%~n1%~x1"
+"%~dp0other\zipalign.exe" -v 4 "%~dp0place-apk-here-to-batch-optimize\%~n1%~x1" "%~dp0place-apk-here-to-batch-optimize\u%~n1%~x1"
 del /q "%~dp0place-apk-here-to-batch-optimize\%~n1%~x1"
 rename "%~dp0place-apk-here-to-batch-optimize\u%~n1%~x1" "%~n1%~x1"
 goto endab
@@ -483,9 +483,9 @@ PAUSE
 goto restart
 :zipa
 ECHO Zipaligning Apk
-IF EXIST "%~dp0place-apk-here-for-modding\signed%capp%" zipalign -f 4 "%~dp0place-apk-here-for-modding\signed%capp%" "%~dp0place-apk-here-for-modding\signedaligned%capp%"
+IF EXIST "%~dp0place-apk-here-for-modding\signed%capp%" "%~dp0other\zipalign.exe" -f 4 "%~dp0place-apk-here-for-modding\signed%capp%" "%~dp0place-apk-here-for-modding\signedaligned%capp%"
 
-IF EXIST "%~dp0place-apk-here-for-modding\unsigned%capp%" zipalign -f 4 "%~dp0place-apk-here-for-modding\unsigned%capp%" "%~dp0place-apk-here-for-modding\unsignedaligned%capp%"
+IF EXIST "%~dp0place-apk-here-for-modding\unsigned%capp%" "%~dp0other\zipalign.exe" -f 4 "%~dp0place-apk-here-for-modding\unsigned%capp%" "%~dp0place-apk-here-for-modding\unsignedaligned%capp%"
 
 IF errorlevel 1 (
 ECHO "An Error Occured, Please Check The Log (option 24)"
