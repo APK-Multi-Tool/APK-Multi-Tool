@@ -688,6 +688,7 @@ rmdir /S /Q "%~dp0keep"
 7za a -tzip "../place-apk-here-for-modding/unsigned%capp%" "../projects/temp/resources.arsc" -mx%resusrc% -r
 rmdir /S /Q "%~dp0projects/temp"
 cd ..
+PAUSE
 goto restart
 :nq6
 goto restart
@@ -711,6 +712,7 @@ rmdir /S /Q "%~dp0keep"
 rmdir /S /Q "%~dp0projects/temp"
 rename "../place-apk-here-for-modding/unsigned%capp%" "../place-apk-here-for-modding/OriginalSignedKey%capp%"
 cd ..
+PAUSE
 goto restart
 :nq8
 7za x -o"../projects/temp" "../place-apk-here-for-modding/%capp%" META-INF -r
@@ -718,6 +720,7 @@ goto restart
 rmdir /S /Q "%~dp0projects/temp"
 rename "../place-apk-here-for-modding/unsigned%capp%" "../place-apk-here-for-modding/OriginalSignedKey%capp%"
 cd ..
+PAUSE
 goto restart
 
 :si
