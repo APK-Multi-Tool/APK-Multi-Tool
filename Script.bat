@@ -723,8 +723,22 @@ cd ..
 PAUSE
 goto restart
 :apksignerkey
-Echo Coming soon
+cd other
+ECHO Signing Apk
+set KEYSTORE_FILE=%~dp0apksigner.keystore
+set KEYSTORE_PASS=apksigner
+set KEYSTORE_ALIAS=apksigner.keystore
+set JDK_PATH=C:\"Program Files"\Java\jdk1.6.0_41
+set JAVAC_PATH=%JDK_PATH%\bin\
+set PATH=%PATH%;%JAVAC_PATH%;
+call jarsigner -keystore %KEYSTORE_FILE% -storepass %KEYSTORE_PASS% -keypass %KEYSTORE_PASS% -signedjar ../place-apk-here-for-modding/signed%capp% ../place-apk-here-for-modding/unsigned%capp%  %KEYSTORE_ALIAS% %1
+IF errorlevel 1 (
+ECHO "An Error Occured, Please Check The Log (option 24)"
 PAUSE
+)
+
+DEL /Q "../place-apk-here-for-modding/unsigned%capp%"
+cd ..
 goto restart
 :stki
 cd other
