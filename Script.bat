@@ -725,7 +725,7 @@ goto restart
 :apksignerkey
 cd other
 ECHO Signing Apk
-set KEYSTORE_FILE=%~dp0apksigner.keystore
+set KEYSTORE_FILE=apksigner.keystore
 set KEYSTORE_PASS=apksigner
 set KEYSTORE_ALIAS=apksigner.keystore
 set JDK_PATH=C:\"Program Files"\Java\jdk1.6.0_41
