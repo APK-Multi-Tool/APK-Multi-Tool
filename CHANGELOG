@@ -175,3 +175,6 @@ UPDATED to apktool-cli-1.5.3-SNAPSHOT
 -Fix null mConfig in addMissingResSpecs()
 Added smali/baksmali for adding new up coming  Deodex features
 Added now when compiling with option 12 when you choose option 3 and 4 it names the apk files to show they have the origianl signature keys
+Added new Signing method for signing apk files. With this new method the key used has a shelf life of 1000 years and also apks files signed with this key is able to be published on the android market
+Added new checks to cleaning up old recompiled apk files before recompiling again.
+Added pause breaks into option 12 so that users can check to see if anything went wrong in the recompiling method when using the keep folder option.

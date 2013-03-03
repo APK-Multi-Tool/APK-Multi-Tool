@@ -101,8 +101,8 @@ ECHO  0    Adb pull                              9    Decompile apk             
 ECHO  1    Extract apk                           10   Decompile apk (with dependencies)          (Read the Instructions before
 ECHO  2    Optimize images inside                     (For proprietary rom apks)                    using this feature)
 ECHO  3    Zip apk                               11   Compile System APK files                                 
-ECHO  4    Sign apk (Dont do this IF its         12   Compile Non-System APK Files                                     
-ECHO       a system apk)                         13   Sign apk
+ECHO  4    Sign apk with Testkeys (Dont          12   Compile Non-System APK Files                                     
+ECHO       do this IF its a system apk)          13   Sign apk with Android Market supported Key
 ECHO  5    Zipalign apk (Do once apk is          14   Install apk  
 ECHO       created/signed)                       15   Compile apk / Sign apk / Install apk    
 ECHO       Install apk (Dont do this IF               (Non-System Apps Only)
@@ -134,7 +134,7 @@ IF %menunr%==0 (goto ap)
 IF %menunr%==1 (goto ex)
 IF %menunr%==2 (goto opt)
 IF %menunr%==3 (goto zip)
-IF %menunr%==4 (goto si)
+IF %menunr%==4 (goto stki)
 IF %menunr%==5 (goto zipa)
 IF %menunr%==6 (goto ins)
 IF %menunr%==7 (goto alli)
@@ -143,7 +143,7 @@ IF %menunr%==9 (goto de)
 IF %menunr%==10 (goto ded)
 IF %menunr%==11 (goto syscom)
 IF %menunr%==12 (goto nonsyscom)
-IF %menunr%==13 (goto si)
+IF %menunr%==13 (goto apksignerkey)
 IF %menunr%==14 (goto ins)
 IF %menunr%==15 (goto all)
 IF %menunr%==16 (goto btit)
@@ -722,8 +722,25 @@ rename "../place-apk-here-for-modding/unsigned%capp%" "../place-apk-here-for-mod
 cd ..
 PAUSE
 goto restart
+:apksignerkey
+cd other
+ECHO Signing Apk
+set KEYSTORE_FILE=apksigner.keystore
+set KEYSTORE_PASS=apksigner
+set KEYSTORE_ALIAS=apksigner.keystore
+set JDK_PATH=C:\"Program Files"\Java\jdk1.6.0_41
+set JAVAC_PATH=%JDK_PATH%\bin\
+set PATH=%PATH%;%JAVAC_PATH%;
+call jarsigner -keystore %KEYSTORE_FILE% -storepass %KEYSTORE_PASS% -keypass %KEYSTORE_PASS% -signedjar ../place-apk-here-for-modding/signed%capp% ../place-apk-here-for-modding/unsigned%capp%  %KEYSTORE_ALIAS% %1
+IF errorlevel 1 (
+ECHO "An Error Occured, Please Check The Log (option 24)"
+PAUSE
+)
 
-:si
+DEL /Q "../place-apk-here-for-modding/unsigned%capp%"
+cd ..
+goto restart
+:stki
 cd other
 ECHO Signing Apk
 java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 ../place-apk-here-for-modding/unsigned%capp% ../place-apk-here-for-modding/signed%capp%
