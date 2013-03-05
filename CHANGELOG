@@ -178,3 +178,4 @@ Added now when compiling with option 12 when you choose option 3 and 4 it names 
 Added new Signing method for signing apk files. With this new method the key used has a shelf life of 1000 years and also apks files signed with this key is able to be published on the android market
 Added new checks to cleaning up old recompiled apk files before recompiling again.
 Added pause breaks into option 12 so that users can check to see if anything went wrong in the recompiling method when using the keep folder option.
+Updated option 13 to use a alternative to a signing method which uses the Java_Home Enviroment Varable which needs to point to for example mine is set to C:\Program Files\Java\jdk1.6.0_41
