@@ -126,6 +126,11 @@ ECHO  26   About / Tips / Debug Section
 ECHO  27   Switch decompile mode (Allows you to pick to fully decompile the APK's or JAR's
 ECHO       or to just decompile Sources or just the Resources or do a raw dump allowing you
 ECHO       to just edit the normal images)
+ECHO  28   Donations
+ECHO       I would personally like to thank you for your superior generosity and kindness if 
+EVHO       you are one of those droid loving fans donating to the site to help keep us going.
+ECHO       We hope to continue growing and for development to keep getting bigger and bigger
+ECHO       as time goes on. Until then, Hope to see you around! Have a great day!" 
 ECHO  00   Quit
 ECHO  -------------------------------------------------------------------------------
 SET /P menunr=Please make your decision:
@@ -158,6 +163,7 @@ IF %menunr%==24 (goto logr)
 IF %menunr%==25 (goto filesel)
 IF %menunr%==26 (goto about)
 IF %menunr%==27 (goto switchc)
+IF %menunr%==28 (goto dotome)
 IF %menunr%==00 (goto quit)
 IF %capp%==None goto noproj
 
@@ -855,6 +861,10 @@ goto recursive
 )
 ECHO.
 goto recall
+:DOTOME
+start %~dp0docs\donate.html
+cls	
+goto restart
 :logr
 cd other
 Start "Read The Log - Main script is still running, close this to return" signer 1

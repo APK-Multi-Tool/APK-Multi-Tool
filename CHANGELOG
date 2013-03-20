@@ -169,10 +169,11 @@ Code Clean up clearing out unused code
 UPDATED to apktool-cli-1.5.3-SNAPSHOT
 -Updated to smali/baksmali to v1.4.2
 -Fixed (issue #396) - Correctly handle android:debuggable while in debug mode.
+-Fixed (issue #340) - Fixed superclass errors on debug mode.
 -Updated to Gradle 1.4
--Fix for Null Reference while extracting Resources.
--update known bytes to 38
--Fix null mConfig in addMissingResSpecs()
+-Updated known bytes for configurations to 38 (from addition of layout direction)
+-Fixed NPE when handling odex apks even with --no-src specified. (Thanks Rodrigo Chiossi)
+-Fixed (issue #427) - Correctly handles `--frame-path` on [b]uild
 Added smali/baksmali for adding new up coming  Deodex features
 Added now when compiling with option 12 when you choose option 3 and 4 it names the apk files to show they have the origianl signature keys
 Added new Signing method for signing apk files. With this new method the key used has a shelf life of 1000 years and also apks files signed with this key is able to be published on the android market
