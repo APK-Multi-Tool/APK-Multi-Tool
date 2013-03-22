@@ -1,6 +1,6 @@
 @ECHO off
-IF (%jar%)==(0) (ECHO Decompiling Apk %decs%)
-IF (%jar%)==(1) (ECHO Decompiling Jar %decs%)
+IF (%jar%)==(0) (ECHO Decompiling Apk)
+IF (%jar%)==(1) (ECHO Decompiling Jar)
 set /A count=0
 FOR %%F IN (../place-apk-here-for-modding/*.apk) DO (
 set /A count+=1
