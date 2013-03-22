@@ -329,6 +329,7 @@ cd themer
 Start "Begining porting of themes" tporter
 goto restart
 :batdec
+cls
 ECHO This will Decompile all the APK files inside of the place-apk-here-for-modding
 ECHO and add the Decompiled Versions into the Project folder as if you decompiled
 ECHO all the APK FILES one at a time using option 9
@@ -337,6 +338,7 @@ cd other
 Start "Begining Batch Decompiling of all the APK Files" batdecomp
 goto restart
 :batcom
+cls
 ECHO This will Compile all the APK files inside of the project folder
 ECHO and add the Compiled Versions into the place-apk-here-for-signing folder as if you 
 ECHO compiled all the APK FILES one at a time using option 12 sub option 2
