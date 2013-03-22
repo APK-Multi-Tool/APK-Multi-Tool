@@ -182,3 +182,5 @@ Added pause breaks into option 12 so that users can check to see if anything wen
 Updated option 13 to use a alternative to a signing method which uses the Java_Home Enviroment Varable which needs to point to for example mine is set to C:\Program Files\Java\jdk1.6.0_41
 Added Batch Decompile option
 Added Batch Compile option
+Completely rewrote how recompiled apk files are stored so to not clutter up the place-apk-here-for-modding as that folder is just for storing unmodified apk files.
+Updated the signer location to match up with the changes to how modified apk files are handled
