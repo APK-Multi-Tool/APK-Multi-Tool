@@ -7,26 +7,16 @@ ECHO ***************************************************************************
 ECHO ^*                          %date% -- %time%^ >> setuplog.log                         * >> setuplog.log
 ECHO *********************************************************************************** >> setuplog.log
 Setup 0 2>> setuplog.log
-
-
 :error
-
 :skipme
 cd "%~dp0"
 mode con:cols=85 lines=50
-
-set usrc=9
-set capp=None
-
 if errorlevel 1 goto erradb
-
 cls
-
 :RESTART
 cd "%~dp0"
 set menunr=GARBAGE
 cls
-
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                         APK MULTI-TOOL SETUP FILE                               *
@@ -80,7 +70,6 @@ ECHO *                                                                          
 ECHO ************************************************************************************
 PAUSE
 goto RESTART
-
 :ERRADB
 cls
 ECHO ************************************************************************************
@@ -90,8 +79,6 @@ ECHO *                                                                          
 ECHO ************************************************************************************
 PAUSE
 goto RESTART
-
-
 :LOGR
 cd other
 Start "Read The Log - Main script is still running, close this to return" signer 4
@@ -115,8 +102,6 @@ set /a ver = 1
 if /I %tmpv% EQU %ver% (goto :NOUPDATE)
 if /I %tmpv% GTR %ver% (
 wget http://update.apkmultitool.com/updates.txt
-
-
 cls
 IF EXIST updates.txt (
 ECHO ***********************************************************************************
@@ -128,7 +113,6 @@ PAUSE
 goto changed
 :regoto
 PAUSE
-
 Start cmd /c other\signer 3
 exit
 )
@@ -141,59 +125,49 @@ ECHO *                                                                          
 ECHO ***********************************************************************************
 PAUSE
 goto RESTART
-
 :SETDIR
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                          Creating project folder                                *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-
 mkdir projects
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                     Creating place-apk-here-for-modding folder                  *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-
 mkdir place-apk-here-for-modding
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                     Creating place-ogg-here folder                              *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-
 mkdir place-ogg-here
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                  Creating place-apk-here-to-batch-optimize folder               *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-
-
 mkdir place-apk-here-to-batch-optimize
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                     Creating place-apk-here-for-signing folder                  *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-
 mkdir place-apk-here-for-signing
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                 Creating moving to THEME PORTER to Setup Folders                *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-
 cd themer
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO *                          Creating transferred folder                            *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
-
 mkdir transferred
-
 cd "%~dp0"
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
@@ -227,11 +201,15 @@ ECHO * 4. Install SystemUI.apk                                                  
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
-ECHO * 5. Pull Dependencies from Phone                                                 *
+ECHO * 5. Install SemcGenericUxpRes.apk                                                *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
-ECHO * 6. Return to Main Menu                                                          *
+ECHO * 6. Pull Dependencies from Phone                                                 *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO * 7. Return to Main Menu                                                          *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
@@ -243,14 +221,14 @@ IF %menunr%==1 (goto FRAMRES1)
 IF %menunr%==2 (goto FRAMRES2)
 IF %menunr%==3 (goto FRAMRES3)
 IF %menunr%==4 (goto FRAMRES4)
-IF %menunr%==5 (goto SYSTEMPULL)
-IF %menunr%==6 (goto RESTART)
+IF %menunr%==5 (goto FRAMRES5)
+IF %menunr%==6 (goto SYSTEMPULL)
+IF %menunr%==7 (goto RESTART)
 IF %menunr%==00 (goto QUIT)
 :WHAT
 echo You went crazy and entered something that wasnt part of the menu options
 PAUSE
 goto FRAMRES
-
 :FRAMRES1
 cls
 cd other
@@ -267,17 +245,20 @@ cd other
 Start "Installation of com.htc.resources.apk Starting" apkinstall 3
 goto FRAMRES
 :FRAMRES4
+cls
 cd other
 Start "Installation of SystemUI.apk Starting" apkinstall 4
 goto FRAMRES
-
+:FRAMRES5
+cls
+cd other
+Start "Installation of SemcGenericUxpRes.apk Starting" apkinstall 5
+goto FRAMRES
 :SYSTEMPULL
 cd other
 Start "Pulling of the Android Dependencies Starting" system
 goto FRAMRES
-
 :ABOUT
-
 cls
 ECHO *********************************************************************************
 ECHO *                                                                               *

@@ -3,6 +3,7 @@ if (%1)==(1) goto FRAMRES1
 if (%1)==(2) goto FRAMRES2
 if (%1)==(3) goto FRAMRES3
 if (%1)==(4) goto FRAMRES4
+if (%1)==(5) goto FRAMRES5
 COLOR 0A
 
 :FRAMRES1
@@ -164,5 +165,42 @@ cd "%~dp0"
 PAUSE
 exit
 )
-
-
+:FRAMRES5
+cls
+cd other
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                       Searching for SemcGenericUxpRes.apk                     *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+IF NOT EXIST SemcGenericUxpRes.apk (
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *        SemcGenericUxpRes.apk not Found please make sure the file is in the    *
+ECHO *        other Directory returning to Dependencies menu                         *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+cd "%~dp0"
+PAUSE
+exit
+)
+IF EXIST SemcGenericUxpRes.apk (
+cls
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                     SemcGenericUxpRes.apk Found Installing                    *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+apktool if SemcGenericUxpRes.apk
+PAUSE
+cls
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                Installation of SemcGenericUxpRes.apk Complete                 *
+ECHO *                       Returning to Dependencies menu                          *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+cd "%~dp0"
+PAUSE
+exit
+)
