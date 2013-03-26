@@ -184,3 +184,5 @@ Added Batch Decompile option
 Added Batch Compile option
 Completely rewrote how recompiled apk files are stored so to not clutter up the place-apk-here-for-modding as that folder is just for storing unmodified apk files.
 Updated the signer location to match up with the changes to how modified apk files are handled
+Added support to Xperia devices given the ability to install the dependencies 
+Added SemcGenericUxpRes pull support
