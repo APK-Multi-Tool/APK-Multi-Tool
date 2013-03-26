@@ -34,6 +34,8 @@ ECHO atempting to pull twframework-res.apk
 other\adb pull system/framework/twframework-res.apk  other
 ECHO atempting to pull com.htc.resources.apk
 other\adb pull system/framework/com.htc.resources.apk  other
+ECHO atempting to pull SemcGenericUxpRes.apk
+other\adb pull system/framework/SemcGenericUxpRes.apk  other
 ECHO atempting to pull SystemUI.apk
 other\adb pull system/app/SystemUI.apk  other
 pause
