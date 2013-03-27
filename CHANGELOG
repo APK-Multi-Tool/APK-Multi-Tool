@@ -166,7 +166,13 @@ Fixed Set current project option not working properly
 Added the ability to set compression level of the Resources.arsc
 Changed the name of recompiled System Applications from unsigned to system to keep the two from being confused
 Code Clean up clearing out unused code 
-UPDATED to apktool-cli-1.5.3-SNAPSHOT
+UPDATED to apktool-cli-2.0.0-SNAPSHOT
+v2.0.0 (TBA) 
+-Fixed (issue #8) - Correctly uses -c to retain original manifest and META-INF. Thanks M1cha
+-Fixed (issue #403) - Uses new usage output to cleanup organization of features.
+-Fixed (issue #359) - Correclty handles malformed 9patch images. (Thanks Felipe Richards)
+-Fixed (issue #401) - Uses versionInfo meta to correctly parse versionName and versionCode
+v1.5.3 (TBA)
 -Updated to smali/baksmali to v1.4.2
 -Fixed (issue #396) - Correctly handle android:debuggable while in debug mode.
 -Fixed (issue #340) - Fixed superclass errors on debug mode.
