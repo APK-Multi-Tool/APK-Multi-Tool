@@ -128,7 +128,7 @@ ECHO       or to just decompile Sources or just the Resources or do a raw dump a
 ECHO       to just edit the normal images)
 ECHO  30   Donations
 ECHO       I would personally like to thank you for your superior generosity and kindness if 
-EVHO       you are one of those droid loving fans donating to the site to help keep us going.
+ECHO       you are one of those droid loving fans donating to the site to help keep us going.
 ECHO       We hope to continue growing and for development to keep getting bigger and bigger
 ECHO       as time goes on. Until then, Hope to see you around! Have a great day!" 
 ECHO  00   Quit
