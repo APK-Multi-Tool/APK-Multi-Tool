@@ -422,7 +422,7 @@ IF (%INPUT%)==(z) GOTO zipo
 @ECHO Optimizing %~1...
 cd other
 md "apkopt_temp_%~n1"
-md optimized
+md %~dp0optimized
 dir /b
 7za x -o"apkopt_temp_%~n1" "%~dp0place-apk-here-to-batch-optimize/%~n1%~x1"
 mkdir temp
@@ -432,13 +432,13 @@ del /q "..\place-apk-here-to-batch-optimize\%~n1%~x1"
 xcopy "temp" "apkopt_temp_%~n1\res" /S /Y
 rmdir "temp" /S /Q
 IF (%INPUT%)==(p) GOTO ponly
-7za a -tzip "optimized\%~n1.unaligned.apk" "%~dp0other\apkopt_temp_%~n1\*" -mx%usrc% 
+7za a -tzip "%~dp0optimized\%~n1.unaligned.apk" "%~dp0other\apkopt_temp_%~n1\*" -mx%usrc% 
 rd /s /q "apkopt_temp_%~n1"
-"%~dp0other\zipalign.exe" -v 4 "optimized\%~n1.unaligned.apk" "optimized\%~n1.apk"
-del /q "optimized\%~n1.unaligned.apk"
+"%~dp0other\zipalign.exe" -v 4 "%~dp0optimized\%~n1.unaligned.apk" "%~dp0optimized\%~n1.apk"
+del /q "%~dp0optimized\%~n1.unaligned.apk"
 goto endab
 :ponly
-7za a -tzip "optimized\%~n1.apk" "%~dp0other\apkopt_temp_%~n1\*" -mx%usrc%
+7za a -tzip "%~dp0optimized\%~n1.apk" "%~dp0other\apkopt_temp_%~n1\*" -mx%usrc%
 rd /s /q "apkopt_temp_%~n1"
 goto endab
 :zipo
@@ -892,6 +892,7 @@ goto restart
 :endab
 cd ..
 @ECHO Optimization complete for %~1
+goto restart
 :quit
 exit
 
