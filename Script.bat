@@ -742,7 +742,7 @@ ECHO on this script.
 PAUSE
 7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
-7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-signing/%capp%" resources.arsc -r
+7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-signing/unsigned%capp%" resources.arsc -r
 7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0projects/temp/resources.arsc" -mx%resusrc% -r
 rmdir /S /Q "%~dp0projects/temp"
 cd ..
@@ -765,7 +765,7 @@ PAUSE
 
 7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
-7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-signing/%capp%" resources.arsc -r
+7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-signing/unsigned%capp%" resources.arsc -r
 7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0projects/temp/resources.arsc" -mx%resusrc% -r
 rmdir /S /Q "%~dp0projects/temp"
 rename "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0place-apk-here-for-signing/OriginalSignedKey%capp%"
