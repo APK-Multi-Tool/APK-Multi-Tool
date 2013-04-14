@@ -682,7 +682,7 @@ ECHO on this script.
 PAUSE
 7za a -tzip "%~dp0place-apk-here-for-signing/system%capp%" "%~dp0keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
-7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/%capp%" resources.arsc -r
+7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/system%capp%" resources.arsc -r
 7za a -tzip "%~dp0place-apk-here-for-signing/system%capp%" "%~dp0projects/temp/resources.arsc" -mx%resusrc% -r
 rmdir /S /Q "%~dp0projects/temp"
 cd ..
