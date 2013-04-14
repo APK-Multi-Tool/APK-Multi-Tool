@@ -187,3 +187,5 @@ Completely rewrote how recompiled apk files are stored so to not clutter up the 
 Updated the signer location to match up with the changes to how modified apk files are handled
 Added support to Xperia devices given the ability to install the dependencies 
 Added SemcGenericUxpRes pull support
+Fixed the issue with changes not happening when compiling the scripts using the wrong resources.arsc
+Fixed broken zipalign scripts
