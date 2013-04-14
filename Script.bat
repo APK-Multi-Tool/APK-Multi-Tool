@@ -512,21 +512,21 @@ set /P fileloc=""
 ECHO Pushing apk
 if %fileloc%==a (
 if %newname%==0 (
-"%~dp0other\adb.exe" push "place-apk-here-for-modding\system%capp%" /system/app/%capp%
+"%~dp0other\adb.exe" push "place-apk-here-for-signing\system%capp%" /system/app/%capp%
 goto chk_err_push
 )
 if %newname%==1 (
-"%~dp0other\adb.exe" push "place-apk-here-for-modding\system%capp%" /system/app/%newcapp%
+"%~dp0other\adb.exe" push "place-apk-here-for-signing\system%capp%" /system/app/%newcapp%
 goto chk_err_push
 )
 )
 if %fileloc%==f (
 if %newname%==0 (
-"%~dp0other\adb.exe" push "place-apk-here-for-modding\system%capp%" /system/framework/%capp%
+"%~dp0other\adb.exe" push "place-apk-here-for-signing\system%capp%" /system/framework/%capp%
 goto chk_err_push
 )
 if %newname%==1 (
-"%~dp0other\adb.exe" push "place-apk-here-for-modding\system%capp%" /system/framework/%newcapp%
+"%~dp0other\adb.exe" push "place-apk-here-for-signing\system%capp%" /system/framework/%newcapp%
 goto chk_err_push
 )
 )
