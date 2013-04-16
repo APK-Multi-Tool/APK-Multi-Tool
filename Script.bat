@@ -650,7 +650,7 @@ IF (%jar%)==(1) (ECHO Building Jar)
 IF EXIST "%~dp0place-apk-here-for-signing\system%capp%" (del /Q "%~dp0place-apk-here-for-signing\system%capp%")
 java -Xmx%heapy%m -jar apktool.jar b "%~dp0projects/%capp%" "%~dp0place-apk-here-for-signing\system%capp%"
 IF (%jar%)==(0) (goto :nojar)
-7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-signing/%capp%" META-INF -r
+7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/%capp%" META-INF -r
 7za a -tzip "%~dp0place-apk-here-for-signing/system%capp%" "%~dp0projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0%~dp0projects/temp"
 goto restart
