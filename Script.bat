@@ -667,9 +667,9 @@ ECHO over any additional files that you didn't modify
 ECHO from the original apk in order to ensure least 
 ECHO # of errors ^(y/n^)
 set /P INPUT1=Type input: %=%
-IF %INPUT1%==y (call :nq2)
-IF %INPUT1%==n (call :nq3)
-:nq2
+IF %INPUT1%==y (call :syscom01)
+IF %INPUT1%==n (call :syscom02)
+:syscom01
 rmdir /S /Q "%~dp0keep"
 7za x -o"%~dp0keep" "%~dp0place-apk-here-for-modding/%capp%"
 ECHO In the APK Multi-Tools folder u'll find
@@ -687,12 +687,24 @@ rmdir /S /Q "%~dp0keep"
 rmdir /S /Q "%~dp0projects/temp"
 cd ..
 goto restart
-:nq3
+:syscom02
 7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/%capp%" META-INF -r
 7za a -tzip "%~dp0place-apk-here-for-signing/system%capp%" "%~dp0projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0projects/temp"
+goto syscom03
+:syscom03
+ECHO Would you like to copy over the AndroidManifest.xml from the original %capp%"?
+ECHO YES or NO?
+set /P INPUT3=Type input: %=%
+IF %INPUT1%==y (call :syscom04)
+IF %INPUT1%==n (call :syscom05)
+:syscom04
+7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/%capp%" AndroidManifest.xml -r
+7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0projects/temp/AndroidManifest.xml" -mx%usrc% -r
+rmdir /S /Q "%~dp0projects/temp"
 goto restart
-
+:syscom05
+goto restart
 :nonsyscom
 IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
 cd other
@@ -725,7 +737,7 @@ ECHO 5. Create an apk using the original Signature
 ECHO 6. Create an apk using the original Signature and original AndroidManifest.xml
 ECHO *Notice* Options 4-6 are experimental use with care *Notice*
 ECHO  ---------------------------------------------------------------------------
-set /P INPUT=Type input 1 - 4: %=%
+set /P INPUT=Type input 1 - 6: %=%
 IF %INPUT%==1 (call :unsign01)
 IF %INPUT%==2 (call :unsign02)
 IF %INPUT%==3 (call :unsign03)

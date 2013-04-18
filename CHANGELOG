@@ -190,3 +190,4 @@ Added SemcGenericUxpRes pull support
 Fixed the issue with changes not happening when compiling the scripts using the wrong resources.arsc
 Fixed broken zipalign scripts
 Added the options to allow you to choose  to use the original AndroidManifest.xml when not using the keep folder options when compiling apk files.
+Added the options to allow you to choose  to use the original AndroidManifest.xml when not using the keep folder options when compiling system apk files.
