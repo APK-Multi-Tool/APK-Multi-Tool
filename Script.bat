@@ -642,6 +642,18 @@ PAUSE
 )
 cd ..
 goto opeproj
+:opeproj
+CLS
+ECHO %capp% has finished decompiling would you like to open up the projects folder to begin editing?
+ECHO (Y)es or (N)o?
+set /P INPUT3=Type input: %=%
+IF %INPUT1%==y (call :opeproj01)
+IF %INPUT1%==n (call :opeproj02)
+:opeproj01
+%SystemRoot%\explorer.exe "%~dp0projects/%capp%" 
+goto restart
+:opeproj02
+goto restart
 :syscom
 IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
 cd other
@@ -809,18 +821,6 @@ rmdir /S /Q "%~dp0projects/temp"
 rename "%~dp0place-apk-here-for-signing\unsigned%capp%" "OriginalSignedKey%capp%"
 cd ..
 PAUSE
-goto restart
-:opeproj
-CLS
-ECHO %capp% has finished decompiling would you like to open up the project folder to begin editin?
-ECHO (Y)es or (N)o?
-set /P INPUT3=Type input: %=%
-IF %INPUT1%==y (call :opeproj01)
-IF %INPUT1%==n (call :opeproj02)
-:opeproj01
-START "%~dp0projects/%capp%"
-goto restart
-:opeproj02
 goto restart
 :apksignerkey
 cd other
