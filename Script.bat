@@ -621,7 +621,7 @@ ECHO "An Error Occured, Please Check The Log (option 26)"
 PAUSE
 )
 cd ..
-goto restart
+goto opeproj
 :de
 cd other
 IF EXIST "%~dp0place-apk-here-for-signing/system%capp%" (del /Q "%~dp0place-apk-here-for-signing\system%capp%")
@@ -641,7 +641,7 @@ ECHO "An Error Occured, Please Check The Log (option 26)"
 PAUSE
 )
 cd ..
-goto restart
+goto opeproj
 :syscom
 IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
 cd other
@@ -693,8 +693,9 @@ goto restart
 rmdir /S /Q "%~dp0projects/temp"
 goto syscom03
 :syscom03
+CLS
 ECHO Would you like to copy over the AndroidManifest.xml from the original %capp%"?
-ECHO YES or NO?
+ECHO (Y)ES or (N)O?
 set /P INPUT3=Type input: %=%
 IF %INPUT1%==y (call :syscom04)
 IF %INPUT1%==n (call :syscom05)
@@ -782,7 +783,6 @@ ECHO any xml, then delete resources.arsc from that
 ECHO folder as well. Once done then press enter 
 ECHO on this script.
 PAUSE
-
 7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
 7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-signing/unsigned%capp%" resources.arsc -r
@@ -809,6 +809,18 @@ rmdir /S /Q "%~dp0projects/temp"
 rename "%~dp0place-apk-here-for-signing\unsigned%capp%" "OriginalSignedKey%capp%"
 cd ..
 PAUSE
+goto restart
+:opeproj
+CLS
+ECHO %capp% has finished decompiling would you like to open up the project folder to begin editin?
+ECHO (Y)es or (N)o?
+set /P INPUT3=Type input: %=%
+IF %INPUT1%==y (call :opeproj01)
+IF %INPUT1%==n (call :opeproj02)
+:opeproj01
+START "%~dp0projects/%capp%"
+goto restart
+:opeproj02
 goto restart
 :apksignerkey
 cd other
