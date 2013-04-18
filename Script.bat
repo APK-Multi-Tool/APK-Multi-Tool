@@ -105,7 +105,7 @@ ECHO  4    Sign apk with Testkeys (Dont          12   Compile Non-System APK Fil
 ECHO       do this IF its a system apk)          13   Sign apk with Android Market 
 ECHO  5    Zipalign apk (Do once apk is               supported Key
 ECHO       created/signed)                       14   Install apk    
-ECHO       Install apk (Dont do this IF          15   Compile apk / Sign apk / Install apk
+ECHO  6    Install apk (Dont do this IF          15   Compile apk / Sign apk / Install apk
 ECHO       system apk, do adb push)                   (Non-System Apps Only)
 ECHO  7    Zip / Sign / Install apk 
 ECHO       (All in one step)
@@ -716,19 +716,23 @@ goto restart
 :nq4
 CLS
 ECHO  ---------------------------------------------------------------------------
-ECHO  1. Create an unsigned apk using the keep folder option
-ECHO  2. Create an unsigned apk
-ECHO     *Notice* Options 3 and 4 are experimental use with care *Notice*
-ECHO  3. Create an apk using the original Signature using the keep folder option
-ECHO  4. Create an apk using the original Signature
-ECHO     *Notice* Options 3 and 4 are experimental use with care *Notice*
+ECHO 1. Create an unsigned apk using the keep folder option
+ECHO 2. Create an unsigned apk using the original AndroidManifest.xml
+ECHO 3. Create an unsigned apk
+ECHO *Notice* Options 4-6 are experimental use with care *Notice*
+ECHO 4. Create an apk using the original Signature using the keep folder option
+ECHO 5. Create an apk using the original Signature
+ECHO 6. Create an apk using the original Signature and original AndroidManifest.xml
+ECHO *Notice* Options 4-6 are experimental use with care *Notice*
 ECHO  ---------------------------------------------------------------------------
 set /P INPUT=Type input 1 - 4: %=%
-IF %INPUT%==1 (call :nq5)
-IF %INPUT%==2 (call :nq6)
-IF %INPUT%==3 (call :nq7)
-IF %INPUT%==4 (call :nq8)
-:nq5
+IF %INPUT%==1 (call :unsign01)
+IF %INPUT%==2 (call :unsign02)
+IF %INPUT%==3 (call :unsign03)
+IF %INPUT%==4 (call :sign01)
+IF %INPUT%==5 (call :sign02)
+IF %INPUT%==6 (call :sign03)
+:unsign01
 rmdir /S /Q "%~dp0keep"
 7za x -o"%~dp0keep" "%~dp0place-apk-here-for-modding/%capp%"
 rmdir /S /Q "%~dp0keep/META-INF/"
@@ -748,10 +752,14 @@ rmdir /S /Q "%~dp0projects/temp"
 cd ..
 PAUSE
 goto restart
-:nq6
+:unsign03
 goto restart
-
-:nq7
+:unsign02
+7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/%capp%" AndroidManifest.xml -r
+7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0projects/temp/AndroidManifest.xml" -mx%usrc% -r
+rmdir /S /Q "%~dp0projects/temp"
+goto restart
+:sign01
 rmdir /S /Q "%~dp0keep"
 7za x -o"%~dp0keep" "%~dp0place-apk-here-for-modding/%capp%"
 ECHO In the APK Multi-Tools folder u'll find
@@ -772,9 +780,19 @@ rename "%~dp0place-apk-here-for-signing\unsigned%capp%" "OriginalSignedKey%capp%
 cd ..
 PAUSE
 goto restart
-:nq8
+:sign02
 7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/%capp%" META-INF -r
 7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0projects/temp/*" -mx%usrc% -r
+rmdir /S /Q "%~dp0projects/temp"
+rename "%~dp0place-apk-here-for-signing\unsigned%capp%" "OriginalSignedKey%capp%"
+cd ..
+PAUSE
+goto restart
+:sign03
+7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/%capp%" META-INF -r
+7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0projects/temp/*" -mx%usrc% -r
+7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/%capp%" AndroidManifest.xml -r
+7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0projects/temp/AndroidManifest.xml" -mx%usrc% -r
 rmdir /S /Q "%~dp0projects/temp"
 rename "%~dp0place-apk-here-for-signing\unsigned%capp%" "OriginalSignedKey%capp%"
 cd ..
