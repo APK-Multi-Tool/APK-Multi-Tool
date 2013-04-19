@@ -696,12 +696,12 @@ goto syscom03
 CLS
 ECHO Would you like to copy over the AndroidManifest.xml from the original %capp%"?
 ECHO (Y)ES or (N)O?
-set /P INPUT3=Type input: %=%
+set /P INPUT1=Type input: %=%
 IF %INPUT1%==y (call :syscom04)
 IF %INPUT1%==n (call :syscom05)
 :syscom04
 7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/%capp%" AndroidManifest.xml -r
-7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0projects/temp/AndroidManifest.xml" -mx%usrc% -r
+7za a -tzip "%~dp0place-apk-here-for-signing/system%capp%" "%~dp0projects/temp/AndroidManifest.xml" -mx%usrc% -r
 rmdir /S /Q "%~dp0projects/temp"
 goto restart
 :syscom05
@@ -812,7 +812,7 @@ PAUSE
 goto restart
 :opeproj
 CLS
-ECHO %capp% has finished decompiling would you like to open up the project folder to begin editin?
+ECHO %capp% has finished decompiling. Would you like to open the projects\%capp% folder to begin editing?
 ECHO (Y)es or (N)o?
 set /P INPUT1=Type input: %=%
 IF %INPUT1%==y (call :opeproj01)
