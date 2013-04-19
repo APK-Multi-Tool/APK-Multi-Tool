@@ -192,3 +192,4 @@ Fixed broken zipalign scripts
 Added the options to allow you to choose  to use the original AndroidManifest.xml when not using the keep folder options when compiling apk files.
 Added the options to allow you to choose  to use the original AndroidManifest.xml when not using the keep folder options when compiling system apk files.
 Added the ability to open the project after decompiling the apk files
+Added support for Jar files
