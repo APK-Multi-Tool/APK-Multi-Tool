@@ -27,6 +27,10 @@ FOR %%F IN (place-apk-here-for-modding/*.apk) DO (
 set /A count+=1
 set tmpstore=%%~nF%%~xF
 )
+FOR %%F IN (place-apk-here-for-modding/*.jar) DO (
+set /A count+=1
+set tmpstore=%%~nF%%~xF
+)
 IF %count%==1 (set capp=%tmpstore%)
 :skipme2
 CLS
@@ -286,8 +290,14 @@ set a!count!=%%F
 IF /I !count! LEQ 9 (ECHO ^- !count!  - %%F )
 IF /I !count! GTR 10 (ECHO ^- !count! - %%F )
 )
+FOR %%F IN (place-apk-here-for-modding/*.jar) DO (
+set /A count+=1
+set a!count!=%%F
+IF /I !count! LEQ 9 (ECHO ^- !count!  - %%F )
+IF /I !count! GTR 10 (ECHO ^- !count! - %%F )
+)
 ECHO.
-ECHO Choose the app to be set as current project?
+ECHO Choose the file to be set as current project?
 set /P INPUT=Enter It's Number: %=%
 IF /I %INPUT% GTR !count! (goto chc)
 IF /I %INPUT% LSS 1 (goto chc)
