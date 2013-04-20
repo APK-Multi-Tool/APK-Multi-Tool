@@ -657,11 +657,12 @@ IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
 cd other
 IF (%jar%)==(0) (ECHO Building Apk)
 IF (%jar%)==(1) (ECHO Building Jar)
-IF EXIST "%~dp0place-apk-here-for-signing\system%capp%" (del /Q "%~dp0place-apk-here-for-signing\system%capp%")
-java -Xmx%heapy%m -jar apktool.jar b "%~dp0projects/%capp%" "%~dp0place-apk-here-for-signing\system%capp%"
+mkdir modified-system-apk-files-here
+IF EXIST "%~dp0modified-system-apk-files-here\system%capp%" (del /Q "%~dp0modified-system-apk-files-here\system%capp%")
+java -Xmx%heapy%m -jar apktool.jar b "%~dp0projects/%capp%" "%~dp0modified-system-apk-files-here\system%capp%"
 IF (%jar%)==(0) (goto :nojar)
 7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/%capp%" META-INF -r
-7za a -tzip "%~dp0place-apk-here-for-signing/system%capp%" "%~dp0projects/temp/*" -mx%usrc% -r
+7za a -tzip "%~dp0modified-system-apk-files-here/system%capp%" "%~dp0projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0%~dp0projects/temp"
 goto restart
 
@@ -690,16 +691,16 @@ ECHO any xml, then delete resources.arsc from that
 ECHO folder as well. Once done then press enter 
 ECHO on this script.
 PAUSE
-7za a -tzip "%~dp0place-apk-here-for-signing/system%capp%" "%~dp0keep/*" -mx%usrc% -r
+7za a -tzip "%~dp0modified-system-apk-files-here/system%capp%" "%~dp0keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
-7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-signing/system%capp%" resources.arsc -r
-7za a -tzip "%~dp0place-apk-here-for-signing/system%capp%" "%~dp0projects/temp/resources.arsc" -mx%resusrc% -r
+7za x -o"%~dp0projects/temp" "%~dp0modified-system-apk-files-here/system%capp%" resources.arsc -r
+7za a -tzip "%~dp0modified-system-apk-files-here/system%capp%" "%~dp0projects/temp/resources.arsc" -mx%resusrc% -r
 rmdir /S /Q "%~dp0projects/temp"
 cd ..
 goto restart
 :syscom02
 7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/%capp%" META-INF -r
-7za a -tzip "%~dp0place-apk-here-for-signing/system%capp%" "%~dp0projects/temp/*" -mx%usrc% -r
+7za a -tzip "%~dp0modified-system-apk-files-here/system%capp%" "%~dp0projects/temp/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0projects/temp"
 goto syscom03
 :syscom03
@@ -711,7 +712,7 @@ IF %INPUT1%==y (call :syscom04)
 IF %INPUT1%==n (call :syscom05)
 :syscom04
 7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/%capp%" AndroidManifest.xml -r
-7za a -tzip "%~dp0place-apk-here-for-signing/system%capp%" "%~dp0projects/temp/AndroidManifest.xml" -mx%usrc% -r
+7za a -tzip "%~dp0modified-system-apk-files-here/system%capp%" "%~dp0projects/temp/AndroidManifest.xml" -mx%usrc% -r
 rmdir /S /Q "%~dp0projects/temp"
 goto restart
 :syscom05
@@ -944,6 +945,7 @@ goto restart
 :endab
 cd ..
 @ECHO Optimization complete for %~1
+PAUSE
 goto restart
 :quit
 exit
