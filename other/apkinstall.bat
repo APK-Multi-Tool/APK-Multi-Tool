@@ -8,7 +8,7 @@ COLOR 0A
 
 :FRAMRES1
 cls
-cd other
+
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                         Searching for framework-res.apk                       *
@@ -48,7 +48,7 @@ exit
 )
 :FRAMRES2
 cls
-cd other
+
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                        Searching for twframework-res.apk                      *
@@ -88,7 +88,7 @@ exit
 )
 :FRAMRES3
 cls
-cd other
+
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                       Searching for com.htc.resources.apk                     *
@@ -126,7 +126,7 @@ PAUSE
 exit
 )
 :FRAMRES4
-cd other
+
 cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
@@ -167,7 +167,7 @@ exit
 )
 :FRAMRES5
 cls
-cd other
+
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                       Searching for SemcGenericUxpRes.apk                     *

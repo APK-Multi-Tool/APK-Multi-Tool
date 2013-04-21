@@ -835,7 +835,7 @@ goto restart
 goto restart
 :apksignerkey
 ECHO *Notice this option requires you to have the Java JDK installed before this option will function*
-ECHO *Notice you need to go into your enviroment Variables and set the patch to your JAVA_HOME*
+ECHO *Notice you need to go into your Environment Variables and set the path to your JAVA_HOME*
 ECHO *For example define it as C:\Program Files\Java\jdk1.6.0_43 as a system variables slot not the User Variables*
 PAUSE
 cd other
