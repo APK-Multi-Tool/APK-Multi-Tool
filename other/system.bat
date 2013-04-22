@@ -10,10 +10,11 @@ pause
 cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
-ECHO *  All Roms Froyo and above require the system/framework/framework-res.apk      *
-ECHO *  All Roms Gingerbread and above require the /system/app/SystemUI.apk          *
-ECHO *  All Samsung Roms require the /system/framework/twframework-res.apk           *
+ECHO *  All ROMs Froyo and above require the system/framework/framework-res.apk      *
+ECHO *  All ROMs Gingerbread and above require the /system/app/SystemUI.apk          *
+ECHO *  All Samsung ROMs require the /system/framework/twframework-res.apk           *
 ECHO *  All Sense UI ROMs require the system/framework/com.htc.resources.apk         *
+ECHO *  All Xperia ROMs require the system/framework/SemcGenericUxpRes.apk           *
 ECHO *                                                                               *
 ECHO *********************************************************************************
 pause

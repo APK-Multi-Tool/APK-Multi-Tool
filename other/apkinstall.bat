@@ -8,7 +8,6 @@ COLOR 0A
 
 :FRAMRES1
 cls
-
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                         Searching for framework-res.apk                       *
@@ -18,12 +17,25 @@ cls
 IF NOT EXIST framework-res.apk (
 ECHO *********************************************************************************
 ECHO *                                                                               *
-ECHO *        framework-res.apk not Found please make sure the file is in the        *
-ECHO *        other Directory returning to Dependencies menu                         *
+ECHO *        framework-res.apk not Found Would you like to pull the file from       *
+ECHO *        the from your android device and try to install again?                 *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-cd "%~dp0"
-PAUSE
+set /P INPUT=Do you want to (Y)es or (N)o? : %=%
+IF (%INPUT%)==(y) GOTO FRAMRES1Y
+IF (%INPUT%)==(n) GOTO FRAMRES1N
+:FRAMRES1Y
+ECHO. Waiting for device...
+adb kill-server
+adb wait-for-device
+ECHO. Device found.
+ECHO atempting to pull framework-res.apk
+adb pull system/framework/framework-res.apk
+ECHO. System pull complete Killing ADB
+adb kill-server
+ECHO. ADB KILLED NOW retrying framework-res.apk installation
+goto FRAMRES1
+:FRAMRES1N
 exit
 )
 IF EXIST framework-res.apk (
@@ -42,13 +54,12 @@ ECHO *                  Installation of framework-res.apk Complete              
 ECHO *                       Returning to Dependencies menu                          *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-cd "%~dp0"
+
 PAUSE
 exit
 )
 :FRAMRES2
 cls
-
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                        Searching for twframework-res.apk                      *
@@ -58,12 +69,25 @@ IF NOT EXIST twframework-res.apk (
 cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
-ECHO *        twframework-res.apk not Found please make sure the file is in the      *
-ECHO *        other Directory returning to Dependencies menu                         *
+ECHO *        twframework-res.apk not Found Would you like to pull the file from     *
+ECHO *        the from your android device and try to install again?                 *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-cd "%~dp0"
-PAUSE
+set /P INPUT=Do you want to (Y)es or (N)o? : %=%
+IF (%INPUT%)==(y) GOTO FRAMRES2Y
+IF (%INPUT%)==(n) GOTO FRAMRES2N
+:FRAMRES2Y
+ECHO. Waiting for device...
+adb kill-server
+adb wait-for-device
+ECHO. Device found.
+ECHO atempting to pull twframework-res.apk
+adb pull system/framework/twframework-res.apk
+ECHO. System pull complete Killing ADB
+adb kill-server
+ECHO. ADB KILLED NOW retrying twframework-res.apk installation
+goto FRAMRES2
+:FRAMRES2N
 exit
 )
 IF EXIST twframework-res.apk (
@@ -82,13 +106,12 @@ ECHO *                 Installation of twframework-res.apk Complete             
 ECHO *                       Returning to Dependencies menu                          *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-cd "%~dp0"
+
 PAUSE
 exit
 )
 :FRAMRES3
 cls
-
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                       Searching for com.htc.resources.apk                     *
@@ -97,12 +120,25 @@ ECHO ***************************************************************************
 IF NOT EXIST com.htc.resources.apk (
 ECHO *********************************************************************************
 ECHO *                                                                               *
-ECHO *        com.htc.resources.apk not Found please make sure the file is in the    *
-ECHO *        other Directory returning to Dependencies menu                         *
+ECHO *        com.htc.resources.apk not Found Would you like to pull the file from   *
+ECHO *        the from your android device and try to install again?                 *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-cd "%~dp0"
-PAUSE
+set /P INPUT=Do you want to (Y)es or (N)o? : %=%
+IF (%INPUT%)==(y) GOTO FRAMRES3Y
+IF (%INPUT%)==(n) GOTO FRAMRES3N
+:FRAMRES3Y
+ECHO. Waiting for device...
+adb kill-server
+adb wait-for-device
+ECHO. Device found.
+ECHO atempting to pull com.htc.resources.apk
+adb pull system/framework/com.htc.resources.apk
+ECHO. System pull complete Killing ADB
+adb kill-server
+ECHO. ADB KILLED NOW retrying com.htc.resources.apk installation
+goto FRAMRES3
+:FRAMRES3N
 exit
 )
 IF EXIST com.htc.resources.apk (
@@ -121,12 +157,11 @@ ECHO *                Installation of com.htc.resources.apk Complete            
 ECHO *                       Returning to Dependencies menu                          *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-cd "%~dp0"
+
 PAUSE
 exit
 )
 :FRAMRES4
-
 cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
@@ -137,12 +172,25 @@ cls
 IF NOT EXIST SystemUI.apk (
 ECHO *********************************************************************************
 ECHO *                                                                               *
-ECHO *        SystemUI.apk not Found please make sure the file is in the             *
-ECHO *        other Directory returning to Dependencies menu                         *
+ECHO *        SystemUI.apk not Found Would you like to pull the file from            *
+ECHO *        the from your android device and try to install again?                 *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-cd "%~dp0"
-PAUSE
+set /P INPUT=Do you want to (Y)es or (N)o? : %=%
+IF (%INPUT%)==(y) GOTO FRAMRES4Y
+IF (%INPUT%)==(n) GOTO FRAMRES4N
+:FRAMRES4Y
+ECHO. Waiting for device...
+adb kill-server
+adb wait-for-device
+ECHO. Device found.
+ECHO atempting to pull SystemUI.apk
+adb pull system/framework/SystemUI.apk
+ECHO. System pull complete Killing ADB
+adb kill-server
+ECHO. ADB KILLED NOW retrying SystemUI.apk installation
+goto FRAMRES4
+:FRAMRES4N
 exit
 )
 IF EXIST SystemUI.apk (
@@ -161,13 +209,12 @@ ECHO *                     Installation of SystemUI.apk Complete                
 ECHO *                       Returning to Dependencies menu                          *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-cd "%~dp0"
+
 PAUSE
 exit
 )
 :FRAMRES5
 cls
-
 ECHO *********************************************************************************
 ECHO *                                                                               *
 ECHO *                       Searching for SemcGenericUxpRes.apk                     *
@@ -176,12 +223,25 @@ ECHO ***************************************************************************
 IF NOT EXIST SemcGenericUxpRes.apk (
 ECHO *********************************************************************************
 ECHO *                                                                               *
-ECHO *        SemcGenericUxpRes.apk not Found please make sure the file is in the    *
-ECHO *        other Directory returning to Dependencies menu                         *
+ECHO *        SemcGenericUxpRes.apk not Found Would you like to pull the file from   *
+ECHO *        the from your android device and try to install again?                 *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-cd "%~dp0"
-PAUSE
+set /P INPUT=Do you want to (Y)es or (N)o? : %=%
+IF (%INPUT%)==(y) GOTO FRAMRES5Y
+IF (%INPUT%)==(n) GOTO FRAMRES5N
+:FRAMRES5Y
+ECHO. Waiting for device...
+adb kill-server
+adb wait-for-device
+ECHO. Device found.
+ECHO atempting to pull SemcGenericUxpRes.apk
+adb pull system/framework/SemcGenericUxpRes.apk
+ECHO. System pull complete Killing ADB
+adb kill-server
+ECHO. ADB KILLED NOW retrying SemcGenericUxpRes.apk installation
+goto FRAMRES5
+:FRAMRES5N
 exit
 )
 IF EXIST SemcGenericUxpRes.apk (
@@ -200,7 +260,7 @@ ECHO *                Installation of SemcGenericUxpRes.apk Complete            
 ECHO *                       Returning to Dependencies menu                          *
 ECHO *                                                                               *
 ECHO *********************************************************************************
-cd "%~dp0"
+
 PAUSE
 exit
 )

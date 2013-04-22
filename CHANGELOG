@@ -1,4 +1,4 @@
-Version 1.0.0
+﻿Version 1.0.0
 Added Switch decompile mode
 Added ability to decompile jar files
 Fixed Random Startup bug (hopefully)
@@ -46,7 +46,7 @@ FIXED BUG WITH Signing APK Files (HOPEFULLY)
 FIXED BUG WITH testkey.x509.pem Detection (HOPEFULLY)
 FIXED BUG WITH testkey.x509.pem Detection (HOPEFULLY)
 FIXED BUG WITH Sox not compiling correctly when working with audio files (HOPEFULLY)
-FIXED BUG WITH minor bugs and code optiomizations
+FIXED BUG WITH minor bugs and code optimizations
 FIXED BUG WITH Optimizing PNG and 9.png files (HOPEFULLY)
 
 Version 1.0.3
@@ -95,14 +95,14 @@ Fixed issues with setup
 Made a few changes to the setup bat to fix alignment size and other misc issues
 Fixed Spelling
 Did some changes to see if I can fix the issue with The keep option to work with none system applications.
-Trying to get batch optionmize to work
+Trying to get batch optimize to work
 Replacing odt with a actual manual in html
-Fixed Bug with KEEP Folder not exstracting for None System Applicaitons
+Fixed Bug with KEEP Folder not extracting for None System Applications
 Tweaked how the Signed and Unsigned files are compiled adding a small underscore between the recompiled file and the added prefix added by the scripts
 Tweaked the option 11 for non system apks
 I added the option to allow you to transfer the old key file over to the apk in case you did minor changes so be careful to test the APK files as some will need you to pick the unsigned option depending on how drastic the changes you made and forcing you to have to resign them
 Renamed recompiled system files
-Renamed the unsigned_ to signed_System_ since the system file changes the signature files are transfered since they are actually signed already instead of the misconception that has been going on for a while
+Renamed the unsigned_ to signed_System_ since the system file changes the signature files are transferred since they are actually signed already instead of the misconception that has been going on for a while
 
 Version 1.0.8
 Seperated the compiler into two options
@@ -110,8 +110,8 @@ Updated APKTOOL.JAR to apktool version 1.4.10
 
 Version 1.0.9
 Fixed the broken Option menu list
-Fixed the broken Complier scripts for system Files
-Fixed the broken Complier scripts for non system Files
+Fixed the broken Compiler scripts for system Files
+Fixed the broken Compiler scripts for non system Files
 Added the ability to create Signed None System APK files with both the keep folder option and to bypass the keep folder
 Added the Option to create unsigned APK Files with out using the keep folder
 
@@ -131,14 +131,14 @@ Updated apktool.jar to v1.5.0 (Released September 2 - 2012 ) Codename : Pikmin
 Updated AAPT to the latest Custom Build
 Fixed Decompiler Switch to Actually work
 Fixed Compiler script Errors
-Replaced The OLD MANUEL HTML File with a Actual Help Doctument 
+Replaced The OLD MANUEL HTML File with a Actual Help Document 
 Updated the README
 Added Raw Mode to the Decompiler Switch
 
 Version 1.0.11
 Moved DEPENDENCY FILES to its own bat file which fixed issue with installing a DEPENDENCY would close the setup.bat
 Updated to ApkTool v1.5.2
--Fixed (issue #299) - output smali filename errors to screen during rebuild instead of filestream
+-Fixed (issue #299) - output smali file name errors to screen during rebuild instead of file stream
 -Only show the --aapt / -a info in verbose mode.
 -Fixed (issue #392) - Don't crash out if .git folder isn't present. Use SNAPSHOT-DEV instead.
 -Fixed (issue #67) - Only store compressed resources.arsc if original was compressed, otherwise STORE.
@@ -160,7 +160,7 @@ Added the ability to pull Dependencies directly from your phone to use to instal
 Fixed bug with Theme porter not functioning  
 Cosmetic changes to the source.
 
-Version 1.0.12
+Version 1.0.12 (TBA)
 Fixed Compiler bug with option 3 and 4 for none system files.
 Fixed Set current project option not working properly
 Added the ability to set compression level of the Resources.arsc
@@ -176,11 +176,11 @@ v1.5.3 (TBA)
 -Fixed NPE when handling odex apks even with --no-src specified. (Thanks Rodrigo Chiossi)
 -Fixed (issue #427) - Correctly handles `--frame-path` on [b]uild
 Added smali/baksmali for adding new up coming  Deodex features
-Added now when compiling with option 12 when you choose option 3 and 4 it names the apk files to show they have the origianl signature keys
+Added now when compiling with option 12 when you choose option 3 and 4 it names the apk files to show they have the original signature keys
 Added new Signing method for signing apk files. With this new method the key used has a shelf life of 1000 years and also apks files signed with this key is able to be published on the android market
 Added new checks to cleaning up old recompiled apk files before recompiling again.
 Added pause breaks into option 12 so that users can check to see if anything went wrong in the recompiling method when using the keep folder option.
-Updated option 13 to use a alternative to a signing method which uses the Java_Home Enviroment Varable which needs to point to for example mine is set to C:\Program Files\Java\jdk1.6.0_41
+Updated option 13 to use a alternative to a signing method which uses the Java_Home Environment Variable which needs to point to for example mine is set to C:\Program Files\Java\jdk1.6.0_41
 Added Batch Decompile option
 Added Batch Compile option
 Completely rewrote how recompiled apk files are stored so to not clutter up the place-apk-here-for-modding as that folder is just for storing unmodified apk files.
@@ -193,3 +193,6 @@ Added the options to allow you to choose  to use the original AndroidManifest.xm
 Added the options to allow you to choose  to use the original AndroidManifest.xml when not using the keep folder options when compiling system apk files.
 Added the ability to open the project after decompiling the apk files
 Added support for Jar files
+NEW Splash Screen
+Rewritten the system pull scripts to make dynamic installation of the dependencies more robust.
+
