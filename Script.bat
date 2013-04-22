@@ -34,54 +34,36 @@ set tmpstore=%%~nF%%~xF
 IF %count%==1 (set capp=%tmpstore%)
 :skipme2
 CLS
-ECHO                                                    ,                            ,.::,                                              
-ECHO                           OB@@@B@B@:       .@B@@@@@@@@@B@B@E.   @B@B@B.  .uB@B@B@BSi,                                              
-ECHO                         7@B@@@ 7B@B@8      ,B@@@B@.,,r@@B@B@U   B@B@B@kMB@B@B@5                                                    
-ECHO                       .B@B@B@7..@B@B@BS    ,@B@B@BMM@BOP5vi     @B@B@B@B@q@B@B@Mr                                                  
-ECHO                     ,@B@B@@X2ZOMS2M@@@B@F  :B@B@B@              @@B@B@Y    7B@B@B@BJ,                                              
-ECHO                     ivi...,        ...:iL,  :....:              :....:       .:.::7L:                                              
-ECHO                                                .
-ECHO                                               .:                                                                                   
-ECHO                                                ir,                                                                                 
-ECHO                                                 :r.   , ,            ,.,                                                           
-ECHO                                                ,,ii:::.::::iiii:., .::,                                                            
-ECHO                                             .:i:.,,,, , ,,,,..:i7777i,                                                             
-ECHO                                          .i7i.,, , , ,,,,,,.,..:::i77L7i,                                                          
-ECHO                                        :77r..., ,       ,,.....::::iii7vLi,                                                        
-ECHO                                      :rrii::.,,, ,,  ,,,,......::::i:iiiiLvi                                                       
-ECHO                                     7L18F::..,,,,,,,,,......:.::::::::::::rLr                                                      
-ECHO                               ...:iLYr2@@v,......,,....,,..:::::::.....:.::rLi                                                     
-ECHO                             ,ii.,.7Lvrrr7i:::::...:::.:r1X7:i::::.......:::i77,                                                    
-ECHO                             ,vr:::LJ77rririiii:::i:i::7@@Mi:ii:::::::::::iiiiU.                                                    
-ECHO                             ,rvi::uXYr77v77rr;ri;;rrriiii.i;r;;iiii:iiiii:i7k8.                                                    
-ECHO                             ,7ii.:iYFSY7rr7vvv7vr7r7rr;iirrr777777r7rr;rivUN0k.                                                    
-ECHO                             ,7i:..;::rJU2JL77rrr777777v7v7v7v7777rrrvvYu15kL:,,:vvi                                                
-ECHO                             ,7::..ii::.::r7vvv7777r7rr;ririr;77v7vvLvv77rLLi,  .rjFi                                               
-ECHO                             ,r:..,rr:::::..,,,.:::::::i:::i:::..::::iir7vYjri:::rv1i                                               
-ECHO                             ,r...,iL::.:::.......,       ,:, ,  .iiirrir7JLrii::;vui                                               
-ECHO                             ,r.,,,iv7:.,........:.,,,,.,,.:.,,.,:ii:iiii7vYr::::i7U:                                               
-ECHO                              :::,.ivrri:.,,,,.....,,,,,,,.:.,.,,.::::i:i7LLr::.::vui                                               
-ECHO                                ,,,i7r;rri:.,,,,,.,,,,,,,,,:,,,,,....::::r7Li:...:7U:                                               
-ECHO                                   .Lrri;i;ii::...,,,,,,, ,..,,,,,.,....:;7vi....:vUi                                               
-ECHO                                   :vr;iiiiiii:ii;:::::::::ri::::::i::...rrv:.,.,:71i                                               
-ECHO                                   :Lrriiii:::::iii:::::i:iri::::irr77vvv7YL: ,,,.L5;                                               
-ECHO                                   :uvr;ii:i:::::i::::::::iri::::iir;rr77YuF7.,,,:uU.                                               
-ECHO                                    :LLrrii:::::iii:::i:::ir;:i:iir;rr77vv2E8v..::.                                                 
-ECHO                                     ,:777ii:::iiiiiiii;irr7rri;ir;rrrrLY2Lr.                                                       
-ECHO                                        ,.ii:.::..::::ii;i;ii::.::::::ri.,                                                          
-ECHO                                           vr:....:i:.,.,.,,,..::::rr7u.                                                            
-ECHO                                            :::::iLr.       iL7;i:ii7v1.                                                            
-ECHO                                                            :v::...irY1:                                                            
-ECHO                                                            .ri....:j2Y,                                                            
-ECHO                                                              ,..:.::.                                                              
-ECHO                                                Written by
-ECHO                                    Gerald Wayne Baggett Jr AKA Raziel23x
-ECHO                                           http://apkmultitool.com
-ECHO   rL7vvL    iLv77J               .LvL:     :.    ULJv        0NPFjr77LFPqG,                          u7L7                          
-ECHO   @B@@@BB  r@B@B@B, .:.:   .:.:  1@@@X :5B@B@ir  BMMO        M@OZB@B@BZOBB   ,iLLr.       ,iYvr,    ,B@B@                          
-ECHO   B@@P.@BU,@@1:@B@  B@B@.  @B@B, LB@Bj P@@B@BNN  @B@B ,rii;7     JB@B@    :@@@BuJ@B@@J iB@B@uuB@B@Y  @B@@                          
-ECHO   @@@@ r@B@B@ iB@B  @B@BF,:B@B@  u@@@F  .B@BM    B@@@ vB@@@@:    0@B@B    @B@BL  .@@@@ M@B@v  :@@B@  B@B@                          
-ECHO   q@B0  u@BM  i@B@   kM@B@5kBBB  rBBBv   5M@@@Z  @B@O            uBMBO     .J8B@@@82:   .uZ@B@BOu:   @M@O
+ECHO ***************************************************************************************
+ECHO *                              APKTOOL MULTI-TOOLS                                    *
+ECHO ***************************************************************************************
+ECHO *                    Written By Gerald Wayne Baggett Jr {Raziel23x}                   *
+ECHO ***************************************************************************************
+ECHO *                           Website: http://apkmultitool.com                          *
+ECHO ***************************************************************************************
+ECHO *           Empowering you to Do Your BEST where ever the path may lead you           *
+ECHO ***************************************************************************************
+ECHO *  Whether you're doing basic image editing or editing the smali or XML files, on     *
+ECHO *  average u have to use (Brut.all or JF's smali/baksmali) awesome tool to extract    *
+ECHO *  the apk, edit it, then sign the apk and then adb push/install it. This process is  * 
+ECHO *  quite tiresome if you are testing a method that needs fine tweaking.               *
+ECHO ***************************************************************************************
+ECHO *  This script should make the process a LOT smoother.                                *
+ECHO *  There is an option of compiling/signing/installing all in one step                 *
+ECHO ***************************************************************************************
+ECHO *  Special Thanks:                                                                    *
+ECHO ***************************************************************************************
+ECHO *  Goes to Daneshm90 the Original Writer of Apk Manager                               *
+ECHO *  Goes to Brut.all for his awesome tool.                                             *
+ECHO *  Goes to iBotPeaches for his awesome updates to Brut.all awesome tool.              *
+ECHO *  Goes to JF for of course, smali/baksmali                                           *
+ECHO ***************************************************************************************
+ECHO *  Private Testes Special Thanks:                                                     *
+ECHO ***************************************************************************************
+ECHO *  Windows Testers:                                                                   *
+ECHO ***************************************************************************************
+ECHO *  Goes to Purian23 and sga999                                                        *
+ECHO ***************************************************************************************
 PAUSE
 CLS
 :restart
