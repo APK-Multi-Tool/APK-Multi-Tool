@@ -28,15 +28,15 @@ ECHO *                                                                          
 ECHO *********************************************************************************
 ECHO. Device found.
 ECHO atempting to pull framework-res.apk
-adb pull system/framework/framework-res.apk  other
+adb pull system/framework/framework-res.apk
 ECHO atempting to pull twframework-res.apk
-adb pull system/framework/twframework-res.apk  other
+adb pull system/framework/twframework-res.apk
 ECHO atempting to pull com.htc.resources.apk
-adb pull system/framework/com.htc.resources.apk  other
+adb pull system/framework/com.htc.resources.apk
 ECHO atempting to pull SemcGenericUxpRes.apk
-adb pull system/framework/SemcGenericUxpRes.apk  other
+adb pull system/framework/SemcGenericUxpRes.apk
 ECHO atempting to pull SystemUI.apk
-adb pull system/app/SystemUI.apk  other
+adb pull system/app/SystemUI.apk
 pause
 ECHO. System pull complete Killing ADB
 adb kill-server
