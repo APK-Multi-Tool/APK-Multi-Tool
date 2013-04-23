@@ -16,7 +16,7 @@ set usrc=9
 set resusrc=0
 set dec=0
 set capp=None
-set heapy=512
+set heapy=1024
 set jar=0
 java -version 
 IF errorlevel 1 goto errjava
@@ -58,7 +58,7 @@ ECHO *  Goes to Brut.all for his awesome tool.                                  
 ECHO *  Goes to iBotPeaches for his awesome updates to Brut.all awesome tool.              *
 ECHO *  Goes to JF for of course, smali/baksmali                                           *
 ECHO ***************************************************************************************
-ECHO *  Private Testes Special Thanks:                                                     *
+ECHO *  Private Testes & Special Thanks:                                                   *
 ECHO ***************************************************************************************
 ECHO *  Windows Testers:                                                                   *
 ECHO ***************************************************************************************
@@ -242,7 +242,7 @@ ECHO adb shell start
 ECHO 3. Decompiling a themed apk is not possible, you must get the original unthemed
 ECHO apk, then decompile, make your theme/xml changes and recompile
 ECHO 4. IF you're stuck and the log doesnot give you any indication as to what you 
-ECHO are doing wrong, then post in the thread http://www.tiny.cc/apkmanager
+ECHO are doing wrong, then post in the thread http://forum.xda-developers.com/showthread.php?t=1310151
 ECHO Make sure u include ur APK-Multi-Tool.log, and IF its not a editing problem i.e 
 ECHO its something regarding when u push it to your phone, then post ur adb log 
 ECHO as well. To do so 
