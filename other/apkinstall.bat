@@ -264,3 +264,55 @@ ECHO ***************************************************************************
 PAUSE
 exit
 )
+
+:FRAMRES6
+cls
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                          Searching for lidroid-res.apk                        *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+IF NOT EXIST lidroid-res.apk (
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *        lidroid-res.apk not Found Would you like to pull the file from         *
+ECHO *        the from your android device and try to install again?                 *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+set /P INPUT=Do you want to (Y)es or (N)o? : %=%
+IF (%INPUT%)==(y) GOTO FRAMRES5Y
+IF (%INPUT%)==(n) GOTO FRAMRES5N
+:FRAMRES6Y
+ECHO. Waiting for device...
+adb kill-server
+adb wait-for-device
+ECHO. Device found.
+ECHO atempting to pull lidroid-res.apk
+adb pull system/framework/lidroid-res.apk
+ECHO. System pull complete Killing ADB
+adb kill-server
+ECHO. ADB KILLED NOW retrying lidroid-res.apk installation
+goto FRAMRES5
+:FRAMRES6N
+exit
+)
+IF EXIST lidroid-res.apk (
+cls
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                        lidroid-res.apk Found Installing                       *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+apktool if lidroid-res.apk
+PAUSE
+cls
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                   Installation of lidroid-res.apk Complete                    *
+ECHO *                       Returning to Dependencies menu                          *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+
+PAUSE
+exit
+)

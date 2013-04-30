@@ -205,11 +205,15 @@ ECHO * 5. Install SemcGenericUxpRes.apk                                         
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
-ECHO * 6. Pull Dependencies from Phone                                                 *
+ECHO * 6. Install lidroid-res.apk                                                *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
-ECHO * 7. Return to Main Menu                                                          *
+ECHO * 7. Pull Dependencies from Phone                                                 *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO * 8. Return to Main Menu                                                          *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
@@ -222,8 +226,9 @@ IF %menunr%==2 (goto FRAMRES2)
 IF %menunr%==3 (goto FRAMRES3)
 IF %menunr%==4 (goto FRAMRES4)
 IF %menunr%==5 (goto FRAMRES5)
-IF %menunr%==6 (goto SYSTEMPULL)
-IF %menunr%==7 (goto RESTART)
+IF %menunr%==6 (goto FRAMRES6)
+IF %menunr%==7 (goto SYSTEMPULL)
+IF %menunr%==8 (goto RESTART)
 IF %menunr%==00 (goto QUIT)
 :WHAT
 echo You went crazy and entered something that wasnt part of the menu options

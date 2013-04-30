@@ -350,8 +350,8 @@ goto restart
 :alli
 IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
 CLS
-ECHO 1    System apk (Retains signature)
-ECHO 2    Regular apk (Removes signature for re-signing)
+ECHO 1 System apk (Retains signature)
+ECHO 2 Regular apk (Removes signature for re-signing)
 SET /P menunr=Please make your decision: 
 IF %menunr%==1 (goto sys1)
 IF %menunr%==2 (goto oa1)
@@ -560,8 +560,8 @@ goto restart
 :zip
 IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
 CLS
-ECHO 1    System apk (Retains signature)
-ECHO 2    Regular apk (Removes signature for re-signing)
+ECHO 1 System apk (Retains signature)
+ECHO 2 Regular apk (Removes signature for re-signing)
 SET /P menunr=Please make your decision: 
 IF %menunr%==1 (goto sys)
 IF %menunr%==2 (goto oa)

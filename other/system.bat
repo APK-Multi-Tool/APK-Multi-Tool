@@ -15,6 +15,7 @@ ECHO *  All ROMs Gingerbread and above require the /system/app/SystemUI.apk     
 ECHO *  All Samsung ROMs require the /system/framework/twframework-res.apk           *
 ECHO *  All Sense UI ROMs require the system/framework/com.htc.resources.apk         *
 ECHO *  All Xperia ROMs require the system/framework/SemcGenericUxpRes.apk           *
+ECHO *  All XNote ROMs require the system/framework/lidroid-res.apk                  *
 ECHO *                                                                               *
 ECHO *********************************************************************************
 pause
@@ -38,6 +39,8 @@ ECHO atempting to pull SemcGenericUxpRes.apk
 adb pull system/framework/SemcGenericUxpRes.apk
 ECHO atempting to pull SystemUI.apk
 adb pull system/app/SystemUI.apk
+ECHO atempting to pull lidroid-res.apk
+adb pull system/framework/lidroid-res.apk
 pause
 ECHO. System pull complete Killing ADB
 adb kill-server
