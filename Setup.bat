@@ -34,7 +34,7 @@ ECHO * 2. Installing Framework-Res                                              
 ECHO *    This Will install one of the Framwork-Res Files for 1.x/2.x/3.x/4.x          *
 ECHO *    This Feature also will install any of the other Dependencies needed          *
 ECHO *    In order to use this feature make sure to drop all of the needed files       *
-ECHO *    into the other Folder or else this script will not find them        *
+ECHO *    into the other Folder or else this script will not find them                 *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
@@ -205,7 +205,7 @@ ECHO * 5. Install SemcGenericUxpRes.apk                                         
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
-ECHO * 6. Install lidroid-res.apk                                                *
+ECHO * 6. Install lidroid-res.apk                                                      *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
