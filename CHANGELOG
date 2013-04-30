@@ -195,4 +195,5 @@ Added the ability to open the project after decompiling the apk files
 Added support for Jar files
 NEW Splash Screen
 Rewritten the system pull scripts to make dynamic installation of the dependencies more robust.
+Added support for pulling the needed files to install the dependcies for the Xnote
 
