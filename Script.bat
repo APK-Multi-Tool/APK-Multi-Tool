@@ -58,7 +58,7 @@ ECHO *  Goes to Brut.all for his awesome tool.                                  
 ECHO *  Goes to iBotPeaches for his awesome updates to Brut.all awesome tool.              *
 ECHO *  Goes to JF for of course, smali/baksmali                                           *
 ECHO ***************************************************************************************
-ECHO *  Private Testes and Special Thanks:                                                 *
+ECHO *  Private Testers and Special Thanks:                                                 *
 ECHO ***************************************************************************************
 ECHO *  Windows Testers:                                                                   *
 ECHO ***************************************************************************************
