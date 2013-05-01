@@ -403,8 +403,8 @@ cd ..
 goto restart
 :bopt
 set /P INPUT=Do you want to zipalign(z), optimize png(p) or both(zp)? : %=%
-FOR %%F IN (place-apk-here-to-batch-optimize\*.apk) DO (call :dan "%%F")
-MOVE "other\optimized\*.apk" "place-apk-here-to-batch-optimize"
+FOR %%F IN (%~dp0place-apk-here-to-batch-optimize\*.apk) DO (call :dan "%%F")
+MOVE "%~dp0optimized\*.apk" "%~dp0place-apk-here-to-batch-optimize"
 rmdir /S /Q "other\optimized"
 goto restart
 :dan
@@ -420,7 +420,7 @@ dir /b
 mkdir temp
 xcopy "apkopt_temp_%~n1\res\*.9.png" "temp" /S /Y
 roptipng -o99 "apkopt_temp_%~n1\**\*.png"
-del /q "..\place-apk-here-to-batch-optimize\%~n1%~x1"
+del /q "%~dp0place-apk-here-to-batch-optimize\%~n1%~x1"
 xcopy "temp" "apkopt_temp_%~n1\res" /S /Y
 rmdir "temp" /S /Q
 IF (%INPUT%)==(p) GOTO ponly
