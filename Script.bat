@@ -402,43 +402,32 @@ FOR %%F in (%~dp0place-apk-here-for-signing/*) DO call signer "%%F"
 cd ..
 goto restart
 :bopt
-set /P INPUT=Do you want to zipalign(z), optimize png(p) or both(zp)? : %=%
-FOR %%F IN (%~dp0place-apk-here-to-batch-optimize\*.apk) DO (call :dan "%%F")
-MOVE "%~dp0optimized\*.apk" "%~dp0place-apk-here-to-batch-optimize"
-rmdir /S /Q "other\optimized"
-goto restart
-:dan
-IF (%INPUT%)==(zp) GOTO zipb
-IF (%INPUT%)==(z) GOTO zipo
-:zipb
-@ECHO Optimizing %~1...
-cd other
-md "apkopt_temp_%~n1"
-md %~dp0optimized
-dir /b
-7za x -o"apkopt_temp_%~n1" "%~dp0place-apk-here-to-batch-optimize/%~n1%~x1"
-mkdir temp
-xcopy "apkopt_temp_%~n1\res\*.9.png" "temp" /S /Y
-roptipng -o99 "apkopt_temp_%~n1\**\*.png"
-del /q "%~dp0place-apk-here-to-batch-optimize\%~n1%~x1"
-xcopy "temp" "apkopt_temp_%~n1\res" /S /Y
-rmdir "temp" /S /Q
-IF (%INPUT%)==(p) GOTO ponly
-7za a -tzip "%~dp0optimized\%~n1.unaligned.apk" "%~dp0other\apkopt_temp_%~n1\*" -mx%usrc% 
-rd /s /q "apkopt_temp_%~n1"
-"%~dp0other\zipalign.exe" -v 4 "%~dp0optimized\%~n1.unaligned.apk" "%~dp0optimized\%~n1.apk"
-del /q "%~dp0optimized\%~n1.unaligned.apk"
-goto endab
-:ponly
-7za a -tzip "%~dp0optimized\%~n1.apk" "%~dp0other\apkopt_temp_%~n1\*" -mx%usrc%
-rd /s /q "apkopt_temp_%~n1"
-goto endab
+CLS
+ECHO Weclome to the Batch Optimization Menu
+ECHO You have one of three options
+ECHO 1 Batch Zipalign
+ECHO 2 Batch Optomize PNG Files
+ECHO 3 Batch Optomize PNG Files as well as ZIPALIGN APK files afterword.
+set /P INPUTBO=Type input 1 - 3: %=%
+if %INPUTBO%==1 GOTO zipo
+if %INPUTBO%==2 GOTO ponly
+if %INPUTBO%==3 GOTO zipb
+:WHAT
+ECHO You went crazy and entered something that wasnt part of the menu options
+PAUSE
+goto bopt
 :zipo
-@ECHO Optimizing %~1...
-"%~dp0other\zipalign.exe" -v 4 "%~dp0place-apk-here-to-batch-optimize\%~n1%~x1" "%~dp0place-apk-here-to-batch-optimize\u%~n1%~x1"
-del /q "%~dp0place-apk-here-to-batch-optimize\%~n1%~x1"
-rename "%~dp0place-apk-here-to-batch-optimize\u%~n1%~x1" "%~n1%~x1"
-goto endab
+cd place-apk-here-to-batch-optimize
+Start "Starting Batch Zipalign of APK Files" batchzip01.bat
+goto restart
+:ponly
+cd place-apk-here-to-batch-optimize
+Start "Starting Batch Optomize of PNG Files" batchopt01.bat
+goto restart
+:zipb
+cd place-apk-here-to-batch-optimize
+Start "Starting Batch Optomize of PNG Files as well as Zipalign of APK Files " batchopt02.bat
+goto restart
 :dirnada
 ECHO %capp% has not been extracted, please do so before doing this step
 PAUSE
@@ -932,7 +921,7 @@ goto restart
 cd ..
 @ECHO Optimization complete for %~1
 PAUSE
-goto restart
+
 :quit
 exit
 
