@@ -209,11 +209,15 @@ ECHO * 6. Install lidroid-res.apk                                               
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
-ECHO * 7. Pull Dependencies from Phone                                                 *
+ECHO * 7. Install mediatek-res.apk                                                      *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
-ECHO * 8. Return to Main Menu                                                          *
+ECHO * 8. Pull Dependencies from Phone                                                 *
+ECHO *                                                                                 *
+ECHO ***********************************************************************************
+ECHO *                                                                                 *
+ECHO * 9. Return to Main Menu                                                          *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
@@ -227,8 +231,9 @@ IF %menunr%==3 (goto FRAMRES3)
 IF %menunr%==4 (goto FRAMRES4)
 IF %menunr%==5 (goto FRAMRES5)
 IF %menunr%==6 (goto FRAMRES6)
-IF %menunr%==7 (goto SYSTEMPULL)
-IF %menunr%==8 (goto RESTART)
+IF %menunr%==7 (goto FRAMRES7)
+IF %menunr%==8 (goto SYSTEMPULL)
+IF %menunr%==9 (goto RESTART)
 IF %menunr%==00 (goto QUIT)
 :WHAT
 echo You went crazy and entered something that wasnt part of the menu options
@@ -258,6 +263,16 @@ goto FRAMRES
 cls
 cd other
 Start "Installation of SemcGenericUxpRes.apk Starting" apkinstall 5
+goto FRAMRES
+:FRAMRES6
+cls
+cd other
+Start "Installation of lidroid-res.apk Starting" apkinstall 6
+goto FRAMRES
+:FRAMRES7
+cls
+cd other
+Start "Installation of mediatek-res.apk Starting" apkinstall 7
 goto FRAMRES
 :SYSTEMPULL
 cd other

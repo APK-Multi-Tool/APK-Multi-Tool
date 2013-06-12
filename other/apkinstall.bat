@@ -316,3 +316,54 @@ ECHO ***************************************************************************
 PAUSE
 exit
 )
+::FRAMRES7
+cls
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                          Searching for mediatek-res.apk                        *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+IF NOT EXIST mediatek-res.apk (
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *        mediatek-res.apk not Found Would you like to pull the file from         *
+ECHO *        the from your android device and try to install again?                 *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+set /P INPUT=Do you want to (Y)es or (N)o? : %=%
+IF (%INPUT%)==(y) GOTO FRAMRES5Y
+IF (%INPUT%)==(n) GOTO FRAMRES5N
+::FRAMRES7Y
+ECHO. Waiting for device...
+adb kill-server
+adb wait-for-device
+ECHO. Device found.
+ECHO atempting to pull mediatek-res.apk
+adb pull system/framework/mediatek-res.apk
+ECHO. System pull complete Killing ADB
+adb kill-server
+ECHO. ADB KILLED NOW retrying mediatek-res.apk installation
+goto FRAMRES5
+::FRAMRES7N
+exit
+)
+IF EXIST mediatek-res.apk (
+cls
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                        mediatek-res.apk Found Installing                       *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+apktool if mediatek-res.apk
+PAUSE
+cls
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                   Installation of mediatek-res.apk Complete                    *
+ECHO *                       Returning to Dependencies menu                          *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+
+PAUSE
+exit
+)
