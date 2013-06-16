@@ -16,6 +16,8 @@ ECHO *  All Samsung ROMs require the /system/framework/twframework-res.apk      
 ECHO *  All Sense UI ROMs require the system/framework/com.htc.resources.apk         *
 ECHO *  All Xperia ROMs require the system/framework/SemcGenericUxpRes.apk           *
 ECHO *  All XNote ROMs require the system/framework/lidroid-res.apk                  *
+ECHO *  All mediatek chipset Devices require the system/framework/mediatek-res.apk   *
+ECHO *  All MIUI ROMs may require the system/framework/framework-miui.apk            *
 ECHO *                                                                               *
 ECHO *********************************************************************************
 pause
@@ -41,6 +43,10 @@ ECHO atempting to pull SystemUI.apk
 adb pull system/app/SystemUI.apk
 ECHO atempting to pull lidroid-res.apk
 adb pull system/framework/lidroid-res.apk
+ECHO atempting to pull mediatek-res.apk
+adb pull system/framework/mediatek-res.apk
+ECHO atempting to pull framework-miui.apk
+adb pull system/framework/framework-miui.apk
 pause
 ECHO. System pull complete Killing ADB
 adb kill-server

@@ -195,5 +195,7 @@ Added the ability to open the project after decompiling the apk files
 Added support for Jar files
 NEW Splash Screen
 Rewritten the system pull scripts to make dynamic installation of the dependencies more robust.
-Added support for pulling the needed files to install the dependcies for the Xnote
-
+Added support for pulling the needed files to install the dependcies for the Xnote.
+Added Support for pulling the needed files to install the dependcies for all mediatek chipset Devices.
+Added Support for pulling the system/framework/framework-miui.apk file to install for All MIUI ROMs that may require it.
+Minor changes to the UI in the setup.bat to make room for  more in the future releases.

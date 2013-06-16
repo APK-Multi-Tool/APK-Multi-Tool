@@ -4,6 +4,9 @@ if (%1)==(2) goto FRAMRES2
 if (%1)==(3) goto FRAMRES3
 if (%1)==(4) goto FRAMRES4
 if (%1)==(5) goto FRAMRES5
+if (%1)==(5) goto FRAMRES6
+if (%1)==(5) goto FRAMRES7
+if (%1)==(5) goto FRAMRES8
 COLOR 0A
 
 :FRAMRES1
@@ -316,7 +319,7 @@ ECHO ***************************************************************************
 PAUSE
 exit
 )
-::FRAMRES7
+:FRAMRES7
 cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
@@ -351,7 +354,7 @@ IF EXIST mediatek-res.apk (
 cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
-ECHO *                        mediatek-res.apk Found Installing                       *
+ECHO *                        mediatek-res.apk Found Installing                      *
 ECHO *                                                                               *
 ECHO *********************************************************************************
 apktool if mediatek-res.apk
@@ -359,7 +362,58 @@ PAUSE
 cls
 ECHO *********************************************************************************
 ECHO *                                                                               *
-ECHO *                   Installation of mediatek-res.apk Complete                    *
+ECHO *                   Installation of mediatek-res.apk Complete                   *
+ECHO *                       Returning to Dependencies menu                          *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+
+PAUSE
+exit
+)
+:FRAMRES8
+cls
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                          Searching for framework-miui.apk                     *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+IF NOT EXIST framework-miui.apk (
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *        framework-miui.apk not Found Would you like to pull the file from      *
+ECHO *        the from your android device and try to install again?                 *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+set /P INPUT=Do you want to (Y)es or (N)o? : %=%
+IF (%INPUT%)==(y) GOTO FRAMRES5Y
+IF (%INPUT%)==(n) GOTO FRAMRES5N
+::FRAMRES8Y
+ECHO. Waiting for device...
+adb kill-server
+adb wait-for-device
+ECHO. Device found.
+ECHO atempting to pull framework-miui.apk
+adb pull system/framework/framework-miui.apk
+ECHO. System pull complete Killing ADB
+adb kill-server
+ECHO. ADB KILLED NOW retrying framework-miui.apk installation
+goto FRAMRES5
+::FRAMRES8N
+exit
+)
+IF EXIST framework-miui.apk (
+cls
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                        framework-miui.apk Found Installing                    *
+ECHO *                                                                               *
+ECHO *********************************************************************************
+apktool if framework-miui.apk
+PAUSE
+cls
+ECHO *********************************************************************************
+ECHO *                                                                               *
+ECHO *                   Installation of framework-miui.apk Complete                 *
 ECHO *                       Returning to Dependencies menu                          *
 ECHO *                                                                               *
 ECHO *********************************************************************************

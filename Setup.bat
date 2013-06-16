@@ -185,39 +185,27 @@ ECHO *                  APK MULTI-TOOL SETUP DEPENDENCY FILES                   
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
-ECHO * 1. Install framework-res.apk                                                    *
+ECHO * 1. Install framework-res.apk     ^| 2. Install twframework-res.apk               *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
-ECHO * 2. Install twframework-res.apk                                                  *
+ECHO * 3. Install com.htc.resources.apk ^| 4. Install SystemUI.apk                      *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
-ECHO * 3. Install com.htc.resources.apk                                                *
+ECHO * 5. Install SemcGenericUxpRes.apk ^| 6. Install lidroid-res.apk                   *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
-ECHO * 4. Install SystemUI.apk                                                         *
+ECHO * 7. Install mediatek-res.apk      ^| 8. Install framework-miui.apk                *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
-ECHO * 5. Install SemcGenericUxpRes.apk                                                *
+ECHO * 9. Pull Dependencies from Phone                                                 *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
-ECHO * 6. Install lidroid-res.apk                                                      *
-ECHO *                                                                                 *
-ECHO ***********************************************************************************
-ECHO *                                                                                 *
-ECHO * 7. Install mediatek-res.apk                                                      *
-ECHO *                                                                                 *
-ECHO ***********************************************************************************
-ECHO *                                                                                 *
-ECHO * 8. Pull Dependencies from Phone                                                 *
-ECHO *                                                                                 *
-ECHO ***********************************************************************************
-ECHO *                                                                                 *
-ECHO * 9. Return to Main Menu                                                          *
+ECHO * 10. Return to Main Menu                                                         *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
@@ -232,8 +220,9 @@ IF %menunr%==4 (goto FRAMRES4)
 IF %menunr%==5 (goto FRAMRES5)
 IF %menunr%==6 (goto FRAMRES6)
 IF %menunr%==7 (goto FRAMRES7)
-IF %menunr%==8 (goto SYSTEMPULL)
-IF %menunr%==9 (goto RESTART)
+IF %menunr%==8 (goto FRAMRES8)
+IF %menunr%==9 (goto SYSTEMPULL)
+IF %menunr%==10 (goto RESTART)
 IF %menunr%==00 (goto QUIT)
 :WHAT
 echo You went crazy and entered something that wasnt part of the menu options
@@ -273,6 +262,11 @@ goto FRAMRES
 cls
 cd other
 Start "Installation of mediatek-res.apk Starting" apkinstall 7
+goto FRAMRES
+:FRAMRES8
+cls
+cd other
+Start "Installation of framework-miui.apk Starting" apkinstall 8
 goto FRAMRES
 :SYSTEMPULL
 cd other
