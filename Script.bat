@@ -671,8 +671,10 @@ ECHO a keep folder. Within it, delete
 ECHO everything you have modified and leave
 ECHO files that you haven't. IF you have modified
 ECHO any xml, then delete resources.arsc from that 
-ECHO folder as well. Once done then press enter 
-ECHO on this script.
+ECHO folder as well as if you have edited any of 
+ECHO the smali files you will also want to delete
+ECHO the classes.dex.
+ECHO Once done then press enter on this script.
 PAUSE
 7za a -tzip "%~dp0modified-system-apk-files-here/system%capp%" "%~dp0keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
@@ -748,8 +750,10 @@ ECHO a keep folder. Within it, delete
 ECHO everything you have modified and leave
 ECHO files that you haven't. IF you have modified
 ECHO any xml, then delete resources.arsc from that 
-ECHO folder as well. Once done then press enter 
-ECHO on this script.
+ECHO folder as well as if you have edited any of 
+ECHO the smali files you will also want to delete
+ECHO the classes.dex.
+ECHO Once done then press enter on this script.
 PAUSE
 7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
@@ -774,8 +778,10 @@ ECHO a keep folder. Within it, delete
 ECHO everything you have modified and leave
 ECHO files that you haven't. IF you have modified
 ECHO any xml, then delete resources.arsc from that 
-ECHO folder as well. Once done then press enter 
-ECHO on this script.
+ECHO folder as well as if you have edited any of 
+ECHO the smali files you will also want to delete
+ECHO the classes.dex.
+ECHO Once done then press enter on this script.
 PAUSE
 7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0keep/*" -mx%usrc% -r
 rmdir /S /Q "%~dp0keep"
