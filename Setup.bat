@@ -39,7 +39,7 @@ ECHO *                                                                          
 ECHO ***********************************************************************************
 ECHO *                                                                                 *
 ECHO * 3. Setup Directories                                                            *
-ECHO *    This will setup the appropate directories needed by Apk Multi-Tools          *
+ECHO *    This will setup the appropriate directories needed by Apk Multi-Tools        *
 ECHO *    (This script only needs to be ran for first time users do not use if your    * 
 ECHO *     Just updating from previous Version)                                        *
 ECHO *                                                                                 *
@@ -65,7 +65,7 @@ IF %menunr%==00 (goto QUIT)
 :WHAT
 ECHO ************************************************************************************
 ECHO *                                                                                  *
-ECHO *     You went crazy and entered something that wasnt part of the menu options     *
+ECHO *    You went crazy and entered something that wasn’t part of the menu options     *
 ECHO *                                                                                  *
 ECHO ************************************************************************************
 PAUSE
@@ -225,7 +225,7 @@ IF %menunr%==9 (goto SYSTEMPULL)
 IF %menunr%==10 (goto RESTART)
 IF %menunr%==00 (goto QUIT)
 :WHAT
-echo You went crazy and entered something that wasnt part of the menu options
+echo You went crazy and entered something that wasn’t part of the menu options
 PAUSE
 goto FRAMRES
 :FRAMRES1
@@ -300,7 +300,7 @@ ECHO *                                                                          
 ECHO * If you're stuck and the log does not give you any indication as to what you   *
 ECHO * are doing wrong, then post in the thread                                      *
 ECHO * http://forum.xda-developers.com/showthread.php?t=1460400                      *
-ECHO * Make sure u include ur setuplog.txt if avaible.                               *
+ECHO * Make sure you include your setuplog.txt if available.                         *
 ECHO *                                                                               *
 ECHO *********************************************************************************
 PAUSE

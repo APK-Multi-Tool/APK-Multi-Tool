@@ -44,7 +44,7 @@ ECHO ***************************************************************************
 ECHO *           Empowering you to Do Your BEST where ever the path may lead you           *
 ECHO ***************************************************************************************
 ECHO *  Whether you're doing basic image editing or editing the smali or XML files, on     *
-ECHO *  average u have to use (Brut.all or JF's smali/baksmali) awesome tool to extract    *
+ECHO *  average you have to use (Brut.all or JF's smali/baksmali) awesome tool to extract  *
 ECHO *  the apk, edit it, then sign the apk and then adb push/install it. This process is  * 
 ECHO *  quite tiresome if you are testing a method that needs fine tweaking.               *
 ECHO ***************************************************************************************
@@ -58,7 +58,7 @@ ECHO *  Goes to Brut.all for his awesome tool.                                  
 ECHO *  Goes to iBotPeaches for his awesome updates to Brut.all awesome tool.              *
 ECHO *  Goes to JF for of course, smali/baksmali                                           *
 ECHO ***************************************************************************************
-ECHO *  Private Testers and Special Thanks:                                                 *
+ECHO *  Private Testers and Special Thanks:                                                *
 ECHO ***************************************************************************************
 ECHO *  Windows Testers:                                                                   *
 ECHO ***************************************************************************************
@@ -81,17 +81,17 @@ ECHO ^| Decompile : %decs% ^| Current-App: %capp% ^|
 ECHO  --------------------------------------------------------------------------------------------------------------------------
 ECHO                                                    HTTP://APKMULTITOOL.COM
 ECHO  ----------------------------------         ------------------------------------        -----------------------------------
-ECHO  Simple Tasks Such As Image Editing         Advanced Tasks Such As Code Editing         Themers Convertion Tools
+ECHO  Simple Tasks Such As Image Editing         Advanced Tasks Such As Code Editing         Themers Conversion Tools
 ECHO  ----------------------------------         ------------------------------------        -----------------------------------
 ECHO  0    Adb pull                              9    Decompile apk                          16   Batch Theme Image Transfer
 ECHO  1    Extract apk                           10   Decompile apk (with dependencies)          (Read the Instructions before
-ECHO  2    Optimize images inside                     (For proprietary rom apks)                    using this feature)
+ECHO  2    Optimize images inside                     (For proprietary ROM apks)                    using this feature)
 ECHO  3    Zip apk                               11   Compile System APK files               17   Batch Decompile apk Files                  
-ECHO  4    Sign apk with Testkeys (Dont          12   Compile Non-System APK Files           18   Batch Compile apk Files                          
+ECHO  4    Sign apk with Testkeys (Don’t         12   Compile Non-System APK Files           18   Batch Compile apk Files                          
 ECHO       do this IF its a system apk)          13   Sign apk with Android Market 
 ECHO  5    Zipalign apk (Do once apk is               supported Key (Requires the JAVA 
 ECHO       created/signed)                            JDK to be installed)
-ECHO  6    Install apk (Dont do this IF          14   Install apk
+ECHO  6    Install apk (Don’t do this IF         14   Install apk
 ECHO       system apk, do adb push)              15   Compile apk / Sign apk / Install apk
 ECHO  7    Zip / Sign / Install apk                   (Non-System Apps Only)
 ECHO       (All in one step)
@@ -156,7 +156,7 @@ IF %menunr%==00 (goto quit)
 IF %capp%==None goto noproj
 
 :WHAT
-ECHO You went crazy and entered something that wasnt part of the menu options
+ECHO You went crazy and entered something that wasn’t part of the menu options
 PAUSE
 goto restart
 :switchc
@@ -241,13 +241,13 @@ ECHO adb push something.apk /wherever/something.apk
 ECHO adb shell start
 ECHO 3. Decompiling a themed apk is not possible, you must get the original unthemed
 ECHO apk, then decompile, make your theme/xml changes and recompile
-ECHO 4. IF you're stuck and the log doesnot give you any indication as to what you 
+ECHO 4. IF you're stuck and the log does not give you any indication as to what you 
 ECHO are doing wrong, then post in the thread http://forum.xda-developers.com/showthread.php?t=1310151
-ECHO Make sure u include ur APK-Multi-Tool.log, and IF its not a editing problem i.e 
-ECHO its something regarding when u push it to your phone, then post ur adb log 
+ECHO Make sure you include your APK-Multi-Tool.log, and IF its not a editing problem i.e 
+ECHO its something regarding when you push it to your phone, then post your adb log 
 ECHO as well. To do so 
 ECHO follow these steps :
-ECHO 1. Connect ur phone to ur pc
+ECHO 1. Connect your phone to your pc
 ECHO 2. Push/install the app on your phone
 ECHO 3. Select "Create Log" option on this menu
 ECHO 4. Let the new window run for 10 seconds, then close it
@@ -260,7 +260,7 @@ SET /P menunr=Please make your decision:
 IF %menunr%==1 (Start "Adb Log" other\signer 2)
 goto restart
 :portapk
-ECHO Im going to try resigning the apk and see IF that works
+ECHO I’m going to try resigning the apk and see IF that works
 ECHO Did it successfully install (y/n) ^?
 ECHO Ok, lets try looking through for any shared uid, IF i find any i will remove them
 :filesel
@@ -309,7 +309,7 @@ CLS
 goto restart
 :btit
 ECHO Batch Theme Image Transfer TOOL
-ECHO Expermental use with caution
+ECHO Experimental use with caution
 ECHO This tool makes the process of transferring images from one APK file to another 
 ECHO APK File of the same file making it easier to update themes or even transferring
 ECHO a theme update.zip of one ROM to another Rom allowing the porting of theme to
@@ -318,7 +318,7 @@ ECHO (Note: You will have to manually replace the progress_horizontals.xml from 
 ECHO framework-res since this file is needed with Theme Changes)
 PAUSE
 cd themer
-Start "Begining porting of themes" tporter
+Start "Beginning porting of themes" tporter
 goto restart
 :batdec
 cls
@@ -327,7 +327,7 @@ ECHO and add the Decompiled Versions into the Project folder as if you decompile
 ECHO all the APK FILES one at a time using option 9
 PAUSE
 cd other
-Start "Begining Batch Decompiling of all the APK Files" batdecomp
+Start "Beginning Batch Decompiling of all the APK Files" batdecomp
 goto restart
 :batcom
 cls
@@ -336,7 +336,7 @@ ECHO and add the Compiled Versions into the place-apk-here-for-signing folder as
 ECHO compiled all the APK FILES one at a time using option 12 sub option 2
 PAUSE
 cd other
-Start "Begining Batch Compiling of all the APK Files" batcomp
+Start "Beginning Batch Compiling of all the APK Files" batcomp
 goto restart
 :ogg
 cd other
@@ -360,7 +360,7 @@ ECHO Zipping Apk
 cd other
 7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0projects/%capp%/*" -mx%usrc%
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 cd ..
@@ -371,7 +371,7 @@ ECHO Zipping Apk
 rmdir /S /Q "%~dp0out/META-INF"
 7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0projects/%capp%/*" -mx%usrc%
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 cd ..
@@ -380,7 +380,7 @@ cd other
 ECHO Signing Apk
 java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 %~dp0place-apk-here-for-signing/unsigned%capp% %~dp0place-apk-here-for-signing/signed%capp%
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 DEL /Q "%~dp0place-apk-here-for-signing/unsigned%capp%"
@@ -391,7 +391,7 @@ ECHO Waiting for device
 ECHO Installing Apk
 "%~dp0other\adb.exe" install -r %~dp0place-apk-here-for-signing/signed%capp%
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 goto restart
@@ -403,17 +403,17 @@ cd ..
 goto restart
 :bopt
 CLS
-ECHO Weclome to the Batch Optimization Menu
+ECHO Welcome to the Batch Optimization Menu
 ECHO You have one of three options
 ECHO 1 Batch Zipalign
-ECHO 2 Batch Optomize PNG Files
-ECHO 3 Batch Optomize PNG Files as well as ZIPALIGN APK files afterword.
+ECHO 2 Batch Optimize PNG Files
+ECHO 3 Batch Optimize PNG Files as well as ZIPALIGN APK files afterword.
 set /P INPUTBO=Type input 1 - 3: %=%
 if %INPUTBO%==1 GOTO zipo
 if %INPUTBO%==2 GOTO ponly
 if %INPUTBO%==3 GOTO zipb
 :WHAT
-ECHO You went crazy and entered something that wasnt part of the menu options
+ECHO You went crazy and entered something that wasn’t part of the menu options
 PAUSE
 goto bopt
 :zipo
@@ -422,11 +422,11 @@ Start "Starting Batch Zipalign of APK Files" batchzip01.bat
 goto restart
 :ponly
 cd place-apk-here-to-batch-optimize
-Start "Starting Batch Optomize of PNG Files" batchopt01.bat
+Start "Starting Batch Optimize of PNG Files" batchopt01.bat
 goto restart
 :zipb
 cd place-apk-here-to-batch-optimize
-Start "Starting Batch Optomize of PNG Files as well as Zipalign of APK Files " batchopt02.bat
+Start "Starting Batch Optimize of PNG Files as well as Zipalign of APK Files " batchopt02.bat
 goto restart
 :dirnada
 ECHO %capp% has not been extracted, please do so before doing this step
@@ -454,7 +454,7 @@ set /P INPUT=Type input: %=%
 ECHO Pulling apk
 "%~dp0other\adb.exe" pull %INPUT% "%~dp0place-apk-here-for-modding\something.apk"
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 goto restart
 )
@@ -462,7 +462,7 @@ set jar=0
 set ext=jar
 IF "!INPUT:%ext%=!" NEQ "%INPUT%" set jar=1
 :renameagain
-ECHO What filename would you like this app to be stored as ?
+ECHO What file name would you like this app to be stored as ?
 ECHO Eg (launcher.apk)
 set /P INPUT=Type input: %=%
 IF EXIST "%~dp0place-apk-here-for-modding\%INPUT%" (
@@ -516,7 +516,7 @@ goto push_dir
 
 :chk_err_push
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 goto restart
@@ -527,7 +527,7 @@ IF EXIST "%~dp0place-apk-here-for-signing\signed%capp%" ("%~dp0other\zipalign.ex
 IF EXIST "%~dp0place-apk-here-for-signing\unsigned%capp%" ("%~dp0other\zipalign.exe" -f 4 "%~dp0place-apk-here-for-signing\unsigned%capp%" "%~dp0place-apk-here-for-signing\unsignedaligned%capp%")
 
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 DEL /Q "%~dp0place-apk-here-for-signing\signed%capp%"
@@ -541,7 +541,7 @@ ECHO Extracting apk
 IF EXIST "%~dp0projects/%capp%" (rmdir /S /Q "%~dp0projects/%capp%")
 7za x -o"%~dp0projects/%capp%" "%~dp0place-apk-here-for-modding/%capp%"
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 cd ..
@@ -559,7 +559,7 @@ ECHO Zipping Apk
 cd other
 7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0projects/%capp%/*" -mx%usrc%
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 
@@ -571,7 +571,7 @@ ECHO Zipping Apk
 rmdir /S /Q "%~dp0out/META-INF"
 7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0projects/%capp%/*" -mx%usrc%
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 
@@ -581,13 +581,13 @@ goto restart
 cd other
 IF EXIST "%~dp0place-apk-here-for-signing\unsigned%capp%" (del /Q "%~dp0place-apk-here-for-signing\unsigned%capp%")
 :temr
-ECHO Drag the dependee apk in this window or type its path
+ECHO Drag the depended apk in this window or type its path
 ECHO Example to decompile Rosie.apk, drag com.htc.resources.apk in this window
 set /P INPUT=Type input: %=%
 java -jar apktool.jar IF %INPUT%
 IF NOT EXIST "%userprofile%\apktool\framework\2.apk" (
 ECHO.
-ECHO "Sorry thats not the dependee apk, try again"
+ECHO "Sorry that’s not the depended apk, try again"
 goto temr
 )
 IF (%jar%)==(0) (ECHO Decompiling Apk %decs%)
@@ -598,7 +598,7 @@ IF (%dec%)==(2) (java -Xmx%heapy%m -jar apktool.jar d -s %~dp0place-apk-here-for
 IF (%dec%)==(3) (java -Xmx%heapy%m -jar apktool.jar d -r -s %~dp0place-apk-here-for-modding/%capp% %~dp0projects/%capp%)
 
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 cd ..
@@ -618,7 +618,7 @@ IF (%dec%)==(2) (java -Xmx%heapy%m -jar apktool.jar d -s %~dp0place-apk-here-for
 IF (%dec%)==(3) (java -Xmx%heapy%m -jar apktool.jar d -r -s %~dp0place-apk-here-for-modding/%capp% %~dp0projects/%capp%)
 
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 cd ..
@@ -651,7 +651,7 @@ goto restart
 
 :nojar
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 goto restart
 )
@@ -666,7 +666,7 @@ IF %INPUT1%==n (call :syscom02)
 :syscom01
 rmdir /S /Q "%~dp0keep"
 7za x -o"%~dp0keep" "%~dp0place-apk-here-for-modding/%capp%"
-ECHO In the APK Multi-Tools folder u'll find
+ECHO In the APK Multi-Tools folder you’ll find
 ECHO a keep folder. Within it, delete 
 ECHO everything you have modified and leave
 ECHO files that you haven't. IF you have modified
@@ -718,7 +718,7 @@ goto restart
 
 :nojar2
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 goto restart
 )
@@ -745,7 +745,7 @@ IF %INPUT%==6 (call :sign03)
 rmdir /S /Q "%~dp0keep"
 7za x -o"%~dp0keep" "%~dp0place-apk-here-for-modding/%capp%"
 rmdir /S /Q "%~dp0keep/META-INF/"
-ECHO In the APK Multi-Tools folder u'll find
+ECHO In the APK Multi-Tools folder you’ll find
 ECHO a keep folder. Within it, delete 
 ECHO everything you have modified and leave
 ECHO files that you haven't. IF you have modified
@@ -773,7 +773,7 @@ goto restart
 :sign01
 rmdir /S /Q "%~dp0keep"
 7za x -o"%~dp0keep" "%~dp0place-apk-here-for-modding/%capp%"
-ECHO In the APK Multi-Tools folder u'll find
+ECHO In the APK Multi-Tools folder you’ll find
 ECHO a keep folder. Within it, delete 
 ECHO everything you have modified and leave
 ECHO files that you haven't. IF you have modified
@@ -824,7 +824,7 @@ set JAVAC_PATH=%JAVA_HOME%\bin\
 set PATH=%PATH%;%JAVAC_PATH%;
 call jarsigner -keystore %KEYSTORE_FILE% -storepass %KEYSTORE_PASS% -keypass %KEYSTORE_PASS% -signedjar %~dp0place-apk-here-for-signing/signed%capp% %~dp0place-apk-here-for-signing/unsigned%capp%  %KEYSTORE_ALIAS% %1
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 
@@ -836,7 +836,7 @@ cd other
 ECHO Signing Apk
 java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 %~dp0place-apk-here-for-signing/unsigned%capp% %~dp0place-apk-here-for-signing/signed%capp%
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 
@@ -849,7 +849,7 @@ ECHO Waiting for device
 ECHO Installing Apk
 "%~dp0other\adb.exe" install -r place-apk-here-for-signing/signed%capp%
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 goto restart
@@ -860,14 +860,14 @@ ECHO Building Apk
 IF EXIST "%~dp0place-apk-here-for-signing\unsigned%capp%" (del /Q "%~dp0place-apk-here-for-signing\unsigned%capp%")
 java -Xmx%heapy%m -jar apktool.jar b "%~dp0projects/%capp%" "%~dp0place-apk-here-for-signing\unsigned%capp%"
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 goto restart
 )
 ECHO Signing Apk
 java -Xmx%heapy%m -jar signapk.jar -w testkey.x509.pem testkey.pk8 %~dp0place-apk-here-for-signing/unsigned%capp% %~dp0place-apk-here-for-signing/signed%capp%
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 DEL /Q "%~dp0place-apk-here-for-signing/unsigned%capp%"
@@ -877,7 +877,7 @@ ECHO Waiting for device
 ECHO Installing Apk
 "%~dp0other\adb.exe" install -r place-apk-here-for-signing/signed%capp%
 IF errorlevel 1 (
-ECHO "An Error Occured, Please Check The Log (option 26)"
+ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
 )
 goto restart
