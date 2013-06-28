@@ -56,74 +56,71 @@ Before running the themers tool-set make sure when you run the scripts 15 16 17 
 To transfer or convert a rom theme pack place the apk files of the theme pack you wish to convert over to your rom in the the Themedapk folder and place the rom files of the same name from the rom you have flashed on your phone in the transferred folder run the scripts
 take note that depending on your computer specs it can take over a hour to complete
 
-Requirements:
-Java 1.6
+MINIMUM REQUIREMENTS:
+----------------
+Required:
+- Windows 95/98
+- Java 1.6.x
+- Keyboard & mouse
 
+Recominded:
+- Java 1.7.x
+
+INSTALLATION
+----------------
+
+Treat your computer to a tune up - follow this procedure before installation:
+
+In Accessories\System Tools, you may find utilities that can increase the 
+performance of your system.
+
+- Scandisk your hard drive with "ScanDisk"
+- Defragment your hard drive with "Disk Defragmenter"
+- Virus Check your Hard Drive with the latest virus definitions
+- Reclaim hard drive space by deleting unnecessary files with "Disk Cleanup"
+- Verify that you have at least 150MB of free hard drive space for your swap file.
+
+To install the tool in the ROOT of you HARDDRIVE is RECOMINDED but not REQUIRED
+FOR EXAMPLE
+C:\APK-Multi-Tools\
+
+You cannot have any spaces in the path IE your installation directory should not be for exaample
+C:\APK Multi-Tool\
+
+You will Need to have the JAVA JDK INSTALLED and you need to set your Java_Home Environment Variable which needs to point to.
+FOR EXAMPLE
+C:\Program Files\Java\jdk1.7.0_25
+
+To Create the Environment Variable you need to go into System Properties click on the ADVANCED tab select ENVIRONMENT VARIABLE you will see a two boxes you want create the Java_Home in the System Variables by clicking NEW in the Variable Name box NAME IT JAVA_HOME in the Variable Value box place the location of the insallation of the JAVA JDK
+FOR EXAMPLE
+"C:\Program Files\Java\jdk1.7.0_25"
+
+When setting the ENVIRONMENT VARIABLE there can be spaces in the path but you will have to place the path in "" like I did in the example above
 
 FAQs:
-If you get the message Java is not installed try these instructions
-
-How do I set or change the PATH system variable?
-
-This article applies to:
-Platform(s): Solaris SPARC, Solaris x86, Red Hat Linux, SUSE Linux, Windows 7, Vista, Windows XP
-Browser(s): All Browsers
-Java version(s): All JRE Versions
-
-MORE TECHNICAL INFORMATION 
-
-The PATH is the system variable that your operating system uses to locate needed executable from the command line or Terminal window.
-The PATH system variable can be set using System Utility in control panel on Windows, or in your shell's start-up file on Linux and Solaris.
-
-SOLUTION
-
-Setting Path on Windows
-For Windows XP:
-1. Start -> Control Panel -> System -> Advanced
-2. Click on Environment Variables, under System Variables, find PATH, and click on it.
-3. In the Edit windows, modify PATH by adding the location of the class to the value for PATH. If you do not have the item PATH, you may select to add a new variable and add PATH as the name and the location of the class as the value.
-4. Close the window.
-5. Reopen Command prompt window, and run your java code.
-
-For Windows Vista:
-1. Right click “My Computer” icon
-2. Choose “Properties” from context menu
-3. Click “Advanced” tab (“Advanced system settings” link in Vista)
-4. In the Edit windows, modify PATH by adding the location of the class to the value for PATH. If you do not have the item PATH, you may select to add a new variable and add PATH as the name and the location of the class as the value.
-5. Reopen Command prompt window, and run your java code.
-
-Setting Path on Solaris and Linux
-To find out if the java executable is in your PATH, execute:
-% java -version
-
-This will print the version of the java executable, if it can find it. If you get error java: Command not found. Then path is not properly set.
-
-To find out which java executable the first one found in your PATH, execute:
-% which java
-
-Below are the steps to set the PATH permanently,
-Note: We are here giving instructions for two most popular Shells on Linux and Solaris.
-Please visit link below if you are using any other shells.
-Path Setting Tutorial
-
-For bash Shell: 
-1. Edit the start-up file (~/ .bashrc)
-2. Modify PATH variable: 
-PATH=/usr/local/jdk1.6.0/bin
-3. export PATH
-4. Save and close the file
-5. Open new Terminal window
-6. Verify the PATH is set properly
-% java -version
-
-For C Shell (csh):
-1. Edit startup file (~/ .cshrc)
-2. Set Path
-set path=(/usr/local/jdk1.6.0/bin )
-3. Save and Close the file
-4. Open new Terminal window
-5. Verify the PATH is set properly
-% java -version
+- 1. IF Modifying system apps, never resign them unless you want to resign all
+- apk's that share its shared:uid
+- 2. IF decompiling/recompiling system apps and IF AndroidManifest.xml was not
+- preserved from the original apk, then either push the apk when in recovery or
+- by doing :
+- adb remount
+- adb shell stop
+- adb push something.apk /wherever/something.apk
+- adb shell start
+- 3. Decompiling a themed apk is not possible, you must get the original unthemed
+- apk, then decompile, make your theme/xml changes and recompile
+- 4. IF you're stuck and the log doesnot give you any indication as to what you 
+- are doing wrong, then post in the thread http://forum.xda-developers.com/showthread.php?t=1310151
+- Make sure u include ur APK-Multi-Tool.log, and IF its not a editing problem i.e 
+- its something regarding when u push it to your phone, then post ur adb log 
+- as well. To do so 
+- follow these steps :
+- 1. Connect ur phone to ur pc
+- 2. Push/install the app on your phone
+- 3. Select "Create Log" option on this menu
+- 4. Let the new window run for 10 seconds, then close it
+- Once done, you will find a adblog.txt in the root folder
+- Upload that as well.
 
 What is the Batch Theme Image Transfer TOOL?
 This tool makes the process of transferring images from one APK to another APK File of the same file making it easier to update themes or even transferring a theme update.zip of one ROM to another Rom allowing the porting of theme to be much faster.

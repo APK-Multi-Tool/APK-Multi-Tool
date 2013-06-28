@@ -1,0 +1,63 @@
+If you get the message Java is not installed try these instructions
+
+How do I set or change the PATH system variable?
+
+This article applies to:
+Platform(s): Solaris SPARC, Solaris x86, Red Hat Linux, SUSE Linux, Windows 7, Vista, Windows XP
+Browser(s): All Browsers
+Java version(s): All JRE Versions
+
+MORE TECHNICAL INFORMATION 
+
+The PATH is the system variable that your operating system uses to locate needed executable from the command line or Terminal window.
+The PATH system variable can be set using System Utility in control panel on Windows, or in your shell's start-up file on Linux and Solaris.
+
+SOLUTION
+
+Setting Path on Windows
+For Windows XP:
+1. Start -> Control Panel -> System -> Advanced
+2. Click on Environment Variables, under System Variables, find PATH, and click on it.
+3. In the Edit windows, modify PATH by adding the location of the class to the value for PATH. If you do not have the item PATH, you may select to add a new variable and add PATH as the name and the location of the class as the value.
+4. Close the window.
+5. Reopen Command prompt window, and run your java code.
+
+For Windows Vista:
+1. Right click “My Computer” icon
+2. Choose “Properties” from context menu
+3. Click “Advanced” tab (“Advanced system settings” link in Vista)
+4. In the Edit windows, modify PATH by adding the location of the class to the value for PATH. If you do not have the item PATH, you may select to add a new variable and add PATH as the name and the location of the class as the value.
+5. Reopen Command prompt window, and run your java code.
+
+Setting Path on Solaris and Linux
+To find out if the java executable is in your PATH, execute:
+% java -version
+
+This will print the version of the java executable, if it can find it. If you get error java: Command not found. Then path is not properly set.
+
+To find out which java executable the first one found in your PATH, execute:
+% which java
+
+Below are the steps to set the PATH permanently,
+Note: We are here giving instructions for two most popular Shells on Linux and Solaris.
+Please visit link below if you are using any other shells.
+Path Setting Tutorial
+
+For bash Shell: 
+1. Edit the start-up file (~/ .bashrc)
+2. Modify PATH variable: 
+PATH=/usr/local/jdk1.6.0/bin
+3. export PATH
+4. Save and close the file
+5. Open new Terminal window
+6. Verify the PATH is set properly
+% java -version
+
+For C Shell (csh):
+1. Edit startup file (~/ .cshrc)
+2. Set Path
+set path=(/usr/local/jdk1.6.0/bin )
+3. Save and Close the file
+4. Open new Terminal window
+5. Verify the PATH is set properly
+% java -version
