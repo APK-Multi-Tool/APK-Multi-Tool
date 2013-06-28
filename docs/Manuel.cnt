@@ -1,0 +1,47 @@
+:Base Manuel.hlp
+1 APK Multi-Tools
+2 Introduction
+3 Welcome=Welcome>Main
+3 Spiecal Thanks=SpiecalThanks>Spiecal Thanks
+3 Features=Features>Main
+3 Installation=Installation>Main
+3 Getting Started=GettingStarted>Main
+3 Contacting Us=ContactingUs>Main
+2 Instructions
+3 Image Editing
+4 ADB Pull=adb-pull>Main
+4 ADB Push=ADBPush>Main
+4 Extract APK=ExtractAPK>Main
+4 Install APK=InstallAPK>Main
+4 Optimize images inside=Optimizeimagesinside>Main
+4 Sign APK=SignAPKTESTKEYS>Main
+4 Zip / Sign / Install APK=ZipSignInstallAPK>Main
+4 Zip APK=ZipAPK>Main
+4 Zipalign apk=ZipalignAPK>Main
+3 Code Editing
+4 Compile Non-System APK Files=CompileNon-SystemAPKFiles>Main
+4 Compile System APK files=CompileSystemAPKfiles>Main
+4 Compile apk / Sign apk / Install apk=CompileAPKSignAPKInstallAPK>Main
+4 Decompile apk=DecompileAPK>Main
+4 Decompile apk with dependencies=DecompileAPKwithdependencies>Main
+4 Install apk=InstallAPK2>Main
+4 Sign apk=SignAPK2>Main
+3 Theme Editing
+4 Batch Theme Image Transfer=BatchThemeImageTransfer>Main
+4 Batch Decompile apk Files=BatchDecompileapkFiles>Main
+4 Batch Compile apk Files=BatchCompileapkFiles>Main
+3 Tools Menu
+4 About / Tips / Debug Section=AboutTipsDebugSection>Main
+4 Batch Optimize Apk=BatchOptimizeApk>Main
+4 Batch Optimize Ogg Files=BatchOptimizeOggFiles>Main
+4 Clean Files/Folders=CleanFilesFolders>Main
+4 Quit=Quit>Main
+4 Read Log=ReadLog>Main
+4 Select compression level for apk's=Selectcompressionlevelforapks>Main
+4 Set Max Memory Size=SetMaxMemorySize>Main
+4 Set current project=Setcurrentproject>Main
+4 Sign an apk=Signanapk>Main
+4 Switch Decompile Mode:=SwitchDecompileMode>Main
+2 FAQ
+3 Java is not installed=Javaisnotinstalled>Main
+
