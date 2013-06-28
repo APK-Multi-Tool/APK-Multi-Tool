@@ -84,7 +84,8 @@ To install the tool in the ROOT of you HARDDRIVE is RECOMINDED but not REQUIRED
 FOR EXAMPLE
 C:\APK-Multi-Tools\
 
-You cannot have any spaces in the path IE your installation directory should not be for exaample
+You cannot have any spaces in the path IE your installation directory should not be
+FOR EXAMPLE
 C:\APK Multi-Tool\
 
 You will Need to have the JAVA JDK INSTALLED and you need to set your Java_Home Environment Variable which needs to point to.
