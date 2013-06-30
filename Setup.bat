@@ -51,7 +51,7 @@ ECHO ***************************************************************************
 ECHO *                                                                                 *
 ECHO *  4   Read Log                                                                   *
 ECHO *  5   About / Tips                                                               *
-ECHO *  00   Quit                                                                      *
+ECHO *  00  Quit                                                                       *
 ECHO *                                                                                 *
 ECHO ***********************************************************************************
 SET /P menunr=Please make your decision:
