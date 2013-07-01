@@ -38,10 +38,12 @@
 4 Quit=Quit>Main
 4 Read Log=ReadLog>Main
 4 Select compression level for apk's=Selectcompressionlevelforapks>Main
+4 Select compression level for Resources.arsc=SelectcompressionlevelforResources.arsc>Main
 4 Set Max Memory Size=SetMaxMemorySize>Main
 4 Set current project=Setcurrentproject>Main
 4 Sign an apk=Signanapk>Main
 4 Switch Decompile Mode:=SwitchDecompileMode>Main
+4 Donations=Donations>Main
 2 FAQ
 3 Java is not installed=Javaisnotinstalled>Main
 3 Setting up Environment Variable=SettingupEnvironmentVariable>Main
