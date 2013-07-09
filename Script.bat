@@ -43,8 +43,8 @@ ECHO *                           Website: http://apkmultitool.com               
 ECHO ***************************************************************************************
 ECHO *           Empowering you to Do Your BEST where ever the path may lead you           *
 ECHO ***************************************************************************************
-ECHO *  Whether you're doing basic image editing or editing the smali or XML files, on     *
-ECHO *  average you have to use (Brut.all or JF's smali/baksmali) awesome tool to extract  *
+ECHO *  Whether you are doing basic image editing or editing the smali or XML files, on    *
+ECHO *  average you have to use (Brut.all or JFs smali/baksmali) awesome tool to extract   *
 ECHO *  the apk, edit it, then sign the apk and then adb push/install it. This process is  * 
 ECHO *  quite tiresome if you are testing a method that needs fine tweaking.               *
 ECHO ***************************************************************************************
@@ -87,11 +87,11 @@ ECHO  0    Adb pull                              9    Decompile apk             
 ECHO  1    Extract apk                           10   Decompile apk (with dependencies)          (Read the Instructions before
 ECHO  2    Optimize images inside                     (For proprietary ROM apks)                    using this feature)
 ECHO  3    Zip apk                               11   Compile System APK files               17   Batch Decompile apk Files                  
-ECHO  4    Sign apk with Testkeys (Don't         12   Compile Non-System APK Files           18   Batch Compile apk Files                          
+ECHO  4    Sign apk with Testkeys (Dont          12   Compile Non-System APK Files           18   Batch Compile apk Files                          
 ECHO       do this IF its a system apk)          13   Sign apk with Android Market 
 ECHO  5    Zipalign apk (Do once apk is               supported Key (Requires the JAVA 
 ECHO       created/signed)                            JDK to be installed)
-ECHO  6    Install apk (Don't do this IF         14   Install apk
+ECHO  6    Install apk (Dont do this IF          14   Install apk
 ECHO       system apk, do adb push)              15   Compile apk / Sign apk / Install apk
 ECHO  7    Zip / Sign / Install apk                   (Non-System Apps Only)
 ECHO       (All in one step)
@@ -103,13 +103,13 @@ ECHO  19   Batch Optimize Apk (inside place-apk-here-to-batch-optimize only)
 ECHO  20   Sign an apk(Batch support)(inside place-apk-here-for-signing folder only)
 ECHO  21   Batch optimize ogg files (inside place-ogg-here only)
 ECHO  22   Clean Files/Folders
-ECHO  23   Select compression level for apk's
+ECHO  23   Select compression level for apks
 ECHO  24   Select compression level for Resources.arsc
 ECHO  25   Set Max Memory Size (Only use IF getting stuck at decompiling/compiling)
 ECHO  26   Read Log
 ECHO  27   Set current project
 ECHO  28   About / Tips / Debug Section
-ECHO  29   Switch decompile mode (Allows you to pick to fully decompile the APK's or JAR's
+ECHO  29   Switch decompile mode (Allows you to pick to fully decompile the APKs or JARs
 ECHO       or to just decompile Sources or just the Resources or do a raw dump allowing you
 ECHO       to just edit the normal images)
 ECHO  30   Donations
@@ -164,11 +164,11 @@ set /a dec+=1
 IF (%dec%)==(4) (set /a dec=0)
 goto restart
 :cleanp
-ECHO 1. Clean This Project's Folder
-ECHO 2. Clean All Apk's in Modding Folder
-ECHO 3. Clean All OGG's in OGG Folder
-ECHO 4. Clean All Apk's in Optimize Folder
-ECHO 5. Clean All Apk's in Signing Folder
+ECHO 1. Clean This Projects Folder
+ECHO 2. Clean All Apks in Modding Folder
+ECHO 3. Clean All OGGs in OGG Folder
+ECHO 4. Clean All Apks in Optimize Folder
+ECHO 5. Clean All Apks in Signing Folder
 ECHO 6. Clean All Projects
 ECHO 7. Clean All Folders/Files
 ECHO 8. Go Back To MAIN MENU
@@ -231,7 +231,7 @@ ECHO ----
 ECHO Tips
 ECHO ----
 ECHO 1. IF Modifying system apps, never resign them unless you want to resign all
-ECHO apk's that share its shared:uid
+ECHO apks that share its shared:uid
 ECHO 2. IF decompiling/recompiling system apps and IF AndroidManifest.xml was not
 ECHO preserved from the original apk, then either push the apk when in recovery or
 ECHO by doing :
@@ -241,7 +241,7 @@ ECHO adb push something.apk /wherever/something.apk
 ECHO adb shell start
 ECHO 3. Decompiling a themed apk is not possible, you must get the original unthemed
 ECHO apk, then decompile, make your theme/xml changes and recompile
-ECHO 4. IF you're stuck and the log does not give you any indication as to what you 
+ECHO 4. IF youre stuck and the log does not give you any indication as to what you 
 ECHO are doing wrong, then post in the thread http://forum.xda-developers.com/showthread.php?t=1310151
 ECHO Make sure you include your APK-Multi-Tool.log, and IF its not a editing problem i.e 
 ECHO its something regarding when you push it to your phone, then post your adb log 
@@ -280,7 +280,7 @@ IF /I !count! GTR 10 (ECHO ^- !count! - %%F )
 )
 ECHO.
 ECHO Choose the file to be set as current project?
-set /P INPUT=Enter It's Number: %=%
+set /P INPUT=Enter Its Number: %=%
 IF /I %INPUT% GTR !count! (goto chc)
 IF /I %INPUT% LSS 1 (goto chc)
 set capp=!a%INPUT%!
@@ -437,7 +437,7 @@ IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
 mkdir temp
 xcopy "%~dp0projects\%capp%\res\*.9.png" "%~dp0temp" /S /Y
 cd other
-ECHO Optimizing Png's
+ECHO Optimizing Pngs
 roptipng -o99 "%~dp0projects/%capp%/**/*.png"
 cd ..
 xcopy "%~dp0temp" "%~dp0projects\%capp%\res" /S /Y
@@ -657,7 +657,7 @@ goto restart
 )
 :nq1
 ECHO Aside from the signatures, would you like to copy
-ECHO over any additional files that you didn't modify
+ECHO over any additional files that you did not modify
 ECHO from the original apk in order to ensure least 
 ECHO # of errors ^(y/n^)
 set /P INPUT1=Type input: %=%
@@ -666,10 +666,10 @@ IF %INPUT1%==n (call :syscom02)
 :syscom01
 rmdir /S /Q "%~dp0keep"
 7za x -o"%~dp0keep" "%~dp0place-apk-here-for-modding/%capp%"
-ECHO In the APK Multi-Tools folder you’ll find
+ECHO In the APK Multi-Tools folder you will find
 ECHO a keep folder. Within it, delete 
 ECHO everything you have modified and leave
-ECHO files that you haven't. IF you have modified
+ECHO files that you have not. IF you have modified
 ECHO any xml, then delete resources.arsc from that 
 ECHO folder as well as if you have edited any of 
 ECHO the smali files you will also want to delete
@@ -748,7 +748,7 @@ rmdir /S /Q "%~dp0keep/META-INF/"
 ECHO In the APK Multi-Tools folder you’ll find
 ECHO a keep folder. Within it, delete 
 ECHO everything you have modified and leave
-ECHO files that you haven't. IF you have modified
+ECHO files that you have not. IF you have modified
 ECHO any xml, then delete resources.arsc from that 
 ECHO folder as well as if you have edited any of 
 ECHO the smali files you will also want to delete
@@ -776,7 +776,7 @@ rmdir /S /Q "%~dp0keep"
 ECHO In the APK Multi-Tools folder you’ll find
 ECHO a keep folder. Within it, delete 
 ECHO everything you have modified and leave
-ECHO files that you haven't. IF you have modified
+ECHO files that you have not. IF you have modified
 ECHO any xml, then delete resources.arsc from that 
 ECHO folder as well as if you have edited any of 
 ECHO the smali files you will also want to delete

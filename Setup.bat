@@ -297,7 +297,7 @@ ECHO * (b) This tool was by no means created to hack or be used for piracy of ap
 ECHO *                                                                               *
 ECHO *********************************************************************************
 ECHO *                                                                               *
-ECHO * If you're stuck and the log does not give you any indication as to what you   *
+ECHO * If you are stuck and the log does not give you any indication as to what you  *
 ECHO * are doing wrong, then post in the thread                                      *
 ECHO * http://forum.xda-developers.com/showthread.php?t=1460400                      *
 ECHO * Make sure you include your setuplog.txt if available.                         *
