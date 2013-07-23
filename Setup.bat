@@ -65,7 +65,7 @@ IF %menunr%==00 (goto QUIT)
 :WHAT
 ECHO ************************************************************************************
 ECHO *                                                                                  *
-ECHO *    You went crazy and entered something that wasn’t part of the menu options     *
+ECHO *    You went crazy and entered something that wasn't part of the menu options     *
 ECHO *                                                                                  *
 ECHO ************************************************************************************
 PAUSE
@@ -225,7 +225,7 @@ IF %menunr%==9 (goto SYSTEMPULL)
 IF %menunr%==10 (goto RESTART)
 IF %menunr%==00 (goto QUIT)
 :WHAT
-echo You went crazy and entered something that wasn’t part of the menu options
+echo You went crazy and entered something that wasn't part of the menu options
 PAUSE
 goto FRAMRES
 :FRAMRES1

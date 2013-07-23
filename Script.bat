@@ -43,8 +43,8 @@ ECHO *                           Website: http://apkmultitool.com               
 ECHO ***************************************************************************************
 ECHO *           Empowering you to Do Your BEST where ever the path may lead you           *
 ECHO ***************************************************************************************
-ECHO *  Whether you are doing basic image editing or editing the smali or XML files, on    *
-ECHO *  average you have to use (Brut.all or JFs smali/baksmali) awesome tool to extract   *
+ECHO *  Whether you're doing basic image editing or editing the smali or XML files, on     *
+ECHO *  average u have to use (Brut.all or JF's smali/baksmali) awesome tool to extract    *
 ECHO *  the apk, edit it, then sign the apk and then adb push/install it. This process is  * 
 ECHO *  quite tiresome if you are testing a method that needs fine tweaking.               *
 ECHO ***************************************************************************************
@@ -103,13 +103,13 @@ ECHO  19   Batch Optimize Apk (inside place-apk-here-to-batch-optimize only)
 ECHO  20   Sign an apk(Batch support)(inside place-apk-here-for-signing folder only)
 ECHO  21   Batch optimize ogg files (inside place-ogg-here only)
 ECHO  22   Clean Files/Folders
-ECHO  23   Select compression level for apks
+ECHO  23   Select compression level for apk's
 ECHO  24   Select compression level for Resources.arsc
 ECHO  25   Set Max Memory Size (Only use IF getting stuck at decompiling/compiling)
 ECHO  26   Read Log
 ECHO  27   Set current project
 ECHO  28   About / Tips / Debug Section
-ECHO  29   Switch decompile mode (Allows you to pick to fully decompile the APKs or JARs
+ECHO  29   Switch decompile mode (Allows you to pick to fully decompile the APK's or JAR's
 ECHO       or to just decompile Sources or just the Resources or do a raw dump allowing you
 ECHO       to just edit the normal images)
 ECHO  30   Donations
@@ -156,7 +156,7 @@ IF %menunr%==00 (goto quit)
 IF %capp%==None goto noproj
 
 :WHAT
-ECHO You went crazy and entered something that wasn’t part of the menu options
+ECHO You went crazy and entered something that wasn't part of the menu options
 PAUSE
 goto restart
 :switchc
@@ -164,11 +164,11 @@ set /a dec+=1
 IF (%dec%)==(4) (set /a dec=0)
 goto restart
 :cleanp
-ECHO 1. Clean This Projects Folder
-ECHO 2. Clean All Apks in Modding Folder
-ECHO 3. Clean All OGGs in OGG Folder
-ECHO 4. Clean All Apks in Optimize Folder
-ECHO 5. Clean All Apks in Signing Folder
+ECHO 1. Clean This Project's Folder
+ECHO 2. Clean All Apk's in Modding Folder
+ECHO 3. Clean All OGG's in OGG Folder
+ECHO 4. Clean All Apk's in Optimize Folder
+ECHO 5. Clean All Apk's in Signing Folder
 ECHO 6. Clean All Projects
 ECHO 7. Clean All Folders/Files
 ECHO 8. Go Back To MAIN MENU
@@ -231,7 +231,7 @@ ECHO ----
 ECHO Tips
 ECHO ----
 ECHO 1. IF Modifying system apps, never resign them unless you want to resign all
-ECHO apks that share its shared:uid
+ECHO apk's that share its shared:uid
 ECHO 2. IF decompiling/recompiling system apps and IF AndroidManifest.xml was not
 ECHO preserved from the original apk, then either push the apk when in recovery or
 ECHO by doing :
@@ -241,7 +241,7 @@ ECHO adb push something.apk /wherever/something.apk
 ECHO adb shell start
 ECHO 3. Decompiling a themed apk is not possible, you must get the original unthemed
 ECHO apk, then decompile, make your theme/xml changes and recompile
-ECHO 4. IF youre stuck and the log does not give you any indication as to what you 
+ECHO 4. IF you're stuck and the log does not give you any indication as to what you 
 ECHO are doing wrong, then post in the thread http://forum.xda-developers.com/showthread.php?t=1310151
 ECHO Make sure you include your APK-Multi-Tool.log, and IF its not a editing problem i.e 
 ECHO its something regarding when you push it to your phone, then post your adb log 
@@ -260,7 +260,7 @@ SET /P menunr=Please make your decision:
 IF %menunr%==1 (Start "Adb Log" other\signer 2)
 goto restart
 :portapk
-ECHO I’m going to try resigning the apk and see IF that works
+ECHO I'm going to try resigning the apk and see IF that works
 ECHO Did it successfully install (y/n) ^?
 ECHO Ok, lets try looking through for any shared uid, IF i find any i will remove them
 :filesel
@@ -280,7 +280,7 @@ IF /I !count! GTR 10 (ECHO ^- !count! - %%F )
 )
 ECHO.
 ECHO Choose the file to be set as current project?
-set /P INPUT=Enter Its Number: %=%
+set /P INPUT=Enter It's Number: %=%
 IF /I %INPUT% GTR !count! (goto chc)
 IF /I %INPUT% LSS 1 (goto chc)
 set capp=!a%INPUT%!
@@ -413,7 +413,7 @@ if %INPUTBO%==1 GOTO zipo
 if %INPUTBO%==2 GOTO ponly
 if %INPUTBO%==3 GOTO zipb
 :WHAT
-ECHO You went crazy and entered something that wasn’t part of the menu options
+ECHO You went crazy and entered something that wasn't part of the menu options
 PAUSE
 goto bopt
 :zipo
@@ -437,7 +437,7 @@ IF NOT EXIST "%~dp0projects\%capp%" GOTO dirnada
 mkdir temp
 xcopy "%~dp0projects\%capp%\res\*.9.png" "%~dp0temp" /S /Y
 cd other
-ECHO Optimizing Pngs
+ECHO Optimizing Png's
 roptipng -o99 "%~dp0projects/%capp%/**/*.png"
 cd ..
 xcopy "%~dp0temp" "%~dp0projects\%capp%\res" /S /Y
@@ -581,13 +581,13 @@ goto restart
 cd other
 IF EXIST "%~dp0place-apk-here-for-signing\unsigned%capp%" (del /Q "%~dp0place-apk-here-for-signing\unsigned%capp%")
 :temr
-ECHO Drag the depended apk in this window or type its path
+ECHO Drag the dependee apk in this window or type its path
 ECHO Example to decompile Rosie.apk, drag com.htc.resources.apk in this window
 set /P INPUT=Type input: %=%
 java -jar apktool.jar IF %INPUT%
 IF NOT EXIST "%userprofile%\apktool\framework\2.apk" (
 ECHO.
-ECHO "Sorry that’s not the depended apk, try again"
+ECHO "Sorry thats not the dependee apk, try again"
 goto temr
 )
 IF (%jar%)==(0) (ECHO Decompiling Apk %decs%)
@@ -745,7 +745,7 @@ IF %INPUT%==6 (call :sign03)
 rmdir /S /Q "%~dp0keep"
 7za x -o"%~dp0keep" "%~dp0place-apk-here-for-modding/%capp%"
 rmdir /S /Q "%~dp0keep/META-INF/"
-ECHO In the APK Multi-Tools folder you’ll find
+ECHO In the APK Multi-Tools folder you will find
 ECHO a keep folder. Within it, delete 
 ECHO everything you have modified and leave
 ECHO files that you have not. IF you have modified
@@ -773,7 +773,7 @@ goto restart
 :sign01
 rmdir /S /Q "%~dp0keep"
 7za x -o"%~dp0keep" "%~dp0place-apk-here-for-modding/%capp%"
-ECHO In the APK Multi-Tools folder you’ll find
+ECHO In the APK Multi-Tools folder you will find
 ECHO a keep folder. Within it, delete 
 ECHO everything you have modified and leave
 ECHO files that you have not. IF you have modified
