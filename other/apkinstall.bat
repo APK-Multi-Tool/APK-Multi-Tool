@@ -336,7 +336,7 @@ ECHO ***************************************************************************
 set /P INPUT=Do you want to (Y)es or (N)o? : %=%
 IF (%INPUT%)==(y) GOTO FRAMRES5Y
 IF (%INPUT%)==(n) GOTO FRAMRES5N
-::FRAMRES7Y
+:FRAMRES7Y
 ECHO. Waiting for device...
 adb kill-server
 adb wait-for-device
@@ -347,7 +347,7 @@ ECHO. System pull complete Killing ADB
 adb kill-server
 ECHO. ADB KILLED NOW retrying mediatek-res.apk installation
 goto FRAMRES5
-::FRAMRES7N
+:FRAMRES7N
 exit
 )
 IF EXIST mediatek-res.apk (
@@ -387,7 +387,7 @@ ECHO ***************************************************************************
 set /P INPUT=Do you want to (Y)es or (N)o? : %=%
 IF (%INPUT%)==(y) GOTO FRAMRES5Y
 IF (%INPUT%)==(n) GOTO FRAMRES5N
-::FRAMRES8Y
+:FRAMRES8Y
 ECHO. Waiting for device...
 adb kill-server
 adb wait-for-device
@@ -398,7 +398,7 @@ ECHO. System pull complete Killing ADB
 adb kill-server
 ECHO. ADB KILLED NOW retrying framework-miui.apk installation
 goto FRAMRES5
-::FRAMRES8N
+:FRAMRES8N
 exit
 )
 IF EXIST framework-miui.apk (
