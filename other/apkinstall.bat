@@ -4,9 +4,9 @@ if (%1)==(2) goto FRAMRES2
 if (%1)==(3) goto FRAMRES3
 if (%1)==(4) goto FRAMRES4
 if (%1)==(5) goto FRAMRES5
-if (%1)==(5) goto FRAMRES6
-if (%1)==(5) goto FRAMRES7
-if (%1)==(5) goto FRAMRES8
+if (%1)==(6) goto FRAMRES6
+if (%1)==(7) goto FRAMRES7
+if (%1)==(8) goto FRAMRES8
 COLOR 0A
 
 :FRAMRES1
