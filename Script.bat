@@ -270,13 +270,13 @@ FOR %%F IN (place-apk-here-for-modding/*.apk) DO (
 set /A count+=1
 set a!count!=%%F
 IF /I !count! LEQ 9 (ECHO ^- !count!  - %%F )
-IF /I !count! GTR 10 (ECHO ^- !count! - %%F )
+IF /I !count! GTR 9 (ECHO ^- !count! - %%F )
 )
 FOR %%F IN (place-apk-here-for-modding/*.jar) DO (
 set /A count+=1
 set a!count!=%%F
 IF /I !count! LEQ 9 (ECHO ^- !count!  - %%F )
-IF /I !count! GTR 10 (ECHO ^- !count! - %%F )
+IF /I !count! GTR 9 (ECHO ^- !count! - %%F )
 )
 ECHO.
 ECHO Choose the file to be set as current project?
