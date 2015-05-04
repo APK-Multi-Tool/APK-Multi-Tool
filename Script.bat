@@ -270,13 +270,13 @@ FOR %%F IN (place-apk-here-for-modding/*.apk) DO (
 set /A count+=1
 set a!count!=%%F
 IF /I !count! LEQ 9 (ECHO ^- !count!  - %%F )
-IF /I !count! GTR 10 (ECHO ^- !count! - %%F )
+IF /I !count! GTR 9 (ECHO ^- !count! - %%F )
 )
 FOR %%F IN (place-apk-here-for-modding/*.jar) DO (
 set /A count+=1
 set a!count!=%%F
 IF /I !count! LEQ 9 (ECHO ^- !count!  - %%F )
-IF /I !count! GTR 10 (ECHO ^- !count! - %%F )
+IF /I !count! GTR 9 (ECHO ^- !count! - %%F )
 )
 ECHO.
 ECHO Choose the file to be set as current project?
@@ -592,10 +592,10 @@ goto temr
 )
 IF (%jar%)==(0) (ECHO Decompiling Apk %decs%)
 IF (%jar%)==(1) (ECHO Decompiling Jar %decs%)
-IF (%dec%)==(0) (java -Xmx%heapy%m -jar apktool.jar d %~dp0place-apk-here-for-modding/%capp% %~dp0projects/%capp%)
-IF (%dec%)==(1) (java -Xmx%heapy%m -jar apktool.jar d -r %~dp0place-apk-here-for-modding/%capp% %~dp0projects/%capp%)
-IF (%dec%)==(2) (java -Xmx%heapy%m -jar apktool.jar d -s %~dp0place-apk-here-for-modding/%capp% %~dp0projects/%capp%)
-IF (%dec%)==(3) (java -Xmx%heapy%m -jar apktool.jar d -r -s %~dp0place-apk-here-for-modding/%capp% %~dp0projects/%capp%)
+IF (%dec%)==(0) (java -Xmx%heapy%m -jar apktool.jar d %~dp0place-apk-here-for-modding/%capp% -o %~dp0projects/%capp%)
+IF (%dec%)==(1) (java -Xmx%heapy%m -jar apktool.jar d -r %~dp0place-apk-here-for-modding/%capp% -o %~dp0projects/%capp%)
+IF (%dec%)==(2) (java -Xmx%heapy%m -jar apktool.jar d -s %~dp0place-apk-here-for-modding/%capp% -o %~dp0projects/%capp%)
+IF (%dec%)==(3) (java -Xmx%heapy%m -jar apktool.jar d -r -s %~dp0place-apk-here-for-modding/%capp% -o %~dp0projects/%capp%)
 
 IF errorlevel 1 (
 ECHO "An Error Occurred, Please Check The Log (option 26)"
@@ -612,10 +612,10 @@ IF EXIST "%~dp0place-apk-here-for-signing/signed%capp%" (del /Q "%~dp0place-apk-
 IF EXIST "%~dp0projects/%capp%" (rmdir /S /Q "%~dp0projects/%capp%")
 IF (%jar%)==(0) (ECHO Decompiling Apk %decs%)
 IF (%jar%)==(1) (ECHO Decompiling Jar %decs%)
-IF (%dec%)==(0) (java -Xmx%heapy%m -jar apktool.jar d %~dp0place-apk-here-for-modding/%capp% %~dp0projects/%capp%)
-IF (%dec%)==(1) (java -Xmx%heapy%m -jar apktool.jar d -r %~dp0place-apk-here-for-modding/%capp% %~dp0projects/%capp%)
-IF (%dec%)==(2) (java -Xmx%heapy%m -jar apktool.jar d -s %~dp0place-apk-here-for-modding/%capp% %~dp0projects/%capp%)
-IF (%dec%)==(3) (java -Xmx%heapy%m -jar apktool.jar d -r -s %~dp0place-apk-here-for-modding/%capp% %~dp0projects/%capp%)
+IF (%dec%)==(0) (java -Xmx%heapy%m -jar apktool.jar d %~dp0place-apk-here-for-modding/%capp% -o %~dp0projects/%capp%)
+IF (%dec%)==(1) (java -Xmx%heapy%m -jar apktool.jar d -r %~dp0place-apk-here-for-modding/%capp% -o %~dp0projects/%capp%)
+IF (%dec%)==(2) (java -Xmx%heapy%m -jar apktool.jar d -s %~dp0place-apk-here-for-modding/%capp% -o %~dp0projects/%capp%)
+IF (%dec%)==(3) (java -Xmx%heapy%m -jar apktool.jar d -r -s %~dp0place-apk-here-for-modding/%capp% -o %~dp0projects/%capp%)
 
 IF errorlevel 1 (
 ECHO "An Error Occurred, Please Check The Log (option 26)"
@@ -642,7 +642,7 @@ IF (%jar%)==(0) (ECHO Building Apk)
 IF (%jar%)==(1) (ECHO Building Jar)
 mkdir modified-system-apk-files-here
 IF EXIST "%~dp0modified-system-apk-files-here\system%capp%" (del /Q "%~dp0modified-system-apk-files-here\system%capp%")
-java -Xmx%heapy%m -jar apktool.jar b "%~dp0projects/%capp%" "%~dp0modified-system-apk-files-here\system%capp%"
+java -Xmx%heapy%m -jar apktool.jar b "%~dp0projects/%capp%" -o "%~dp0modified-system-apk-files-here\system%capp%"
 IF (%jar%)==(0) (goto :nojar)
 7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/%capp%" META-INF -r
 7za a -tzip "%~dp0modified-system-apk-files-here/system%capp%" "%~dp0projects/temp/*" -mx%usrc% -r
@@ -709,7 +709,7 @@ IF (%jar%)==(0) (ECHO Building Apk)
 IF (%jar%)==(1) (ECHO Building Jar)
 IF EXIST "%~dp0place-apk-here-for-signing\unsigned%capp%" (del /Q "%~dp0place-apk-here-for-signing\unsigned%capp%")
 IF EXIST "%~dp0place-apk-here-for-signing\OriginalSignedKey%capp%" (del /Q "%~dp0place-apk-here-for-signing\OriginalSignedKey%capp%")
-java -Xmx%heapy%m -jar apktool.jar b "%~dp0projects/%capp%" "%~dp0place-apk-here-for-signing\unsigned%capp%"
+java -Xmx%heapy%m -jar apktool.jar b "%~dp0projects/%capp%" -o "%~dp0place-apk-here-for-signing\unsigned%capp%"
 IF (%jar%)==(0) (goto :nojar2)
 7za x -o"%~dp0projects/temp" "%~dp0place-apk-here-for-modding/%capp%" META-INF -r
 7za a -tzip "%~dp0place-apk-here-for-signing/unsigned%capp%" "%~dp0projects/temp/*" -mx%usrc% -r
