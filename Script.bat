@@ -397,8 +397,8 @@ PAUSE
 goto restart
 :asi
 cd other
-DEL /Q "%~dp0place-apk-here-for-signing/signed.apk"
-FOR %%F in (%~dp0place-apk-here-for-signing/*) DO call signer "%%F"
+
+FOR %%F in (%~dp0place-apk-here-for-signing/*) DO call batchsigner "%%F"
 cd ..
 goto restart
 :bopt
