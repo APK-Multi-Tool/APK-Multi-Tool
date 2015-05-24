@@ -59,12 +59,12 @@ take note that depending on your computer specs it can take over a hour to compl
 MINIMUM REQUIREMENTS:
 ----------------
 Required:
-- Windows 95/98
-- Java 1.6.x
+- Windows 95/98/VISTA/7/8/8.1
+- Java 1.7.x
 - Keyboard & mouse
 
 Recominded:
-- Java 1.7.x
+- Java 1.8.x
 
 INSTALLATION
 ----------------
