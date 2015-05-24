@@ -191,62 +191,96 @@ Fixed Set current project option not working properly
 Added the ability to set compression level of the Resources.arsc
 Changed the name of recompiled System Applications from unsigned to system to keep the two from being confused
 Code Clean up clearing out unused code 
-UPDATED to apktool-2.0.0-1bd1e9-SNAPSHOT-small (TBA)
--Updated to smali/baksmali to v2.0.3
--Updated to Gradle 1.8
--Fixed (issue #8)   - Correctly uses -c to retain original manifest and META-INF. (Thanks M1cha)
--Fixed (issue #63)  - Correctly handles apk's that have unknown files outside of the standard aapt allowed resources.
--Fixed (issue #202) - Includes modified aapt to force package id on build. (Thanks M1cha)
--Fixed (issue #403) - Uses new usage output to cleanup organization of features.
--Fixed (issue #359) - Correctly handles malformed 9patch images. (Thanks Felipe Richards)
--Fixed (issue #401) - Uses versionInfo meta to correctly parse versionName and versionCode.
--Fixed (issue #440) - Include aapt binaries within Apktool to have closer control over build.
--Fixed (issue #439) - Correctly handles apk's that have have the general access bit enabled for encryption.
--Fixed (issue #339) - Re-enables debug mode ( -d flag) to fix smali debugging. (Thanks Ryszard)
--Fixed (issue #177) - Adapted output of smali to make breakpoint setting easier in different IDEs. (Thanks Ryszard)
--Fixed (issue #391) - Fixes characters (& and <) from being double escaped in <item>'s of arrays.xml
--Fixed (issue #260) - Fixes "Multiple substitution" errors with positional and exactly 1 non-positional argument.
--Fixed (issue #427) - Correctly handles `--frame-path` on [b]uild
--Fixed (issue #396) - Correctly handle android:debuggable while in debug mode.
--Fixed (issue #340) - Fixed superclass errors on debug mode.
--Fixed (issue #458) - Fixed pkg id not being correctly set in framework files.
--Fixed (issue #469) - Added (-m / --match-original)
--Fixed (issue #326) - Fixed PNG increasing brightness on build (Thanks Christiaan)
--Fixed (issue #448) - Merge smali2 into Apktool
--Fixed (issue #496) - Fixes Windows builds caused by java.nio problems
--Fixed (issue #510) - Any error output is sent stderr instead of stdout
--Fixed (issue #426) - Filename too long (JesusFreke)
--Fixed (issue #524) - INSTALL_FAILED_DEXOPT fix (JesusFreke)
--Fixed (issue #473) - multiple package frameworks are treated correctly.
--Fixed (issue #531) - JAR disassembling borking is fixed
--Fixed (issue #550) - Correctly labels incorrect type handling of <array>
--Fixed (issue #571) - Fixed truncated strings (Thanks jtmuhone)
--Fixed (issue #578) - Fixed apk's with multiple empty types via ignoring them
--Fixed (issue #589) - Fixed apk's with one package named "android" from improper decoding.
--Fixed (issue #601) - Make StringBlock thread safe (Thanks aluedeke)
--Fixed (issue #238) - Fixed truncated UTF-16 strings
--Fixed (issue #584) - Fixed horrible spacing, aligned for 4 spaces.
--Fixed (issue #196) - Fixed style crash due to malformed styles.
--Fixed (issue #603) - Fixed unknown files prefixed with common name from being ignored.
--Fixed (issue #606) - Fixed unknown files being ignored when -r is used.
--Fixed (issue #609) - Fixed handling renamed manifests with ("android", "com.htc" and "miui").
--Fixed (issue #626) - Fixed handling strange characters with unknown files.
--Fixed (issue #630) - Fixed handling renamed manifests with ("com.lge")
--Fixed (issue #409) - Fixed array items incorrectly typed.
--Fixed (issue #512) - Fixed AndroidManifest missing attributes.
--Fixed (issue #677) - Fixed ignoring formatted attribute in <string-array>.
--Fixed (issue #675) - Fixed multiple overlapping catches.
--Fixed (issue #684) - Fixed issue with multiple ResPackages in ARSC file.
--Fixed (issue #682) - Fixed handling renamed manifests with ("yi")
--Fixed (issue #664) - Fixed issue with apks with large StringPools failing to decode.
--Fixed issue with APKs with multiple dex files.
--Fixed issue with using Apktool without smali/baksmali for ApktoolProperties (Thanks teprrr)
--Fixed issue with non-URI standard characters in apk name (Thanks rover12421)
--Added output to list Apktool version to help debugging.
--Updated known bytes for configurations to 38 (from addition of layout direction)
--Fixed NPE when handling odex apks even with --no-src specified. (Thanks Rodrigo Chiossi)
--Fixed locale problems when locale changes meaning of default letters in windows .bat script (Thanks Adem666)
--Fixed problem when -r was used with no /res folder present in apk (Thanks chrisch1974)
+UPDATED to APKTOOL v2.0.1 (unreleased)
+2015.xx.xx
+
+Fixed version qualifier like v4 from being ignored during decode. (Issue 928)
+Fixed windows helper script from appending current directory into $PATH. (Issue 927) / (Thanks Tercete)
+Fixed frameworks that were SharedLibraries from affecting the apktool.yml file. (Issue 936)
+Fixed apks that were crashing on internal attributes. (Issue 913)
+Fixed ResFileValue(s) being casted to ResScalarValues. (Issue 921)
+Fixed reading ResConfigFlags twice. (Issue 924)
+Correctly add libs and lib folders on [b]uild
+
+v2.0.0
+2015.04.21
+
+Migration Instructions from 1.5.x to 2.0.x
+Android 5.1 support
+Updated smali/baksmali to v2.0.5
+Updated gradle to v2.1
+Fixed using -c to retain original manifest and META-INF folder. (Issue 118)
+Fixed handling apks that have unknown files outside of standard aapt allowed resources. (Issue 174)
+Fixed aapt incorrectly setting pkgId. (Issue 313) / (Thanks M1cha)
+Added new usage output to organize features / parameters. (Issue 514)
+Fixed NPE from malformed 9patch images. (Issue 470) / (Thanks Felipe Richards)
+Fixed aapt requiring versionName and versionCode via parameter passing. (Issue 512)
+Fixed common aapt problems by including an internal mac, win and linux aapt. (Issue 551)
+Fixed decoding apks that had general access bit thrown. (Issue 550)
+Fixed debug mode (-d) to fix smali debugging. (Issue 450) / (Thanks Ryszard)
+Adapted smali debugging output to make breakpoint setting easier across IDEs. (Issue 228) / (Thanks Ryszard)
+Fixed characters (& & <) from being double escaped in <item>’s of arrays.xml. (Issue 502)
+Fixed “multiple substitution” errors with positional and exactly 1 non-positional argument. (Issue 371)
+Fixed ignoring --frame-path on [b]uild. (Issue 538)
+Fixed setting android:debuggable on debug apks. (Issue 507)
+Fixed common “superclass” errors on debug mode. (Issue 451)
+Fixed pkgId not being set in framework files. (Issue 569)
+Added -m / --match-original feature to allow apks to match original. (Issue 580)
+Fixed apks PNGs gaining brightness on rebuild. (Issue 437)
+Added dexlib2 (smali2) into Apktool. (Issue 559)
+Fixed windows builds caused by java.nio. (Issue 606)
+Fixed error output being written to stdout instead of stderr. (Issue 620)
+Fixed issue with smali filenames from being too long. (Issue 537) / (Thanks JesusFreke)
+Fixed issue with INSTALL_FAILED_DEXOPT. (Issue 634) / (Thanks JesusFreke)
+Fixed issue with apks with multiple packages. (Issue 583)
+Fixed issue with decoding .jar files. (Issue 641)
+Fixed issue with improperly labeling type of <array>’s. (Issue 660)
+Fixed issue with truncated strings. (Issue 681) / (Thanks jtmuhone)
+Fixed issue with apks with multiple empty types via ignoring them. (Issue 688)
+Fixed issue with apks with one package named android from decoding. (Issue 699)
+Fixed StringBlock by making it thread safe. (Issue 711) / (Thanks aluedeke)
+Fixed truncated UTF-16 strings. (Issue 349)
+Spacing cleanup of 2014. (Issue 694)
+Fixed style crash due to malformed styles. (Issue 307)
+Fixed issue with unknown files being ignored that start with an accepted file name. (Issue 713)
+Fixed issue with unknown files being ignored when -r was used. (Issue 716)
+Fixed issue with renamed manifests such as (android, com.htc and miui). (Issue 719)
+Fixed path issues with UTF8 chars and unknown files. (Issue 736)
+Fixed issue with renamed manifest (com.lge). (Issue 740)
+Fixed incorrect typing of <array> items due to incorrect loop index. (Issue 520)
+Fixed issue with AndroidManifest.xml missing attributes. (Issue 623)
+Fixed issue with ignoring formatted="false" attribute in <string-array>’s. (Issue 786)
+Fixed issue with multiple overlapping try catches. (Issue 748)
+Fixed issue with apks with multiple ResPackages where default is not pkgId 0. (Issue 793)
+Fixed issue with renamed manifest (yi). (Issue 791)
+Fixed issue with apks with large StringPools failing to decode. (Issue 773)
+Fixed issue with bad casting of ResStringValue to ResAttr. (Issue 587) / (Thanks whydoubt)
+Fixed issue with hardcoding 9 patches as .png when there are .qmg, .spi. (Issue 798)
+Added support for Android 5.0 (Lollipop). (Issue 763)
+Added support for TYPE_DYNAMIC_REFERENCE. (Issue 815)
+Fixed issue with implicitly added version qualifiers. (Issue 823)
+Added support for shared library apks. (Issue 822)
+Fixed issue improperly casting strings that resembled filepaths to ResFileValues. (Issue 440)
+Fixed issue with segfaulting aapt. (Issue 700)
+Fixed issue with undefined attributes. (Issue 655)
+Fixed issue with improper handling of MNC_ZERO which caused duplicated resources. (Issue 811)
+Fixed warnings of “Cleaning up unclosed ZipFile…”. (Issue 853)
+Added support for downloading gradle binaries over https. (Issue 866)
+Fixed issue when user has no access to $HOME. (Issue 513)
+Added support for BCP-47 localization tags. (Issue 870)
+Fixed issue with double escaping of ampersands in <. (Issue 658) / (Thanks jhornber)
+Fixed issue with not respecting compression type of unknown files. (Issue 878) / (Thanks simtel12)
+Fixed issue with apktool branding apks via platformBuildVersion[Code/Name]. (Issue 890)
+Fixed issue when multiple dex files were ignored using -s. (Issue 904)
+Fixed issue with @string references in <provider> attributes from preventing apk install. (Issue 636)
+Fixed issue with decoding .spi files as 9 patch images. (Thanks Furniel)
+Fixed issue with APKs with multiple dex files.
+Fixed issue using Apktool without smali/baksmali.
+Fixed issue using non URI standard characters in apk name. (Thanks rover12421)
+Added version output during decode/build operations to quickly identify apktool version.
+Fixed NPE error when using .odex files with --no-src specified. (Thanks Rodrigo Chiossi)
+Fixed locale problems when locale changes meaning of windows .bat script. (Thanks Adem666)
+Fixed issue when -r was used with no /res folder present. (Thanks chrisch1974)
 Added smali/baksmali for adding new up coming  Deodex features
 Added now when compiling with option 12 when you choose option 3 and 4 it names the APK files to show they have the original signature keys
 Added new Signing method for signing APK files. With this new method the key used has a shelf life of 1000 years and also APKS files signed with this key is able to be published on the android market
@@ -274,3 +308,4 @@ Minor changes to the UI in the setup.bat to make room for  more in the future re
 Updated README
 ADDED Other Manuel options by added two other help document types in case there is a compatibility issue with any of them
 Updated the keep folder options of all the compilers which use the keep folder
+FIXED OPTION 20   Sign an apk(Batch support)(inside place-apk-here-for-signing folder only) 
