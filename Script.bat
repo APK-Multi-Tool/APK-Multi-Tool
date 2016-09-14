@@ -71,6 +71,7 @@ ECHO                                                            :v::...irY1:
 ECHO                                                            .ri....:j2Y,                                                            
 ECHO                                                              ,..:.::.                                                              
 ECHO                                                Written by
+ECHO                                      Traduction Francaise par MineeFann
 ECHO                                    Gerald Wayne Baggett Jr AKA Raziel23x
 ECHO                                           http://apkmultitool.com
 ECHO   rL7vvL    iLv77J               .LvL:     :.    ULJv        0NPFjr77LFPqG,                          u7L7                          
@@ -89,19 +90,20 @@ cd "%~dp0"
 set menunr=GARBAGE
 CLS
 ECHO  --------------------------------------------------------------------------------------------------------------------------
-ECHO ^| Compression-Level: %usrc% ^| Resources.arsc Compression-Level: %resusrc% ^| Heap Size: %heapy%mb ^|  
+ECHO ^|Niveau de compression: %usrc% ^| Niveau de compression de Ressources.arsc: %resusrc% ^| Heap Size: %heapy%mb ^|  
 ECHO  --------------------------------------------------------------------------------------------------------------------------
-ECHO ^| Decompile : %decs% ^| Current-App: %capp% ^|
+ECHO ^| Decompiler : %decs% ^| App en cours: %capp% ^|
 ECHO  --------------------------------------------------------------------------------------------------------------------------
 ECHO                                                    HTTP://APKMULTITOOL.COM
-ECHO  ----------------------------------         ------------------------------------        -----------------------------------
-ECHO  Simple Tasks Such As Image Editing         Advanced Tasks Such As Code Editing         Themers Convertion Tools
-ECHO  ----------------------------------         ------------------------------------        -----------------------------------
-ECHO  0    Adb pull                              9    Decompile apk                          16   Batch Theme Image Transfer
-ECHO  1    Extract apk                           10   Decompile apk (with dependencies)          (Read the Instructions before
+ECHO  -----------------------------------        ------------------------------------        -----------------------------------
+ECHO  Tache simple pour editer les images        Tâches avancées telles que l'edition        Outils de conversion de themes 
+ECHO                                                            de code                       
+ECHO  -----------------------------------        ------------------------------------        -----------------------------------
+ECHO  0    Adb pull                              9    Decompiler apk                          16   Batch Theme Image Transfer
+ECHO  1    Extraire apk                          10   Decompiler apk (with dependencies)          (Read the Instructions before
 ECHO  2    Optimize images inside                     (For proprietary rom apks)                    using this feature)
-ECHO  3    Zip apk                               11   Compile System APK files                                 
-ECHO  4    Sign apk with Testkeys (Dont          12   Compile Non-System APK Files                                     
+ECHO  3    Ziper apk                             11   Compile System APK files                                 
+ECHO  4    Signer apk with Testkeys (Dont        12   Compile Non-System APK Files                                     
 ECHO       do this IF its a system apk)          13   Sign apk with Android Market supported Key
 ECHO  5    Zipalign apk (Do once apk is          14   Install apk  
 ECHO       created/signed)                       15   Compile apk / Sign apk / Install apk    
