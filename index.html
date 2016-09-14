@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Apk-multi-tool by APK-Multi-Tool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Apk-multi-tool</h1>
+      <h2 class="project-tagline">Multi-Tool for Editing APK and JAR files for your Android Devices</h2>
+      <a href="https://github.com/APK-Multi-Tool/APK-Multi-Tool" class="btn">View on GitHub</a>
+      <a href="https://github.com/APK-Multi-Tool/APK-Multi-Tool/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/APK-Multi-Tool/APK-Multi-Tool/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="apk-multi-tool" class="anchor" href="#apk-multi-tool" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>APK Multi-Tool</h1>
+
+<p>I have updated all the files and modified Apk manager's Scripts to fix many user reported bugs from Daneshm90 apk manager which he had written a simple script to ease the process of editing apks. Got a lot of downloads so thought its in demand  </p>
+
+<p>After some thought and after adding new features and decided that since it is no longer just a apk management tool that is is now a multifunctional tool now so I felt to change the name to APK Multi-Tool.  </p>
+
+<p>Whether you're doing basic image editing or editing the smali or XML files, on average u have to use (Brut.all or JF's smali/baksmali) awesome tool to extract the apk, edit it, then sign the apk and then adb push/install it. This process is quite tiresome if you are testing a method that needs fine tweaking.  </p>
+
+<p>This script should make the process a LOT smoother.<br>
+There is an option of compiling/signing/installing all in one step  </p>
+
+<p><strong>Thanks</strong>:  </p>
+
+<blockquote>
+<p>Goes to Daneshm90 the Original Writer of Apk Manager<br>
+Goes to Brut.all for his awesome tool.<br>
+Goes to JF for of course, smali/baksmali<br>
+Goes to farmatito for porting this script to Linux  </p>
+</blockquote>
+
+<p><strong>Features</strong>:</p>
+
+<ul>
+<li>Extract, Zip apk's.<br>
+</li>
+<li>Optimize pngs (ignores .9.pngs)<br>
+</li>
+<li>Zipalign apks<br>
+</li>
+<li>Sign apks<br>
+</li>
+<li>Push to specific location on phone<br>
+</li>
+<li>Incorporates brut.all's apktool<br>
+</li>
+<li>Pull apk from phone into modding environment.<br>
+</li>
+<li>Batch optimize apk (Zipalign,optipng,or both)<br>
+</li>
+<li>Quick sign an apk (Batch mode supported)<br>
+</li>
+<li>Batch Ogg optimization<br>
+</li>
+<li>Compression level selector (monitor status above menu)<br>
+</li>
+<li>Batch install apk from script (option 16)<br>
+</li>
+<li>Logging on/off has been removed. Instead a log.txt is created which logs the activities of the script organized using time/date headers<br>
+</li>
+<li>User can change the max java heap size (only use if certain large apks get stuck when decompiling/compiling apks) (Option 19)<br>
+</li>
+<li>Improved syntax of questions/answers<br>
+</li>
+<li>Error detection. Checks if error occurred anytime u perform a task, and reports it<br>
+</li>
+<li>Read log (Option 20)<br>
+</li>
+<li>You can now set this script as your default application for apks. When u do, if you double click any apk it will install it for you.<br>
+</li>
+<li>Supports batch installation, so if u drag multiple apks into the script (not while its running) it will install them all for you. you can of course drag a single apk as well.<br>
+</li>
+<li>Added framework dependent decompiling (For non proprietary rom apks). (Option 10). Checks whether the depended apk u selected is correct.<br>
+</li>
+<li>Allows multiple projects to be modified, switch to and from.<br>
+</li>
+<li>Allows to modify system apk's using apktool but ensures maximum compatibility in terms of signature / manifest.xml</li>
+<li>Stuff i forgot i guess<br>
+</li>
+</ul>
+
+<p><strong>Instructions</strong>:<br>
+1. - Place apk in appropriate folder (Any file name will work, if running for first time folders will not be there, you must run and then the folders will be created)<br>
+2. - Run script<br>
+3. - Minimize the script<br>
+4. - Edit files inside the project folder<br>
+5. - Maximize the script  </p>
+
+<p><strong>Decompile Mode</strong>:<br>
+Switch decompile mode (Allows you to pick to fully decompile the APK's or JAR's or to just decompile Sources or just the Resources or do a raw dump allowing you to just edit the normal images  </p>
+
+<p><strong>Themers Convertion Tools</strong>:<br>
+Before running the themers tool-set make sure when you run the scripts 15 16 17 in this exact order as it is setup as a tool-chain.  </p>
+
+<p>To transfer or convert a rom theme pack place the apk files of the theme pack you wish to convert over to your rom in the the Themedapk folder and place the rom files of the same name from the rom you have flashed on your phone in the transferred folder run the scripts.<br>
+take note that depending on your computer specs it can take over a hour to complete.  </p>
+
+<h2>
+<a id="minimum-requirements" class="anchor" href="#minimum-requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>MINIMUM REQUIREMENTS</strong>:</h2>
+
+<hr>
+
+<p><strong>Required</strong>:  </p>
+
+<ul>
+<li>Windows 95/98/VISTA/7/8/8.1/10<br>
+</li>
+<li>Java 1.7.x<br>
+</li>
+<li>Keyboard &amp; mouse<br>
+</li>
+</ul>
+
+<p><strong>Recominded</strong>:  </p>
+
+<ul>
+<li>Windows 95/98/VISTA/7/8/8.1/10<br>
+</li>
+<li>Java 1.8.x<br>
+</li>
+</ul>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>INSTALLATION</h2>
+
+<hr>
+
+<blockquote>
+<ol>
+<li><p>Treat your computer to a tune up - follow this procedure before installation:  </p></li>
+<li><p>In Accessories\System Tools, you may find utilities that can increase the  </p></li>
+<li><p>performance of your system.  </p></li>
+<li><ul>
+<li>Scandisk your hard drive with "ScanDisk"<br>
+</li>
+</ul></li>
+<li>- Defragment your hard drive with "Disk Defragmenter"<br>
+</li>
+<li>- Virus Check your Hard Drive with the latest virus definitions<br>
+</li>
+<li>- Reclaim hard drive space by deleting unnecessary files with "Disk Cleanup"<br>
+</li>
+<li>- Verify that you have at least 150MB of free hard drive space for your swap file.<br>
+</li>
+</ol>
+</blockquote>
+
+<ul>
+<li>1. To install the tool in the ROOT of you HARD DRIVE is RECOMINDED but not REQUIRED<br>
+</li>
+</ul>
+
+<blockquote>
+<ul>
+<li>- FOR EXAMPLE<br>
+</li>
+<li>- C:\APK-Multi-Tools\<br>
+</li>
+</ul>
+</blockquote>
+
+<ul>
+<li>2. You cannot have any spaces in the path IE your installation directory should not be.<br>
+</li>
+</ul>
+
+<blockquote>
+<ul>
+<li>- FOR EXAMPLE<br>
+</li>
+<li>- C:\APK Multi-Tool\<br>
+</li>
+</ul>
+</blockquote>
+
+<ul>
+<li>3. You will Need to have the JAVA JDK INSTALLED and you need to set your Java_Home Environment Variable which needs to point to.<br>
+</li>
+</ul>
+
+<blockquote>
+<ul>
+<li>- FOR EXAMPLE<br>
+</li>
+<li>- C:\Program Files\Java\jdk1.7.0_25<br>
+</li>
+</ul>
+</blockquote>
+
+<ul>
+<li>4. To Create the Environment Variable you need to go into System Properties click on the ADVANCED tab select ENVIRONMENT VARIABLE you will see a two boxes you want create the Java_Home in the System Variables by clicking NEW in the Variable Name box NAME IT JAVA_HOME in the Variable Value box place the location of the insallation of the JAVA JDK<br>
+</li>
+</ul>
+
+<blockquote>
+<ul>
+<li>- FOR EXAMPLE<br>
+</li>
+<li>- "C:\Program Files\Java\jdk1.7.0_25"<br>
+</li>
+</ul>
+</blockquote>
+
+<ul>
+<li>5. When setting the ENVIRONMENT VARIABLE there can be spaces in the path but you will have to place the path in "" like I did in the example above<br>
+</li>
+</ul>
+
+<p><strong>FAQs</strong>:</p>
+
+<ol>
+<li>IF Modifying system apps, never resign them unless you want to resign all apk's that share its shared:uid<br>
+</li>
+<li>IF decompiling/recompiling system apps and IF AndroidManifest.xml was not preserved from the original apk, then either push the apk when in recovery or by doing :<br>
+
+<ul>
+<li>adb remount<br>
+</li>
+<li>adb shell stop<br>
+</li>
+<li>adb push something.apk /wherever/something.apk<br>
+</li>
+<li>adb shell start<br>
+</li>
+</ul>
+</li>
+<li>Decompiling a themed apk is not possible, you must get the original unthemed apk, then decompile, make your theme/xml changes and recompile<br>
+</li>
+<li>IF you're stuck and the log doesnot give you any indication as to what you are doing wrong, then post in the thread <a href="http://forum.xda-developers.com/showthread.php?t=1310151">http://forum.xda-developers.com/showthread.php?t=1310151</a>
+
+<ul>
+<li>Make sure u include ur APK-Multi-Tool.log, and IF its not a editing problem i.e its something regarding when u push it to your phone, then post ur adb log as well.<br>
+To do so follow these steps :<br>
+</li>
+</ul>
+</li>
+</ol>
+
+<blockquote>
+<ul>
+<li>1. Connect ur phone to ur pc<br>
+</li>
+<li>2. Push/install the app on your phone<br>
+</li>
+<li>3. Select "Create Log" option on this menu<br>
+</li>
+<li>4. Let the new window run for 10 seconds, then close it<br>
+</li>
+<li>Once done, you will find a adblog.txt in the root folder<br>
+</li>
+<li>Upload that as well.<br>
+</li>
+</ul>
+</blockquote>
+
+<p>What is the Batch Theme Image Transfer TOOL?<br>
+This tool makes the process of transferring images from one APK to another APK File of the same file making it easier to update themes or even transferring a theme update.zip of one ROM to another Rom allowing the porting of theme to be much faster.<br>
+(Note: You will have to manually replace the progress_horizontal.xml from the framework-res since this file is needed with Theme Changes)</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/APK-Multi-Tool/APK-Multi-Tool">Apk-multi-tool</a> is maintained by <a href="https://github.com/APK-Multi-Tool">APK-Multi-Tool</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
