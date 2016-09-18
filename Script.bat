@@ -822,7 +822,7 @@ set KEYSTORE_PASS=apksigner
 set KEYSTORE_ALIAS=apksigner.keystore
 set JAVAC_PATH=%JAVA_HOME%\bin\
 set PATH=%PATH%;%JAVAC_PATH%;
-call jarsigner -keystore %KEYSTORE_FILE% -storepass %KEYSTORE_PASS% -keypass %KEYSTORE_PASS% -signedjar %~dp0place-apk-here-for-signing/signed%capp% %~dp0place-apk-here-for-signing/unsigned%capp%  %KEYSTORE_ALIAS% %1
+call jarsigner -sigalg MD5withRSA -digestalg SHA1 -keystore %KEYSTORE_FILE% -storepass %KEYSTORE_PASS% -keypass %KEYSTORE_PASS% -signedjar %~dp0place-apk-here-for-signing/signed%capp% %~dp0place-apk-here-for-signing/unsigned%capp% %KEYSTORE_ALIAS%
 IF errorlevel 1 (
 ECHO "An Error Occurred, Please Check The Log (option 26)"
 PAUSE
